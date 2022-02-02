@@ -55,7 +55,7 @@ export default function SignUp({setToken}) {
         const { data: { token, party } } = await Api.post("/party/signup", partyObject)
         setToken(token)
         console.log(`welcome ${party.firstName}`);
-        navigate("/")
+        navigate("/party")
 
     } catch (e) {
         console.error(e.message)
@@ -148,7 +148,7 @@ export default function SignUp({setToken}) {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/signin" variant="body2">
+                <Link href="/" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

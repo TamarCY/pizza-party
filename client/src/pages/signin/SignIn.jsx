@@ -31,7 +31,7 @@ export default function SignIn({ setAuthType, token, setToken }) {
         try {
             const party = await Api.post("/party/signin", signinObject);
             console.log(party);
-            navigate("/")
+            navigate("/party")
         } catch (e) {
             console.error(e.message);
         }
@@ -91,7 +91,7 @@ export default function SignIn({ setAuthType, token, setToken }) {
                 </Link> */}
                             </Grid>
                             <Grid item>
-                                <Link href="/signup" variant="body2">
+                                <Link href="/sign-up" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>

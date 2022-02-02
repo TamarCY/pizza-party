@@ -13,12 +13,10 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
-    <Routes>
-      
-      <Route path="/" element={<HomeParty/>}></Route>
-      <Route path="/edit-party" element={<HomeParty/>}></Route>
-      <Route path="/signup" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
-      <Route path="/signin" element={<SignIn setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
+    <Routes>   
+      <Route path="/party" element={<HomeParty/>}></Route>
+      <Route path="/sign-up" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
+      <Route path="/" element={<SignIn setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
     </Routes>
     </BrowserRouter>
     {/* <SignIn setToken={setToken} token={token} setAuthType={setAuthType}/> */}
