@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+
 import Api from '../../api/Api'
 
 
@@ -18,6 +20,8 @@ import Api from '../../api/Api'
 const theme = createTheme();
 
 export default function SignUp({setToken}) {
+  const navigate = useNavigate();
+
     // const [partyObject, setPartyObject] = useState({})
 
 
@@ -47,11 +51,12 @@ export default function SignUp({setToken}) {
         email: event.target[4].value,
         password: event.target[6].value,
     }
-    console.log(partyObject);
     try {
         const { data: { token, party } } = await Api.post("/party/signup", partyObject)
         setToken(token)
         console.log(`welcome ${party.firstName}`);
+        navigate("/")
+
     } catch (e) {
         console.error(e.message)
     }
