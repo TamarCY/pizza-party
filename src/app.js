@@ -17,8 +17,11 @@ const mongo_uri = process.env.MONGO_URI;
 mongoose
   .connect(mongo_uri)
   .then(() => console.log("Database connected"))
-  .catch((err) => console.error(err))
+  .catch((err) => console.error(err));
 
+
+app.use("/host", hostRouter);
+app.use("/guest", guestRouter)
 
 
 app.use("*", (req, res) => {
@@ -27,9 +30,7 @@ app.use("*", (req, res) => {
 
 const PORT = process.env.PORT;
 
-app.listen(PORT, () => console.log(`Server is up and runging on ${PORT}`));
+app.listen(PORT, () => console.log(`Server is up and running on ${PORT}`));
 
 
-// Install mongoose 
-// require mongoose
-// add line 17 - mongoose connection 
+ 
