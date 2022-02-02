@@ -1,0 +1,19 @@
+.home-party-container { 
+    width: 100vw;
+    height: 100vh;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+}
+
+.home-party-box {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-party-logo {
+    background: url("../../assets/images/hands.png") no-repeat center/cover;
+    width: 20rem;
+    height: 20rem;
+}

@@ -48,7 +48,7 @@ const updateParty = async (req, res) => {
   }
 }
 
-const loginParty = async (req, res) => {
+const signinParty = async (req, res) => {
 try {
   const party = await Party.findByCredentials(req.body.email, req.body.password)
   const token = await party.generateAuthToken();
@@ -92,4 +92,4 @@ const logoutParty = async (req, res) => {
 
 
 module.exports = { getParty, postParty, updateParty,
-   loginParty, logoutParty, getAllParties};
+  signinParty, logoutParty, getAllParties};
