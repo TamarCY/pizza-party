@@ -7,7 +7,10 @@ const jwt = require("jsonwebtoken");
 const toppingsOptions = ["pineapple", "olives", "onion"]
 
 const partySchema = new mongoose.Schema({
-  name: {
+  firstName: {
+    type: String
+  },
+  lastName: {
     type: String
   },
   email: {
@@ -57,7 +60,6 @@ partySchema.pre("save", async function (next) {
 });
 
 partySchema.methods.generateAuthToken = async function () {
-  console.log("ping");
   const party = this;
   const token = jwt.sign({ _id: party._id.toString() }, "ilovepizzasomuch");
   party.tokens = party.tokens.concat({ token });

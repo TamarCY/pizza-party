@@ -5,7 +5,7 @@ const {getParty, postParty, loginParty, logoutParty} = require("../controllers/p
 
 
 partyRouter.get("/me", auth, getParty);
-partyRouter.post("/", postParty);
+partyRouter.post("/signup", postParty);
 partyRouter.post("/login", loginParty);
 partyRouter.post("/logout", logoutParty);
 
