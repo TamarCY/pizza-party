@@ -7,6 +7,7 @@ import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -49,10 +50,14 @@ export default function SignIn({ setAuthType, token, setToken }) {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
+                    </Avatar> */}
+                    <LocalPizzaIcon sx={{ m: 5, color:"warning.main", fontSize:100}}/>
+                    <Typography component="h1" variant="h3">
+                         Pizza Party
+                    </Typography>
+                    <Typography component="h2" variant="h7" sx={{m:5}}>
                         Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
