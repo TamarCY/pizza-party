@@ -3,8 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose")
-const app = express();
+const partyRouter = require("./routes/party-routes")
+// const guestRouter = require("./routes/guest-routes")
 
+const app = express();
 
 const publicPath = path.join(__dirname, "../client/build");
 
@@ -20,8 +22,8 @@ mongoose
   .catch((err) => console.error(err));
 
 
-app.use("/host", hostRouter);
-app.use("/guest", guestRouter)
+app.use("/party", partyRouter);
+// app.use("/guest", guestRouter)
 
 
 app.use("*", (req, res) => {
