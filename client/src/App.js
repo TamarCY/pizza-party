@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import './App.css';
-import Login from './components/login/SignUp';
+import SignUp from './pages/signup/Signup';
 
 function App() {
   const [token, setToken] = useState("")
+  const [authType, setAuthType] = useState("login");
+
   return (
     <div className="App">
      <h1>PIZZA PARTY</h1>
-     <Login setToken={setToken} token={token}/>
+     <SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>
     </div>
   );
 }
