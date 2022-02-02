@@ -8,6 +8,7 @@ function App() {
 
   return (
     <div className="App">
+    
      <h1>PIZZA PARTY</h1>
      <SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>
     </div>
