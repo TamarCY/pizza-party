@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Signup from '../signup/Signup';
 import HomeParty from '../home/HomeParty';
-import EditTime from '../../components/editTime/EditTime';
+import EditTime from '../../components/editTimePlace/EditTimePlace';
 
 
 export default function HorizontalLinearStepper() {
