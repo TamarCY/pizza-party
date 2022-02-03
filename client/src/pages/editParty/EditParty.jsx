@@ -11,7 +11,7 @@ import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
 
 export default function EditParty() {
 
-    const [partyObject, setPartyObject] = React.useState({date: new Date()})
+    const [partyObject, setPartyObject] = React.useState({date: new Date(), address:""})
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
@@ -20,7 +20,6 @@ export default function EditParty() {
     <HomeParty />]
 
    
-
     const useEffects = () => {
         //   TODO: add api call to the server to get the party object
     }

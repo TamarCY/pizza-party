@@ -6,8 +6,7 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
 
 export default function TimePicker({partyObject, setPartyObject}) {
-  const [value, setValue] = React.useState(new Date());
-console.log(setPartyObject);
+  // const [value, setValue] = React.useState(new Date());
 // useEffect(()=> {
 //   setPartyObject({...partyObject, date: value})
 // // eslint-disable-next-line react-hooks/exhaustive-deps
