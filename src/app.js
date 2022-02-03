@@ -27,7 +27,7 @@ app.use("/party", partyRouter);
 
 
 app.use("*", (req, res) => {
-	res.send("this route is not exist");
+	res.sendFile(path.resolve(`${publicPath}/index.html`))
 });
 
 const PORT = process.env.PORT;

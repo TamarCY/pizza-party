@@ -3,7 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -11,7 +10,7 @@ import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Api from '../../api/Api'
 
 
@@ -96,7 +95,7 @@ export default function SignIn({ setAuthType, token, setToken }) {
                 </Link> */}
                             </Grid>
                             <Grid item>
-                                <Link href="/sign-up" variant="body2">
+                                <Link to="/sign-up" >
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
