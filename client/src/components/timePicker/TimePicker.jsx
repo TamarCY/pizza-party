@@ -8,19 +8,19 @@ import DateTimePicker from '@mui/lab/DateTimePicker';
 export default function TimePicker({partyObject, setPartyObject}) {
   const [value, setValue] = React.useState(new Date());
 console.log(setPartyObject);
-useEffect(()=> {
-  setPartyObject({...partyObject, date: value})
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[value])
+// useEffect(()=> {
+//   setPartyObject({...partyObject, date: value})
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+// },[value])
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateTimePicker
         renderInput={(props) => <TextField {...props} />}
         label="Enter time"
-        value={value}
+        value={partyObject.date}
         onChange={(newValue) => {
-          setValue(newValue);
+          setPartyObject({...partyObject, date: newValue});
         }}
       />
     </LocalizationProvider>

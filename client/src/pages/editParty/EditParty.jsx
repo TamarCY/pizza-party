@@ -11,7 +11,7 @@ import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
 
 export default function EditParty() {
 
-    const [partyObject, setPartyObject] = React.useState({})
+    const [partyObject, setPartyObject] = React.useState({date: new Date()})
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
