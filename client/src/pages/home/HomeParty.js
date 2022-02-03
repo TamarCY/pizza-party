@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Stack from '@mui/material/Stack';
 import {Button} from "@mui/material";
 import "./homeParty.css"
 
-
+// TODO: in the use useEffect renser the componnet only if there is a token
 
 const HomeParty = () => {
 
+    
     return (
         <div className="home-party-container">
         <div className="home-party-box">

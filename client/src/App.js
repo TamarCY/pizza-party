@@ -14,9 +14,9 @@ function App() {
     <div className="App">
     <BrowserRouter>
     <Routes>   
-      <Route path="/party" element={<HomeParty/>}></Route>
-      <Route path="/sign-up" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
       <Route path="/" element={<SignIn setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
+      <Route path="/sign-up" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}></Route>
+      <Route path="/party" element={<HomeParty/>}></Route>
     </Routes>
     </BrowserRouter>
     {/* <SignIn setToken={setToken} token={token} setAuthType={setAuthType}/> */}

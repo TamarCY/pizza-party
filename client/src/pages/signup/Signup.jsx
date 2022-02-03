@@ -99,7 +99,7 @@ export default function SignUp({setToken}) {
                          Pizza Party
                     </Typography>
                     <Typography component="h2" variant="h7" sx={{m:5}}>
-                        Sign in
+                        Sign Up
                     </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
