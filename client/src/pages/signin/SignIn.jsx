@@ -11,6 +11,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
+import { useSetRecoilState } from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
 
 
@@ -18,6 +20,8 @@ import Api from '../../api/Api'
 const theme = createTheme();
 
 export default function SignIn({ setAuthType, token, setToken }) {
+    const setPartyObject = useSetRecoilState(partyState);
+
     const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
@@ -29,8 +33,8 @@ export default function SignIn({ setAuthType, token, setToken }) {
             password: data.get('password'),
         }
         try {
-            const {data:{token, party}} = await Api.post("/party/signin", signinObject);
-            console.log("token", token, "party", party);
+            const { data: { token, party } } = await Api.post("/party/signin", signinObject);
+            setPartyObject(party)
             navigate("/party")
         } catch (e) {
             console.error(e.message);
@@ -52,11 +56,11 @@ export default function SignIn({ setAuthType, token, setToken }) {
                     {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <LockOutlinedIcon />
                     </Avatar> */}
-                    <LocalPizzaIcon sx={{ m: 5, color:"warning.main", fontSize:100}}/>
+                    <LocalPizzaIcon sx={{ m: 5, color: "warning.main", fontSize: 100 }} />
                     <Typography component="h1" variant="h3">
-                         Pizza Party
+                        Pizza Party
                     </Typography>
-                    <Typography component="h2" variant="h7" sx={{m:5}}>
+                    <Typography component="h2" variant="h7" sx={{ m: 5 }}>
                         Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>

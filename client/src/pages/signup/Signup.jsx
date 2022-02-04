@@ -13,7 +13,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
-
+import { useRecoilState , useRecoilValue, useSetRecoilState} from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
 
 
@@ -21,27 +22,11 @@ import Api from '../../api/Api'
 const theme = createTheme();
 
 export default function SignUp({setToken}) {
+  const partyObject = useRecoilValue(partyState);
+  const setPartyObject = useSetRecoilState(partyState);
   const navigate = useNavigate();
 
-    // const [partyObject, setPartyObject] = useState({})
 
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     // eslint-disable-next-line no-console
-//     // console.log(event);
-//     // console.log({
-//     //   email: data.get('email'),
-//     //   password: data.get('password'),
-//     // });
-//     setPartyObject({
-//         firstName: event.target[0].value,
-//         lastName: event.target[2].value,
-//         email: event.target[4].value,
-//         password: event.target[6].value,
-//     })
-//   };
 
   const handleSubmit = async (event) => {
       event.preventDefault();
@@ -53,10 +38,11 @@ export default function SignUp({setToken}) {
         password: event.target[6].value,
     }
     try {
-        const { data: { token, party } } = await Api.post("/party/signup", partyObject)
-        setToken(token)
+        const { data: { token, party } } = await Api.post("/party/signup", partyObject);
+        setToken(token);
+        setPartyObject(party);
         console.log(`welcome ${party.firstName}`);
-        navigate("/party")
+        navigate("/party");
 
     } catch (e) {
         console.error(e.message)

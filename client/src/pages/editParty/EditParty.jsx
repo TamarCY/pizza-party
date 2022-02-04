@@ -8,23 +8,27 @@ import Typography from '@mui/material/Typography';
 import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
 import EditPizza from '../../components/editPizza/EditPizza';
 import SendInvitation from '../../components/sendInvitation/SendInvitation';
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
+import Api from '../../api/Api';
+
+
 
 
 export default function EditParty() {
-    const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppingOptions:["a","b","c"], toppingsSelected:[0]})
+    // const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppingOptions:["a","b","c"], toppingsSelected:[0]})
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
+    const partyObject = useRecoilValue(partyState);
+    const setPartyObject = useSetRecoilState(partyState);
 
     const steps = ['When and where', 'Choose pizza toppings', 'Send invitations'];
     const components = [
-    <EditTimePlace partyObject={partyObject} setPartyObject={setPartyObject}/>,
-    <EditPizza partyObject={partyObject} setPartyObject={setPartyObject}/>,
+    <EditTimePlace />,
+    <EditPizza />,
     <SendInvitation/>]
 
    
-    const useEffects = () => {
-        //   TODO: add api call to the server to get the party object
-    }
 
     const isStepOptional = (step) => {
         // return step === 1;
@@ -35,7 +39,17 @@ export default function EditParty() {
         return skipped.has(step);
     };
 
-    const handleNext = () => {
+    const handleNext = async () => {
+        console.log(partyObject);
+        if (activeStep === steps.length - 1) {
+            try {
+                const response = await Api.put("/party/edit", partyObject);
+            } catch (e) {
+                console.error(e.message);
+            }
+            
+            // TODO: MOVE THE API CALL TO API FILE => savePartyToDataBase(partyObject)
+        }
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {
             newSkipped = new Set(newSkipped.values());
@@ -44,6 +58,7 @@ export default function EditParty() {
 
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setSkipped(newSkipped);
+        
     };
 
     const handleBack = () => {
@@ -131,11 +146,6 @@ export default function EditParty() {
                             <Button onClick={handleNext}>
                                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                             </Button>
-
-
-                            {/* <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button> */}
                         </Box>
                     </React.Fragment>
                 )}
@@ -147,16 +157,3 @@ export default function EditParty() {
 
 
 
-// export default function HorizontalLabelPositionBelowStepper() {
-//   return (
-//     <Box sx={{ width: '100%' }}>
-//       <Stepper activeStep={1} alternativeLabel>
-//         {steps.map((label) => (
-//           <Step key={label}>
-//             <StepLabel>{label}</StepLabel>
-//           </Step>
-//         ))}
-//       </Stepper>
-//     </Box>
-//   );
-// }

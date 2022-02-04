@@ -1,8 +1,14 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
 
 
-const EditPizza = ({ partyObject, setPartyObject }) => {
-    const [newTopping, setNewTopping] = useState("")
+
+const EditPizza = () => {
+    const [newTopping, setNewTopping] = useState("");
+    const partyObject = useRecoilValue(partyState);
+    const setPartyObject = useSetRecoilState(partyState);
+
     const handleChange = (id) => {
         const selected = [...partyObject.toppingsSelected]
         const indexOfChanged = partyObject.toppingsSelected.indexOf(id);

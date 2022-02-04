@@ -4,13 +4,13 @@ import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
 
-export default function TimePicker({partyObject, setPartyObject}) {
-  // const [value, setValue] = React.useState(new Date());
-// useEffect(()=> {
-//   setPartyObject({...partyObject, date: value})
-// // eslint-disable-next-line react-hooks/exhaustive-deps
-// },[value])
+
+export default function TimePicker() {
+  const partyObject = useRecoilValue(partyState);
+  const setPartyObject = useSetRecoilState(partyState);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
