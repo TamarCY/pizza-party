@@ -3,8 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
-const toppingsOptions = ["pineapple", "olives", "onion"]
+const toppingsOptions = ["pineapple", "olives", "onion"];
 
 const partySchema = new mongoose.Schema({
   firstName: {
@@ -36,17 +35,15 @@ const partySchema = new mongoose.Schema({
       }
     }
   },
-  toppings: {
-      options: {
-        type: [],
-        default: toppingsOptions
-      },
-      selected: {
-        type: [Number]
-        // TODO: add default value as 0 .... toppingsOptions.length
-      }
-    }
-  ,
+  toppingOptions: {
+    type: [String],
+    default: toppingsOptions
+  },
+  toppingsSelected: {
+    type: [Number]
+    // TODO: add default value as 0 .... toppingsOptions.length
+  },
+  // TODO: change the toppings option and selected to arrays inside one toppings object
   tokens: [
     {
       token: {
@@ -84,18 +81,17 @@ partySchema.methods.toJSON = function () {
   return partyObject;
 };
 
-
 partySchema.statics.findByCredentials = async (email, password) => {
-    const party = await Party.findOne({ email })
-    if(!party) {
-        throw new Error("Unable to login - wrong email")
-    }
-    const isMatch = await bcrypt.compare(password, party.password);
-    if(!isMatch) {
-        throw new Error("Unable to login - wrong password")
-    }
-    return party
-}
+  const party = await Party.findOne({ email });
+  if (!party) {
+    throw new Error("Unable to login - wrong email");
+  }
+  const isMatch = await bcrypt.compare(password, party.password);
+  if (!isMatch) {
+    throw new Error("Unable to login - wrong password");
+  }
+  return party;
+};
 
 const Party = mongoose.model("Party", partySchema);
 
