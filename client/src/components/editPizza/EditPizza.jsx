@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 
 
-const EditPizza = ({partyObject, setPartyObject}) => {
-
+const EditPizza = ({ partyObject, setPartyObject }) => {
+    const [newTopping, setNewTopping] = useState("")
     const handleChange = (id) => {
         const selected = [...partyObject.toppingsSelected]
         const indexOfChanged = partyObject.toppingsSelected.indexOf(id);
@@ -12,16 +12,26 @@ const EditPizza = ({partyObject, setPartyObject}) => {
         else {
             selected.push(id)
         }
-        console.log(selected);
-        setPartyObject({...partyObject, toppingsSelected:selected})
+        setPartyObject({ ...partyObject, toppingsSelected: selected })
     }
 
+    const addNewTopping = () => {
+        const toppingOptionsCopy = [...partyObject.toppingOptions];
+        const toppingsSelectedCopy = [...partyObject.toppingsSelected];
+        if (newTopping) {
+            toppingOptionsCopy.push(newTopping);
+            setNewTopping("");
+            const newToppingIndex = toppingOptionsCopy.length - 1;
+            toppingsSelectedCopy.push(newToppingIndex)
+            setPartyObject({ ...partyObject, toppingOptions: toppingOptionsCopy, toppingsSelected: toppingsSelectedCopy });
+        }
+    }
 
     const renderCheckbox = () => {
         return partyObject.toppingOptions.map((item, index) => {
             return (
                 <label key={item}>
-                    <input type="checkbox" onChange={() => handleChange(index)}></input>
+                    <input type="checkbox" onChange={() => handleChange(index)} checked={partyObject.toppingsSelected.includes(index)} ></input>
                     <span>{item}</span>
                 </label>
             )
@@ -32,9 +42,11 @@ const EditPizza = ({partyObject, setPartyObject}) => {
         <div>
             <h2>Choose topping options</h2>
             <div>
-            {renderCheckbox()}
+                {renderCheckbox()}
             </div>
-            { JSON.stringify(partyObject.toppingsSelected)}
+            {JSON.stringify(partyObject.toppingsSelected)}
+            <input type="text" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
+            <button onClick={addNewTopping}>add</button>
 
         </div>
 

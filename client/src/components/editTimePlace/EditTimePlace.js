@@ -8,7 +8,8 @@ export default function EditTime ({partyObject, setPartyObject}){
         <div>
         <h2> Choose date time and location </h2>
         <TimePicker partyObject={partyObject} setPartyObject={setPartyObject}/>
-        <TextField id="outlined-basic" label="Enter address" variant="outlined" value={partyObject.address} onChange={(e)=>{setPartyObject({...partyObject, address:e.target.value})}}/>
+        <TextField id="outlined-basic" label="Enter address" variant="outlined" value={partyObject.address} 
+        onChange={(e)=>{setPartyObject({...partyObject, address:e.target.value})}}/>
 
         </div>
     )
