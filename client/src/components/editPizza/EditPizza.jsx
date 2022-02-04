@@ -2,8 +2,6 @@ import React, { useState } from "react"
 
 
 const EditPizza = ({partyObject, setPartyObject}) => {
-    // const [toppingOptions, setTopingOptions] = useState(["onions", "olives", "pineapple"])
-    // const [toppingsSelected, setToppingsSelected] = useState([])
 
     const handleChange = (id) => {
         const selected = [...partyObject.toppingsSelected]
