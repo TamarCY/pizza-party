@@ -4,7 +4,6 @@ import { TextField } from "@mui/material";
 
 
 export default function EditTime ({partyObject, setPartyObject}){
-    console.log("edit time:", setPartyObject);
     return (
         <div>
         <h2> Choose date time and location </h2>

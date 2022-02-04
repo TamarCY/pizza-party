@@ -14,10 +14,10 @@ function App() {
     <div className="App">
     <BrowserRouter>
     <Routes>   
-      <Route path="/test" element={<EditParty/>}/>
       <Route path="/" element={<SignIn setToken={setToken} token={token} setAuthType={setAuthType}/>}/>
       <Route path="/sign-up" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}/>
       <Route path="/party" element={<HomeParty/>}/>
+      <Route path="/edit-party" element={<EditParty/>}/>
     </Routes>
     </BrowserRouter>
     {/* <SignIn setToken={setToken} token={token} setAuthType={setAuthType}/> */}

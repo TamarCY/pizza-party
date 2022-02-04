@@ -5,19 +5,22 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import HomeParty from '../home/HomeParty';
 import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
+import EditPizza from '../../components/editPizza/EditPizza';
+import SendInvitation from '../../components/sendInvitation/SendInvitation';
 
 
 export default function EditParty() {
 
-    const [partyObject, setPartyObject] = React.useState({date: new Date(), address:""})
+    const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppings:{options:["a","b","c"], selected:[1,2]}})
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
     const steps = ['When and where', 'Choose pizza toppings', 'Send invitations'];
-    const components = [<EditTimePlace partyObject={partyObject} setPartyObject={setPartyObject} />,
-    <HomeParty />]
+    const components = [
+    <EditTimePlace partyObject={partyObject} setPartyObject={setPartyObject}/>,
+    <EditPizza partyObject={partyObject} setPartyObject={setPartyObject}/>,
+    <SendInvitation/>]
 
    
     const useEffects = () => {

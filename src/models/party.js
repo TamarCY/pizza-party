@@ -37,9 +37,16 @@ const partySchema = new mongoose.Schema({
     }
   },
   toppings: {
-    type: [],
-    default: toppingsOptions
-  },
+      options: {
+        type: [],
+        default: toppingsOptions
+      },
+      selected: {
+        type: [Number]
+        // TODO: add default value as 0 .... toppingsOptions.length
+      }
+    }
+  ,
   tokens: [
     {
       token: {
