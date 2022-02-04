@@ -1,26 +1,26 @@
 import React, { useState } from "react"
 
 
-const EditPizza = () => {
-    const [toppingOptions, setTopingOptions] = useState(["onions", "olives", "pineapple"])
-    // const [toppingOptions, setTopingOptions] = useState( [{id:1, name: "onions"}, {id:2, name: "olives"}, {id: 3, name: "pineapple"}])
-    const [toppingsSelected, setToppingsSelected] = useState([])
+const EditPizza = ({partyObject, setPartyObject}) => {
+    // const [toppingOptions, setTopingOptions] = useState(["onions", "olives", "pineapple"])
+    // const [toppingsSelected, setToppingsSelected] = useState([])
 
     const handleChange = (id) => {
-        const selected = [...toppingsSelected]
-        const indexOfChanged = toppingsSelected.indexOf(id);
+        const selected = [...partyObject.toppingsSelected]
+        const indexOfChanged = partyObject.toppingsSelected.indexOf(id);
         if (indexOfChanged > -1) {
             selected.splice(indexOfChanged, 1)
         }
         else {
             selected.push(id)
         }
-        setToppingsSelected(selected)
+        console.log(selected);
+        setPartyObject({...partyObject, toppingsSelected:selected})
     }
 
 
     const renderCheckbox = () => {
-        return toppingOptions.map((item, index) => {
+        return partyObject.toppingOptions.map((item, index) => {
             return (
                 <label key={item}>
                     <input type="checkbox" onChange={() => handleChange(index)}></input>
@@ -32,8 +32,14 @@ const EditPizza = () => {
 
     return (
         <div>
+            <h2>Choose topping options</h2>
+            <div>
             {renderCheckbox()}
+            </div>
+            { JSON.stringify(partyObject.toppingsSelected)}
+
         </div>
+
     )
 }
 

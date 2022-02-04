@@ -11,8 +11,9 @@ import SendInvitation from '../../components/sendInvitation/SendInvitation';
 
 
 export default function EditParty() {
+    // const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppings:{options:["a","b","c"], selected:[1,2]}})
 
-    const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppings:{options:["a","b","c"], selected:[1,2]}})
+    const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppingOptions:["a","b","c"], toppingsSelected:[]})
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
