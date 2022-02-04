@@ -29,8 +29,8 @@ export default function SignIn({ setAuthType, token, setToken }) {
             password: data.get('password'),
         }
         try {
-            const party = await Api.post("/party/signin", signinObject);
-            console.log(party);
+            const {data:{token, party}} = await Api.post("/party/signin", signinObject);
+            console.log("token", token, "party", party);
             navigate("/party")
         } catch (e) {
             console.error(e.message);
