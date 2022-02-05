@@ -54,10 +54,10 @@ export default function Navbar() {
 
     const handleClick = async (e) => {
         if (e.target.innerText === "LOGOUT"){
-            console.log("handel click");
-            setToken("")
             try {
+                setToken("")
                 // TODO: delete token from localStorage
+                localStorage.removeItem("token")
                await Api.post("/party/logout", partyObject)  
             } catch (error){
                 console.log(error.message)
