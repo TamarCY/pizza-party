@@ -48,14 +48,15 @@ export default function Navbar() {
     const { navbar, menuButton, toolbar, logo } = useStyles();
     const partyObject = useRecoilValue(partyState);
     const setToken = useSetRecoilState(tokenState);
-    const token = localStorage.getItem("token")
+    const token = useRecoilValue(tokenState);
 
 
 
     const handleClick = async (e) => {
         if (e.target.innerText === "LOGOUT"){
+            console.log("handel click");
+            setToken("")
             try {
-                setToken("")
                 // TODO: delete token from localStorage
                await Api.post("/party/logout", partyObject)  
             } catch (error){
@@ -63,7 +64,7 @@ export default function Navbar() {
             }
         }
         if (e.target.innerText === "HOME") {
-
+            console.log(token);
         }   
     }
 
@@ -78,11 +79,9 @@ export default function Navbar() {
 
 
 const getMenuButtons = () => {
+    console.log("token",token);
+    if(!token) {return <div></div>}
     return headersData.map(({ label, href }) => {
-        let newLabel = label
-        if (label === "LOGOUT" && !localStorage.getItem("token")){
-            newLabel = "LOGIN"
-        }  
       return (
         <Button
           {...{
@@ -95,10 +94,11 @@ const getMenuButtons = () => {
           }}
           onClick={(e)=>(handleClick(e))}
         >
-          {token ? newLabel : label}
+           {label}
         </Button>
       );
-    });
+    }
+    )
   }
 
 const headerLogo = (

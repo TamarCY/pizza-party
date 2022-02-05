@@ -13,16 +13,18 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
-import { useRecoilState , useRecoilValue, useSetRecoilState} from "recoil";
+import { useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
+import tokenState from '../../Recoil/atoms/tokenAtom';
 
 
 
 const theme = createTheme();
 
-export default function SignUp({setToken}) {
+export default function SignUp() {
   const partyObject = useRecoilValue(partyState);
+  const setToken = useSetRecoilState(tokenState)
   const setPartyObject = useSetRecoilState(partyState);
   const navigate = useNavigate();
 
@@ -39,7 +41,7 @@ export default function SignUp({setToken}) {
     }
     try {
         const { data: { token, party } } = await Api.post("/party/signup", partyObject);
-        setToken(token);
+        setToken("");
         setPartyObject(party);
         console.log(`welcome ${party.firstName}`);
         navigate("/party");
