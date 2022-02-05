@@ -40,16 +40,15 @@ export default function EditParty() {
     };
 
     const handleNext = async () => {
-        console.log(partyObject);
-        if (activeStep === steps.length - 1) {
+        // if (activeStep === steps.length - 1) {
             try {
-                const response = await Api.put("/party/edit", partyObject);
+                 await Api.put("/party/edit", partyObject);
             } catch (e) {
                 console.error(e.message);
             }
             
             // TODO: MOVE THE API CALL TO API FILE => savePartyToDataBase(partyObject)
-        }
+        // }
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {
             newSkipped = new Set(newSkipped.values());

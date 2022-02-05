@@ -8,6 +8,10 @@ const SendInvitation = () => {
     const [phoneNumber, setPhoneNumber] = useState("")
     const partyObject = useRecoilValue(partyState);
 
+        const handleWhatsapp = () => {
+            setPhoneNumber("")
+        }
+
         const phone = phoneNumber.slice(1)
         const whatsApp = `https://api.whatsapp.com/send?phone=+972${phone}&text=Party%20invitation%20https://pizza-party-app.herokuapp.com/invitation/${partyObject._id}`
     
@@ -19,7 +23,7 @@ const SendInvitation = () => {
             </div>
             <input type="tel" id="phone" name="phone"  
             value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}/>
-            <a href={whatsApp} target="_blank">send whatsApp invitation</a>
+            <a href={whatsApp} target="_blank" onClick={handleWhatsapp}>send whatsApp invitation</a>
         </div>
     )
 }

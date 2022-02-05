@@ -50,7 +50,6 @@ const EditPizza = () => {
             <div>
                 {renderCheckbox()}
             </div>
-            {JSON.stringify(partyObject.toppingsSelected)}
             <input type="text" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
             <button onClick={addNewTopping}>add</button>
 
