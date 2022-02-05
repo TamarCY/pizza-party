@@ -3,6 +3,8 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import slice from "../../assets/images/slice.png"
 import Api from "../../api/Api";
+import {useRecoilValue, useSetRecoilState} from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
 
 const useStyles = makeStyles(() => ({
     navbar: {
@@ -37,20 +39,25 @@ const headersData = [
     }
 ]
 
-const handleClick = (e) => {
-    if (e.target.innerText === "LOGOUT"){
-        try {
-          Api.post("/party/logout")  
-        } catch {
 
-        }
-    }
-    
-}
 
 
 export default function Navbar() {
-    const { navbar, menuButton, toolbar, logo } = useStyles()
+    const { navbar, menuButton, toolbar, logo } = useStyles();
+    const partyObject = useRecoilValue(partyState);
+
+
+    const handleClick = async (e) => {
+        if (e.target.innerText === "LOGOUT"){
+            try {
+            console.log(partyObject.tokens);
+              const response = await Api.post("/party/logout", partyObject)  
+              console.log(response);
+            } catch (error){
+                console.log(error.message)
+            }
+        }   
+    }
 
     const displayDesktop = () => {
         return (
