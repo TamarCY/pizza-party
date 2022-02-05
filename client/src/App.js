@@ -5,6 +5,7 @@ import SignUp from './pages/signup/Signup';
 import SignIn from './pages/signin/SignIn'
 import HomeParty from './pages/home/HomeParty';
 import EditParty from './pages/editParty/EditParty'
+import Navbar from './components/navbar/Navbar';
 
 function App() {
   const [token, setToken] = useState("")
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App">
     <BrowserRouter>
+    <Navbar/>
     <Routes>   
       <Route path="/" element={<SignIn setToken={setToken} token={token} setAuthType={setAuthType}/>}/>
       <Route path="/sign-up" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}/>
