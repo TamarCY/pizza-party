@@ -88,7 +88,7 @@ export default function EditParty() {
 
         <Box sx={{ width: '100%' }}>
             <Box sx={{ width: '60%' }}>
-                <Stepper activeStep={activeStep} alternativeLabel>
+                <Stepper activeStep={activeStep}>
                     {steps.map((label, index) => {
                         const stepProps = {};
                         const labelProps = {};
