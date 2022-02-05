@@ -19,8 +19,9 @@ import Api from '../../api/Api'
 
 const theme = createTheme();
 
-export default function SignIn({ setAuthType, token, setToken }) {
+export default function SignIn({ setAuthType }) {
     const setPartyObject = useSetRecoilState(partyState);
+    const setToken = useSetRecoilState(token)
 
     const navigate = useNavigate();
 
@@ -35,6 +36,7 @@ export default function SignIn({ setAuthType, token, setToken }) {
         try {
             const { data: { token, party } } = await Api.post("/party/signin", signinObject);
             setPartyObject(party)
+            setToken(token)
             navigate("/party")
         } catch (e) {
             console.error(e.message);

@@ -35,6 +35,13 @@ const partySchema = new mongoose.Schema({
       }
     }
   },
+  date: {
+    type: Date
+  },
+  address: {
+    type: String,
+    default: ""
+  },
   toppingOptions: {
     type: [String],
     default: toppingsOptions

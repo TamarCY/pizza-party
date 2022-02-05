@@ -9,7 +9,6 @@ import Navbar from './components/navbar/Navbar';
 import GuestRequests from './pages/guestsRequests/GuestRequest';
 
 function App() {
-  const [token, setToken] = useState("")
   const [authType, setAuthType] = useState("login");
 
   return (
@@ -17,8 +16,8 @@ function App() {
     <BrowserRouter>
     <Navbar/>
     <Routes>   
-      <Route path="/" element={<SignIn setToken={setToken} token={token} setAuthType={setAuthType}/>}/>
-      <Route path="/sign-up" element={<SignUp setToken={setToken} token={token} setAuthType={setAuthType}/>}/>
+      <Route path="/" element={<SignIn setAuthType={setAuthType}/>}/>
+      <Route path="/sign-up" element={<SignUp setAuthType={setAuthType}/>}/>
       <Route path="/party" element={<HomeParty/>}/>
       <Route path="/edit-party" element={<EditParty/>}/>
       <Route path="/guest-requests" element={<GuestRequests/>}/>

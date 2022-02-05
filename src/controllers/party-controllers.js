@@ -1,9 +1,9 @@
+const { getMaxListeners } = require("../models/party");
 const Party = require("../models/party");
 
-
 const getParty = async (req, res) => {
-  res.send(req.party)
-}
+  res.send(req.party);
+};
 
 const getAllParties = async (req, res) => {
   try {
@@ -14,60 +14,59 @@ const getAllParties = async (req, res) => {
   }
 };
 
-
 const postParty = async (req, res) => {
   const party = new Party(req.body);
   try {
-      await party.save();
-      const token = await party.generateAuthToken()
+    await party.save();
+    const token = await party.generateAuthToken();
     return res.status(201).send({ party, token });
   } catch (e) {
     return res.status(400).send({ error: e.message });
   }
 };
 
-
-
 const updateParty = async (req, res) => {
-  const updates = Object.keys(req.body)
-//   TODO: Add the categories that can be updated 
-//   const allowedUpdates = ['name', 'email', 'password']
-//   const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
-
-//   if (!isValidOperation) {
-//       return res.status(400).send({ error: 'Invalid updates!' })
-//   }
-
   try {
-      updates.forEach((update) => req.party[update] = req.body[update])
-      await req.party.save()
-      res.send(req.party)
+    const party = await Party.findOne({ email: req.body.email });
+    party.address = req.body.address;
+    party.date = req.body.date;
+    party.toppingOptions = req.body.toppingOptions;
+    party.toppingsSelected = req.body.toppingsSelected;
+    const response = await party.save();
+    res.status(200).send(response);
   } catch (e) {
-      res.status(400).send(e)
+    res.status(400).send(e.message);
   }
-}
+};
 
 const signinParty = async (req, res) => {
-try {
-  const party = await Party.findByCredentials(req.body.email, req.body.password)
-  const token = await party.generateAuthToken();
-  res.status(200).send({ party, token })
-} catch (e) {
-  res.status(400).send("login didn't work")
-}
-}
+  try {
+    const party = await Party.findByCredentials(
+      req.body.email,
+      req.body.password
+    );
+    const token = await party.generateAuthToken();
+    res.status(200).send({ party, token });
+  } catch (e) {
+    res.status(400).send("login didn't work");
+  }
+};
 
 const logoutParty = async (req, res) => {
   try {
-    req.party.tokens = req.party.tokens.filter((token) => {
-      return token.token !== req.token
-    })
-    await req.party.save()
-    res.status(200).send("logged out")
+    console.log("before", req.party.tokens);
+      req.party.tokens = req.party.tokens.filter((token) => {
+      return token.token !== req.token;
+    });
+    console.log("after", req.party.tokens);
+    await req.party.save();
+    res.status(200).send("logged out");
   } catch (e) {
-    res.status(500).send()
+    res.status(500).send(e);
   }
-}
+};
+
+
 
 // const logoutAll = async (req, res) => {
 //   try {
@@ -89,6 +88,11 @@ const logoutParty = async (req, res) => {
 //   }
 // }
 
-
-module.exports = { getParty, postParty, updateParty,
-  signinParty, logoutParty, getAllParties};
+module.exports = {
+  getParty,
+  postParty,
+  updateParty,
+  signinParty,
+  logoutParty,
+  getAllParties
+};
