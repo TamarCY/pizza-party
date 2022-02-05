@@ -12,15 +12,21 @@ export default function TimePicker() {
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
 
+  const handleDateChange = (newValue) => {
+    setPartyObject({...partyObject, date: newValue});
+    console.log(partyObject.date)
+  }
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateTimePicker
         renderInput={(props) => <TextField {...props} />}
         label="Enter time"
         value={partyObject.date}
-        onChange={(newValue) => {
-          setPartyObject({...partyObject, date: newValue});
-        }}
+        // onChange={(newValue) => {
+        //   setPartyObject({...partyObject, date: newValue});
+        // }}
+        onChange={(newValue)=> handleDateChange(newValue)}
       />
     </LocalizationProvider>
   );

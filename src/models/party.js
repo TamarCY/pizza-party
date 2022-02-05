@@ -88,6 +88,10 @@ partySchema.methods.toJSON = function () {
   return partyObject;
 };
 
+
+
+
+
 partySchema.statics.findByCredentials = async (email, password) => {
   const party = await Party.findOne({ email });
   if (!party) {

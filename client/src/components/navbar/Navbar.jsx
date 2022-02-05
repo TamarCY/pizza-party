@@ -3,8 +3,10 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import slice from "../../assets/images/slice.png"
 import Api from "../../api/Api";
-import {useRecoilValue} from "recoil";
+import {useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
+import { useEffect } from "react";
+import tokenState from "../../Recoil/atoms/tokenAtom";
 
 const useStyles = makeStyles(() => ({
     navbar: {
@@ -30,11 +32,11 @@ const useStyles = makeStyles(() => ({
 
 const headersData = [
     {
-        label: "Home",
+        label: "HOME",
         href: "/party"
     },
     {
-        label: "Logout",
+        label: "LOGOUT",
         href: "/"
     }
 ]
@@ -45,17 +47,23 @@ const headersData = [
 export default function Navbar() {
     const { navbar, menuButton, toolbar, logo } = useStyles();
     const partyObject = useRecoilValue(partyState);
+    const setToken = useSetRecoilState(tokenState);
+    const token = localStorage.getItem("token")
+
 
 
     const handleClick = async (e) => {
         if (e.target.innerText === "LOGOUT"){
             try {
-            console.log(partyObject.tokens);
-              const response = await Api.post("/party/logout", partyObject)  
-              console.log(response);
+                setToken("")
+                // TODO: delete token from localStorage
+               await Api.post("/party/logout", partyObject)  
             } catch (error){
                 console.log(error.message)
             }
+        }
+        if (e.target.innerText === "HOME") {
+
         }   
     }
 
@@ -71,6 +79,10 @@ export default function Navbar() {
 
 const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
+        let newLabel = label
+        if (label === "LOGOUT" && !localStorage.getItem("token")){
+            newLabel = "LOGIN"
+        }  
       return (
         <Button
           {...{
@@ -83,7 +95,7 @@ const getMenuButtons = () => {
           }}
           onClick={(e)=>(handleClick(e))}
         >
-          {label}
+          {token ? newLabel : label}
         </Button>
       );
     });
