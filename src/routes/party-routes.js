@@ -9,7 +9,7 @@ partyRouter.post("/signup", postParty);
 partyRouter.post("/signin", signinParty);
 partyRouter.post("/logout", logoutParty);
 partyRouter.put("/edit", updateParty);
-partyRouter.get("/:id", getPartyById)
+partyRouter.get("/invitation/:id", getPartyById)
 
 
 module.exports = partyRouter

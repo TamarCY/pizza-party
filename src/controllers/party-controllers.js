@@ -7,9 +7,8 @@ const getParty = async (req, res) => {
 
 const getPartyById = async (req, res) => {
   try {
-    const response  = await Party.findById({ _id: req.params.id})
-    console.log(response);
-    res.status(200).send(response)
+    const party  = await Party.findById({ _id: req.params.id})
+    res.status(200).send(party)
   } catch (e) {
     res.status(400).send(e)
   }

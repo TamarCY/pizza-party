@@ -40,7 +40,7 @@ export default function SignIn({ setAuthType }) {
         try {
             const { data: { token, party } } = await Api.post("/party/signin", signinObject);
             setPartyObject(party)
-            localStorage.setItem("token", token);
+            // localStorage.setItem("token", token);
             setToken(token)
             navigate("/party")
         } catch (e) {
