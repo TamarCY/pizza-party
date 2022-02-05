@@ -3,7 +3,7 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import slice from "../../assets/images/slice.png"
 import Api from "../../api/Api";
-import {useRecoilValue, useSetRecoilState} from "recoil";
+import {useRecoilValue} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 
 const useStyles = makeStyles(() => ({
