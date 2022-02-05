@@ -54,11 +54,9 @@ const signinParty = async (req, res) => {
 
 const logoutParty = async (req, res) => {
   try {
-    console.log("before", req.party.tokens);
       req.party.tokens = req.party.tokens.filter((token) => {
       return token.token !== req.token;
     });
-    console.log("after", req.party.tokens);
     await req.party.save();
     res.status(200).send("logged out");
   } catch (e) {

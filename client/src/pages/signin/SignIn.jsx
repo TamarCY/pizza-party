@@ -14,6 +14,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
+import tokenState from '../../Recoil/atoms/tokenAtom';
+import { useState } from 'react';
 
 
 
@@ -21,7 +23,9 @@ const theme = createTheme();
 
 export default function SignIn({ setAuthType }) {
     const setPartyObject = useSetRecoilState(partyState);
-    const setToken = useSetRecoilState(token)
+    const setToken = useSetRecoilState(tokenState)
+    const [loginFailed, setLoginFailed] = useState(false)
+    const [inputErrorText, setInputErrorText] = useState("")
 
     const navigate = useNavigate();
 
@@ -36,12 +40,16 @@ export default function SignIn({ setAuthType }) {
         try {
             const { data: { token, party } } = await Api.post("/party/signin", signinObject);
             setPartyObject(party)
+            localStorage.setItem("token", token);
             setToken(token)
             navigate("/party")
         } catch (e) {
+            setLoginFailed(true);
+            setInputErrorText("Incorrect entry.")
             console.error(e.message);
         }
     };
+    
 
     return (
         <ThemeProvider theme={theme}>
@@ -85,6 +93,8 @@ export default function SignIn({ setAuthType }) {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            error = {loginFailed}
+                            helperText = {inputErrorText}
                         />
                         <Button
                             type="submit"

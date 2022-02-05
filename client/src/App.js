@@ -23,7 +23,6 @@ function App() {
       <Route path="/guest-requests" element={<GuestRequests/>}/>
     </Routes>
     </BrowserRouter>
-    {/* <SignIn setToken={setToken} token={token} setAuthType={setAuthType}/> */}
     </div>
   );
 }
