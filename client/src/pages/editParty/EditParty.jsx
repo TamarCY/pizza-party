@@ -8,9 +8,10 @@ import Typography from '@mui/material/Typography';
 import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
 import EditPizza from '../../components/editPizza/EditPizza';
 import SendInvitation from '../../components/sendInvitation/SendInvitation';
-import {useRecoilValue, useSetRecoilState} from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
+import { margin } from '@mui/system';
 
 
 
@@ -24,11 +25,11 @@ export default function EditParty() {
 
     const steps = ['When and where', 'Choose pizza toppings', 'Send invitations'];
     const components = [
-    <EditTimePlace />,
-    <EditPizza />,
-    <SendInvitation/>]
+        <EditTimePlace />,
+        <EditPizza />,
+        <SendInvitation />]
 
-   
+
 
     const isStepOptional = (step) => {
         // return step === 1;
@@ -41,13 +42,13 @@ export default function EditParty() {
 
     const handleNext = async () => {
         // if (activeStep === steps.length - 1) {
-            try {
-                 await Api.put("/party/edit", partyObject);
-            } catch (e) {
-                console.error(e.message);
-            }
-            
-            // TODO: MOVE THE API CALL TO API FILE => savePartyToDataBase(partyObject)
+        try {
+            await Api.put("/party/edit", partyObject);
+        } catch (e) {
+            console.error(e.message);
+        }
+
+        // TODO: MOVE THE API CALL TO API FILE => savePartyToDataBase(partyObject)
         // }
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {
@@ -57,7 +58,7 @@ export default function EditParty() {
 
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setSkipped(newSkipped);
-        
+
     };
 
     const handleBack = () => {
@@ -84,9 +85,10 @@ export default function EditParty() {
     };
 
     return (
+        // TODO: change the layout to mui or more responsive units
 
-        <Box sx={{ width: '100%' }}>
-            <Box sx={{ width: '60%' }}>
+        <Box sx={{ width: '100%', marginTop: "150px" }}>
+            <Box sx={{ width: '60%', margin: "0 auto" }}>
                 <Stepper activeStep={activeStep}>
                     {steps.map((label, index) => {
                         const stepProps = {};
@@ -122,7 +124,6 @@ export default function EditParty() {
                         <Typography sx={{ mt: 2, mb: 1 }}>
                             {/* Step {activeStep + 1}             <Signup/> */}
                             {components[activeStep]}
-
 
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
