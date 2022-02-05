@@ -5,6 +5,16 @@ const getParty = async (req, res) => {
   res.send(req.party);
 };
 
+const getPartyById = async (req, res) => {
+  try {
+    const response  = await Party.findById({ _id: req.params.id})
+    console.log(response);
+    res.status(200).send(response)
+  } catch (e) {
+    res.status(400).send(e)
+  }
+}
+
 const getAllParties = async (req, res) => {
   try {
     const party = await Party.find();
@@ -92,5 +102,6 @@ module.exports = {
   updateParty,
   signinParty,
   logoutParty,
-  getAllParties
+  getAllParties,
+  getPartyById
 };
