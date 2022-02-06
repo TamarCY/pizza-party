@@ -35,6 +35,10 @@ const partySchema = new mongoose.Schema({
       }
     }
   },
+  phone:{
+    type: Number
+  },
+  // TODO: add phone velidation
   date: {
     type: Date
   },

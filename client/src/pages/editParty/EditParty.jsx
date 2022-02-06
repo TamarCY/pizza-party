@@ -11,7 +11,6 @@ import SendInvitation from '../../components/sendInvitation/SendInvitation';
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
-import { margin } from '@mui/system';
 
 
 
