@@ -21,6 +21,7 @@ export default function GuestEditPizza() {
 
   const handleChange = (event) => {
     setToppings(event.target.value);
+    console.log(toppings);
   };
 
   const handleAmountChange = (event) => {
@@ -28,8 +29,10 @@ export default function GuestEditPizza() {
   };
 
   const addPizza = () => {
+      const date = new Date()
+      const id = date.getTime();
       const pizzasSelectedCopy = [...pizzasSelected];
-      pizzasSelectedCopy.push({toppings, amount})
+      pizzasSelectedCopy.push({toppings, amount, id})
       setPizzasSelected(pizzasSelectedCopy)
       console.log(pizzasSelected);
   }
@@ -90,7 +93,7 @@ export default function GuestEditPizza() {
       <div>
       <Button variant="contained"  color="warning" onClick={()=>(addPizza())}>Add</Button>
       </div>
-      <GuestPizzaList/>
+      <GuestPizzaList pizzasSelected={pizzasSelected}/>
     </div>
   );
 }

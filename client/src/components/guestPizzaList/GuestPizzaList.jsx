@@ -12,18 +12,19 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import LocalPizza from '@mui/icons-material/LocalPizza';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Identity } from '@mui/base';
-
-const pizzaArray = [{ topping: "olives", amount: 3, id: 134 }, { topping: "corn", amount: 1, id: 183 }]
 
 
-function generate(element) {
-    const handleDelete = (id) => {
-        console.log(Identity);
-    }
+// const pizzaArray = [{ topping: "olives", amount: 3, id: 134 }, { topping: "corn", amount: 1, id: 183 }]
 
-    return pizzaArray.map((value) =>
+
+function generate(pizzasSelected, handleDelete) {
+    // const handleDelete = (id) => {
+    //     console.log(id);
+    // }
+
+    return pizzasSelected.map((value) =>
         <ListItem
+         sx={{m:5}}
             secondaryAction={
                 <div  onClick={() => (handleDelete (value.id))}>
                 <IconButton edge="end" aria-label="delete" >
@@ -38,7 +39,7 @@ function generate(element) {
                 </Avatar>
             </ListItemAvatar>
             <ListItemText
-                primary={value.topping}
+                primary={value.toppings}
                 secondary = {`${value.amount} pizza`}
             />
         </ListItem>
@@ -50,19 +51,19 @@ function generate(element) {
 //     backgroundColor: theme.palette.background.paper,
 // }));
 
-export default function GuestPizzaList() {
+export default function GuestPizzaList({handleDelete, pizzasSelected}) {
 
     return (
         <Box sx={{ flexGrow: 1, maxWidth: 2000 }}>
             <Grid container spacing={2} direction="column"
                 alignItems="center"
                 justifyContent="center">
-                <Grid item xs={12} >
+                <Grid item xs={12}>
                     <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
                         {/* Ordered Pizza */}
                     </Typography>
                     <List >
-                        {generate()}
+                        {generate(handleDelete, pizzasSelected)}
                     </List>
                 </Grid>
             </Grid>
