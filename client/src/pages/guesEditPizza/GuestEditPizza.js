@@ -8,12 +8,16 @@ import { Button } from "@mui/material";
 // import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList"
 
 export default function GuestEditPizza() {
   const [toppings, setToppings] = useState("");
   const [amount, setAmount] = useState("");
+  const [pizzasSelected, setPizzasSelected] = useState([])
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
+
+
 
   const handleChange = (event) => {
     setToppings(event.target.value);
@@ -22,6 +26,13 @@ export default function GuestEditPizza() {
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
   };
+
+  const addPizza = () => {
+      const pizzasSelectedCopy = [...pizzasSelected];
+      pizzasSelectedCopy.push({toppings, amount})
+      setPizzasSelected(pizzasSelectedCopy)
+      console.log(pizzasSelected);
+  }
 
   const renderToppings = () => {
     //   TODO: Add this to the schema
@@ -77,8 +88,9 @@ export default function GuestEditPizza() {
         </Select>
       </FormControl>
       <div>
-      <Button variant="contained"  color="warning">Add</Button>
+      <Button variant="contained"  color="warning" onClick={()=>(addPizza())}>Add</Button>
       </div>
+      <GuestPizzaList/>
     </div>
   );
 }
