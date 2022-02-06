@@ -11,13 +11,15 @@ const HomeGuest = () => {
     const partyObject = useRecoilValue(partyState);
     const [date, setDate] = useState()
     const [hour, setHour] = useState()
+    const [isDecline, setIsDecline] = useState(false)
 
-    
+    const handelDecline = () => {
+        setIsDecline(!isDecline)
+    }
    
+    const whatsAppLink = `https://api.whatsapp.com/send?phone=+972${partyObject.phone}&text=Sorry,%20I%20Can't%20come`
 
     useEffect(() => {
-       
-
         const fetchData = async () => {
             const {data} = await Api.get(`party/invitation/${params.id}`);
             const editTime = () => {
@@ -46,11 +48,17 @@ const HomeGuest = () => {
     return (
         // TODO: add css and spinner
         <div>
-        <div style={{marginTop:"100px"}}>{`${partyObject.firstName} ${partyObject.lastName} invated you to a Pizza Party`}</div>
-        <div>{`in ${partyObject.address}`}</div>
-        {/* <div>{partyObject.date.toGMTString()}</div> */}
+        <div style={{marginTop:"100px"}}>{`${partyObject.firstName} ${partyObject.lastName} invited you to a Pizza Party`}</div>
         <div>{date}</div>
         <div>{hour}</div>
+        <div>in {partyObject.address}</div>
+        { (!isDecline) && <div>
+        <button>Fun! I would love to participate</button>
+        <button onClick={handelDecline}>Sorry, I can't come</button></div>}
+        <div>
+            {isDecline && <div><div>Thanks for the update! <br/> Click <a href={whatsAppLink}>here</a> if you want to response in a whatsApp message</div>
+        <button onClick={handelDecline}>back</button></div>}
+        </div>
         </div>
     )
 }

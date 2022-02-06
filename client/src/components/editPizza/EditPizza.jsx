@@ -34,6 +34,7 @@ const EditPizza = () => {
     }
 
     const renderCheckbox = () => {
+        if(!partyObject.toppingOptions){return <div>spinner...</div>}
         return partyObject.toppingOptions.map((item, index) => {
             return (
                 <label key={item}>
@@ -43,7 +44,7 @@ const EditPizza = () => {
             )
         })
     }
-
+    if(!partyObject){return <div>spinner...</div>}
     return (
         <div>
             <h2>Choose topping options</h2>

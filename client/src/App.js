@@ -9,6 +9,7 @@ import Navbar from './components/navbar/Navbar';
 import GuestRequests from './pages/guestsRequests/GuestRequest';
 import HomeGuest from './pages/homeGuest/HomeGuest';
 
+
 function App() {
   const [authType, setAuthType] = useState("login");
 
@@ -22,7 +23,8 @@ function App() {
       <Route path="/party" element={<HomeParty/>}/>
       <Route path="/edit-party" element={<EditParty/>}/>
       <Route path="/guest-requests" element={<GuestRequests/>}/>
-      <Route path="/party/invitation/:id" element={<HomeGuest/>}/>
+      <Route path="/invitation/:id" element={<HomeGuest/>}/>
+      {/* <Route path="/decline" element={<DeclineInvitation/>}/> */}
     </Routes>
     </BrowserRouter>
     </div>

@@ -5,7 +5,6 @@ import slice from "../../assets/images/slice.png"
 import Api from "../../api/Api";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
-import { useEffect } from "react";
 import tokenState from "../../Recoil/atoms/tokenAtom";
 
 const useStyles = makeStyles(() => ({
@@ -79,7 +78,6 @@ export default function Navbar() {
 
 
 const getMenuButtons = () => {
-    console.log("token",token);
     if(!token) {return <div></div>}
     return headersData.map(({ label, href }) => {
       return (

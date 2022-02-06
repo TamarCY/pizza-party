@@ -7,8 +7,12 @@ import partyState from '../../Recoil/atoms/partyAtom';
 const SendInvitation = () => {
     const [phoneNumber, setPhoneNumber] = useState("")
     const partyObject = useRecoilValue(partyState);
-
+    
         const handleWhatsapp = () => {
+            // setPhoneNumber("")
+        }
+
+        const clear = () => {
             setPhoneNumber("")
         }
 
@@ -24,6 +28,7 @@ const SendInvitation = () => {
             <input type="tel" id="phone" name="phone"  
             value={phoneNumber} onChange={(e)=>setPhoneNumber(e.target.value)}/>
             <a href={whatsApp} target="_blank" onClick={handleWhatsapp}>send whatsApp invitation</a>
+            <button onClick={clear}>clear</button>
         </div>
     )
 }
