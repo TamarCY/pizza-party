@@ -17,7 +17,7 @@ const HomeGuest = () => {
         setIsDecline(!isDecline)
     }
    
-    const whatsAppLink = `https://api.whatsapp.com/send?phone=+972${partyObject.phone}&text=Sorry,%20I%20Can't%20come%20to%the%party`
+    const whatsAppLink = `https://api.whatsapp.com/send?phone=+972${partyObject.phone}&text=Sorry,%20I%20Can't%20come%20to%20the%20party`
 
     useEffect(() => {
         const fetchData = async () => {

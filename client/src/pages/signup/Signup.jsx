@@ -36,12 +36,13 @@ export default function SignUp() {
     const partyObject = {
         firstName: event.target[0].value,
         lastName: event.target[2].value,
-        email: event.target[4].value,
-        password: event.target[6].value,
+        phone: event.target[4].value,
+        email: event.target[6].value,
+        password: event.target[8].value,
     }
     try {
         const { data: { token, party } } = await Api.post("/party/signup", partyObject);
-        setToken("");
+        setToken(token);
         setPartyObject(party);
         console.log(`welcome ${party.firstName}`);
         navigate("/party");
@@ -110,6 +111,16 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="phone"
+                  label="Phone Number"
+                  name="phone"
+                  autoComplete="phone"
                 />
               </Grid>
               <Grid item xs={12}>

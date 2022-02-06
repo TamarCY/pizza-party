@@ -39,7 +39,7 @@ const updateParty = async (req, res) => {
     const party = await Party.findOne({ email: req.body.email });
     party.address = req.body.address;
     party.date = req.body.date;
-    party.phone = req.body.phone;
+    // party.phone = req.body.phone;
     party.toppingOptions = req.body.toppingOptions;
     party.toppingsSelected = req.body.toppingsSelected;
     const response = await party.save();
