@@ -49,10 +49,10 @@ export default function GuestEditPizza() {
   };
 
   return (
-    <div style={{ margin: "200px" }}>
-      <h2>{`${partyObject.firstName} would like to know how many pizza and witch toppings would you like`}</h2>
+    <div style={{ marginTop: "200px" }}>
+      <h2>{`${partyObject.firstName} would like to know how much pizza and which toppings would you like`}</h2>
       <FormControl sx={{ m: 3, maxWidth: 500, minWidth: 400 }}>
-        <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
+        <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
@@ -65,7 +65,7 @@ export default function GuestEditPizza() {
         </Select>
       </FormControl>
       <FormControl sx={{ m: 3, minWidth: 100 }}>
-        <InputLabel id="demo-simple-select-helper-label">Amount</InputLabel>
+        <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
