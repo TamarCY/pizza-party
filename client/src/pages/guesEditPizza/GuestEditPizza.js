@@ -17,7 +17,10 @@ export default function GuestEditPizza() {
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
 
-
+  const handleDelete = (id) => {
+      const filtered = pizzasSelected.filter((element)=>{return (element.id !== id)})
+      setPizzasSelected(filtered)
+  }
 
   const handleChange = (event) => {
     setToppings(event.target.value);
@@ -93,7 +96,7 @@ export default function GuestEditPizza() {
       <div>
       <Button variant="contained"  color="warning" onClick={()=>(addPizza())}>Add</Button>
       </div>
-      <GuestPizzaList pizzasSelected={pizzasSelected}/>
+      <GuestPizzaList pizzasSelected={pizzasSelected} handleDelete={handleDelete}/>
     </div>
   );
 }

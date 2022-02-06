@@ -63,7 +63,7 @@ export default function GuestPizzaList({handleDelete, pizzasSelected}) {
                         {/* Ordered Pizza */}
                     </Typography>
                     <List >
-                        {generate(handleDelete, pizzasSelected)}
+                        {generate(pizzasSelected, handleDelete)}
                     </List>
                 </Grid>
             </Grid>
