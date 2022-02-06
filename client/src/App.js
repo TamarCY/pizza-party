@@ -8,6 +8,7 @@ import EditParty from './pages/editParty/EditParty'
 import Navbar from './components/navbar/Navbar';
 import GuestRequests from './pages/guestsRequests/GuestRequest';
 import HomeGuest from './pages/homeGuest/HomeGuest';
+import GuestEditPizza from './pages/guesEditPizza/GuestEditPizza';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
       <Route path="/edit-party" element={<EditParty/>}/>
       <Route path="/guest-requests" element={<GuestRequests/>}/>
       <Route path="/invitation/:id" element={<HomeGuest/>}/>
-      {/* <Route path="/decline" element={<DeclineInvitation/>}/> */}
+      <Route path="/edit-guest" element={<GuestEditPizza/>}/>
     </Routes>
     </BrowserRouter>
     </div>

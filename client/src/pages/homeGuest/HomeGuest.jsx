@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import Api from "../../api/Api";
 import { useSetRecoilState , useRecoilValue} from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
@@ -53,7 +53,8 @@ const HomeGuest = () => {
         <div>{hour}</div>
         <div>in {partyObject.address}</div>
         { (!isDecline) && <div>
-        <button>Fun! I would love to participate</button>
+            <Link to="/edit-guest">
+        <button>Fun! I would love to participate</button></Link>
         <button onClick={handelDecline}>Sorry, I can't come</button></div>}
         <div>
             {isDecline && <div><div>Thanks for the update! <br/> Click <a href={whatsAppLink}>here</a> if you want to response in a whatsApp message</div>
