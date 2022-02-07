@@ -43,6 +43,7 @@ export default function SignUp() {
     try {
         const { data: { token, party } } = await Api.post("/party/signup", partyObject);
         setToken(token);
+        // TODO: Change to  set recoil state isLoggedIn = true
         setPartyObject(party);
         localStorage.setItem("token", token);
         console.log(`welcome ${party.firstName}`);

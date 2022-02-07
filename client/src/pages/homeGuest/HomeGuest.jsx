@@ -20,6 +20,7 @@ const HomeGuest = () => {
     const whatsAppLink = `https://api.whatsapp.com/send?phone=+972${partyObject.phone}&text=Sorry,%20I%20Can't%20come%20to%20the%20party`
 
     useEffect(() => {
+        // TODO: Change api call only if its a guest FileSystemEntry, if not get the data from the state
         const fetchData = async () => {
             const {data} = await Api.get(`party/invitation/${params.id}`);
             const editTime = () => {
@@ -40,10 +41,12 @@ const HomeGuest = () => {
             fetchData()
         } catch (e) {
             console.log(e);
-        }
+        } 
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]
+    ,[]
     )
+
     if(!date) return (<div>spinner....</div>) 
     return (
         // TODO: add css and spinner

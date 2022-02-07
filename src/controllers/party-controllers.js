@@ -4,6 +4,7 @@ const Party = require("../models/party");
 const getParty = async (req, res) => {
   res.send(req.party);
 };
+// TODO: ADD STATUS
 
 const getPartyById = async (req, res) => {
   try {

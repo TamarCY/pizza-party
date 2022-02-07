@@ -56,25 +56,29 @@ export default function Navbar() {
     // }
     
 
-    // useEffect(()=>{
-    //     if (!partyObject) {
-    //     const loadParty = async () => {
-    //         try{
-    //            const party =  await Api.get("party/me", {
-    //                   headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${token}`,
-    //                 }
-    //               })
-    //               setPartyObject(party)
-    //         } catch (e) {
-    //             console.log(e.message);
-    //         }
-    //     }
-    //     loadParty()
-    // }
-        
-    // })
+    useEffect(()=>{
+        const localStorageToken = localStorage.getItem("token")
+        console.log(partyObject);
+        // TODO: Why not !partyObject OR partyObject == {} ????
+        if (partyObject !== {}) {
+        const loadParty = async () => {
+            try{
+               const {data: party} =  await Api.get("party/me", {
+                      headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorageToken}`,
+                    }
+                  })
+                  setToken(token)
+            // TODO: Change to  set recoil state isLoggedIn = true
+                  setPartyObject(party)
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+        loadParty()
+    }        
+    },[])
 
     const handleClick = async (e) => {
         if (e.target.innerText === "LOGOUT"){

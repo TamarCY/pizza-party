@@ -41,6 +41,7 @@ export default function SignIn({ setAuthType }) {
             const { data: { token, party } } = await Api.post("/party/signin", signinObject);
             setPartyObject(party)
             setToken(token)
+            // TODO: Change to  set recoil state isLoggedIn = true
             localStorage.setItem("token", token);
             navigate("/party")
         } catch (e) {
