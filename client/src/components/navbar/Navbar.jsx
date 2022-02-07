@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
 import React from "react";
+import { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import slice from "../../assets/images/slice.png"
 import Api from "../../api/Api";
@@ -46,10 +47,34 @@ const headersData = [
 export default function Navbar() {
     const { navbar, menuButton, toolbar, logo } = useStyles();
     const partyObject = useRecoilValue(partyState);
+    const setPartyObject = useSetRecoilState(partyState);
     const setToken = useSetRecoilState(tokenState);
-    const token = useRecoilValue(tokenState);
+    let token = useRecoilValue(tokenState);
 
+    // if(!token) {
+    //  token = localStorage.getItem("token")
+    // }
+    
 
+    // useEffect(()=>{
+    //     if (!partyObject) {
+    //     const loadParty = async () => {
+    //         try{
+    //            const party =  await Api.get("party/me", {
+    //                   headers: {
+    //                     "Content-Type": "application/json",
+    //                     Authorization: `Bearer ${token}`,
+    //                 }
+    //               })
+    //               setPartyObject(party)
+    //         } catch (e) {
+    //             console.log(e.message);
+    //         }
+    //     }
+    //     loadParty()
+    // }
+        
+    // })
 
     const handleClick = async (e) => {
         if (e.target.innerText === "LOGOUT"){

@@ -53,7 +53,6 @@ const EditPizza = () => {
             </div>
             <input type="text" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
             <button onClick={addNewTopping}>add</button>
-
         </div>
 
     )

@@ -44,6 +44,7 @@ export default function SignUp() {
         const { data: { token, party } } = await Api.post("/party/signup", partyObject);
         setToken(token);
         setPartyObject(party);
+        localStorage.setItem("token", token);
         console.log(`welcome ${party.firstName}`);
         navigate("/party");
 

@@ -3,10 +3,18 @@ import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./homeParty.css";
+import { useRecoilValue } from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
+import Api from '../../api/Api'
+
+
 
 // TODO: in the use useEffect renser the componnet only if there is a token
 
+
 const HomeParty = () => {
+    const partyObject = useRecoilValue(partyState);
+
   return (
     <div className="home-party-container">
       <div className="home-party-box">
@@ -18,10 +26,14 @@ const HomeParty = () => {
           <Link to="/">
           <Button variant="contained">Your Guest Requests</Button>
           </Link>
+          <Link to={`/invitation/${partyObject._id}`}>
+          <Button variant="contained">The invitation sent to your guests</Button>
+          </Link>
         </Stack>
       </div>
     </div>
   );
 };
+
 
 export default HomeParty;
