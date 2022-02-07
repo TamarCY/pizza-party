@@ -3,7 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const mongoose = require("mongoose")
-const partyRouter = require("./routes/party-routes")
+const partyRouter = require("./routes/party-routes");
+const guestRouter = require("./routes/guest-routes");
 // const guestRouter = require("./routes/guest-routes")
 
 const app = express();
@@ -24,6 +25,7 @@ mongoose
 
 app.use("/party", partyRouter);
 // app.use("/guest", guestRouter)
+app.use("/guest", guestRouter);
 
 
 app.use("*", (req, res) => {
