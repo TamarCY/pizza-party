@@ -45,8 +45,11 @@ export default function GuestEditPizza() {
       console.log(pizzasSelected);
   }
 
-  const addSelectedArrayToGuest = () => {
-      console.log("click");
+  const addSelectedArrayToGuest = async () => {
+    //    setGuestObject({...guestObject, pizzasSelected})
+        // const guestObjectCopy = {...guestObject}
+       const guestObjectCopy = {...guestObject, pizzasSelected}
+    //    TODO: Axios put guest object copy
   }
 
   const renderToppings = () => {
@@ -65,6 +68,7 @@ export default function GuestEditPizza() {
 
   return (
     <div style={{ marginTop: "200px" }}>
+        {/* TODO: DELETE */}
       <h2>{`${partyObject.firstName} would like to know how much pizza and which toppings would you like`}</h2>
       <FormControl sx={{ m: 3, maxWidth: 500, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
