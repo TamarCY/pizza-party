@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
+import guestState from "../../Recoil/atoms/guestAtom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import { Button } from "@mui/material";
@@ -10,6 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import {Link} from "react-router-dom"
 import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList"
+
 
 export default function GuestEditPizza() {
   const [toppings, setToppings] = useState("");
@@ -43,8 +45,8 @@ export default function GuestEditPizza() {
       console.log(pizzasSelected);
   }
 
-  const addSelectedArrayToGuest = () = {
-      console.log(click);
+  const addSelectedArrayToGuest = () => {
+      console.log("click");
   }
 
   const renderToppings = () => {
