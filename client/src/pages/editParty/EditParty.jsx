@@ -9,6 +9,7 @@ import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
 import EditPizza from '../../components/editPizza/EditPizza';
 import SendInvitation from '../../components/sendInvitation/SendInvitation';
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import {Link} from 'react-router-dom';
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
 
@@ -114,8 +115,8 @@ export default function EditParty() {
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Box sx={{ flex: '1 1 auto' }} />
-                            <Button onClick={handleReset}>Reset</Button>
-                            {/* chenge handle reset to submit form */}
+                            {/* <Button onClick={handleReset}>Reset</Button> */}
+                           <Link to="/party"> <Button >Back to homepage</Button> </Link>
                         </Box>
                     </React.Fragment>
                 ) : (
