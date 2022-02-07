@@ -17,7 +17,7 @@ const SendInvitation = () => {
         }
 
         const phone = phoneNumber.slice(1)
-        const whatsApp = `https://api.whatsapp.com/send?phone=+972${phone}&text=Party%20invitation%20https://pizza-party-app.herokuapp.com/invitation/${partyObject._id}`
+        const whatsApp = `https://api.whatsapp.com/send?phone=+972${phone}&text=Party%20invitation%20https://pizza-party-app.herokuapp.com/guest-invitation/${partyObject._id}`
     
 
     return (

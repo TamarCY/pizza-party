@@ -56,7 +56,7 @@ const HomeGuest = () => {
             <div>{hour}</div>
             <div>in {partyObject.address}</div>
             {(!isDecline) && <div>
-                <Link to="/edit-guest-details">
+                <Link to="/guest-edit-details">
                     <button>Fun! I would love to participate</button>
                 </Link>
                 <button onClick={handelDecline}>Sorry, I can't come</button>

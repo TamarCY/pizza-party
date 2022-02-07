@@ -3,6 +3,7 @@ import { TextField } from "@mui/material";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import guestState from "../../Recoil/atoms/guestAtom";
+import { Link } from "react-router-dom";
 
 
 
@@ -25,6 +26,15 @@ export default function GuestEditDetails (){
         onChange={(e)=>{setGuestObject({...guestObject, phone:e.target.value})}}
         autoComplete="phone"
         />
+          <TextField 
+          type="number"
+        id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumnber} 
+        onChange={(e)=>{setGuestObject({...guestObject, guestsNumnber:e.target.value})}}
+        autoComplete="phone"
+        />
+        <Link to="/guest-edit-pizza">
+            Next
+        </Link>
  
         </div>
     )

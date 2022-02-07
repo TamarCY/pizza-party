@@ -23,10 +23,10 @@ const HomeParty = () => {
           <Link to="/edit-party">
             <Button variant="contained">Edit Your Party</Button>
           </Link>
-          <Link to="/">
+          <Link to="/party-requests">
           <Button variant="contained">Your Guest Requests</Button>
           </Link>
-          <Link to={`/invitation/${partyObject._id}`}>
+          <Link to={`/guest-invitation/${partyObject._id}`}>
           <Button variant="contained">The invitation sent to your guests</Button>
           </Link>
         </Stack>
