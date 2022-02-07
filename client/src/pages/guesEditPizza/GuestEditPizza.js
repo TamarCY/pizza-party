@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 // import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import {Link} from "react-router-dom"
 import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList"
 
 export default function GuestEditPizza() {
@@ -97,6 +98,7 @@ export default function GuestEditPizza() {
       <Button variant="contained"  color="warning" onClick={()=>(addPizza())}>Add</Button>
       </div>
       <GuestPizzaList pizzasSelected={pizzasSelected} handleDelete={handleDelete}/>
+      <Link to="/guest-finished"><div>Next</div></Link>
     </div>
   );
 }

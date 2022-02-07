@@ -13,6 +13,11 @@ export default function GuestEditDetails (){
     const setGuestObject = useSetRecoilState(guestState);
     const guestObject = useRecoilValue(guestState);
 
+    const saveDetails = () => {
+
+        console.log(guestObject);
+    }
+
     return (
         <div style={{ marginTop: "100px" }}>
         <h2> Please enter your details </h2>
@@ -29,13 +34,11 @@ export default function GuestEditDetails (){
           <TextField 
           type="number"
         id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumnber} 
-        onChange={(e)=>{setGuestObject({...guestObject, guestsNumnber:e.target.value})}}
-        autoComplete="phone"
+        onChange={(e)=>{setGuestObject({...guestObject, guestsNumber:e.target.value})}}
         />
-        <Link to="/guest-edit-pizza">
+        <Link to="/guest-edit-pizza" onClick={saveDetails}>
             Next
         </Link>
- 
         </div>
     )
 }

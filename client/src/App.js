@@ -10,6 +10,7 @@ import GuestRequests from './pages/guestsRequests/GuestRequest';
 import HomeGuest from './pages/homeGuest/HomeGuest';
 import GuestEditPizza from './pages/guesEditPizza/GuestEditPizza';
 import GuestEditDetails from './pages/guestEditDetails/GuestEditDetails';
+import GuestFinished from './pages/guestFinished/GuestFinished';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <Route path="/guest-invitation/:id" element={<HomeGuest/>}/>
       <Route path="/guest-edit-details" element={<GuestEditDetails/>}/>
       <Route path="/guest-edit-pizza" element={<GuestEditPizza/>}/>
+      <Route path="/guest-finished" element={<GuestFinished/>}/>
     </Routes>
     </BrowserRouter>
     </div>
