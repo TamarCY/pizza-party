@@ -23,6 +23,7 @@ function generate(pizzasSelected, handleDelete) {
     // }
 
     return pizzasSelected.map((value) =>
+    <div key={value.id}>
         <ListItem
          sx={{m:5}}
             secondaryAction={
@@ -43,6 +44,7 @@ function generate(pizzasSelected, handleDelete) {
                 secondary = {`${value.amount} pizza`}
             />
         </ListItem>
+        </div>
 
     );
 }
