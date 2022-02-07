@@ -17,6 +17,8 @@ export default function GuestEditPizza() {
   const [pizzasSelected, setPizzasSelected] = useState([])
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
+  const guestObject = useRecoilValue(guestState);
+  const setGuestObject = useSetRecoilState(guestState);
 
   const handleDelete = (id) => {
       const filtered = pizzasSelected.filter((element)=>{return (element.id !== id)})
@@ -39,6 +41,10 @@ export default function GuestEditPizza() {
       pizzasSelectedCopy.push({toppings, amount, id})
       setPizzasSelected(pizzasSelectedCopy)
       console.log(pizzasSelected);
+  }
+
+  const addSelectedArrayToGuest = () = {
+      console.log(click);
   }
 
   const renderToppings = () => {
@@ -98,7 +104,7 @@ export default function GuestEditPizza() {
       <Button variant="contained"  color="warning" onClick={()=>(addPizza())}>Add</Button>
       </div>
       <GuestPizzaList pizzasSelected={pizzasSelected} handleDelete={handleDelete}/>
-      <Link to="/guest-finished"><div>Next</div></Link>
+      <Link to="/guest-finished"><div onClick={addSelectedArrayToGuest}>Next</div></Link>
     </div>
   );
 }
