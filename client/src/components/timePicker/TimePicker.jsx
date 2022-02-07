@@ -23,9 +23,6 @@ export default function TimePicker() {
         renderInput={(props) => <TextField {...props} />}
         label="Enter time"
         value={partyObject.date}
-        // onChange={(newValue) => {
-        //   setPartyObject({...partyObject, date: newValue});
-        // }}
         onChange={(newValue)=> handleDateChange(newValue)}
       />
     </LocalizationProvider>

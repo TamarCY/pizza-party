@@ -25,7 +25,7 @@ const HomeGuest = () => {
             const { data } = await Api.get(`party/invitation/${params.id}`);
             const editTime = () => {
                 const time = new Date(data.date).getMinutes()
-                if (time.toString.length < 2) {
+                if (time < 10) {
                     return `0${time}`
                 }
                 return time
