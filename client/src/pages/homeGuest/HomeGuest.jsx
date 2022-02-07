@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom"
 import Api from "../../api/Api";
-import { useSetRecoilState , useRecoilValue} from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
 
 const HomeGuest = () => {
@@ -16,19 +16,19 @@ const HomeGuest = () => {
     const handelDecline = () => {
         setIsDecline(!isDecline)
     }
-   
+
     const whatsAppLink = `https://api.whatsapp.com/send?phone=+972${partyObject.phone}&text=Sorry,%20I%20Can't%20come%20to%20the%20party`
 
     useEffect(() => {
         // TODO: Change api call only if its a guest FileSystemEntry, if not get the data from the state
         const fetchData = async () => {
-            const {data} = await Api.get(`party/invitation/${params.id}`);
+            const { data } = await Api.get(`party/invitation/${params.id}`);
             const editTime = () => {
                 const time = new Date(data.date).getMinutes()
-               if( time.toString.length < 2) {
-                   return `0${time}`
-               }
-               return time
+                if (time.toString.length < 2) {
+                    return `0${time}`
+                }
+                return time
             }
             setPartyObject(data)
             console.log(data);
@@ -41,28 +41,30 @@ const HomeGuest = () => {
             fetchData()
         } catch (e) {
             console.log(e);
-        } 
+        }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    ,[]
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        , []
     )
 
-    if(!date) return (<div>spinner....</div>) 
+    if (!date) return (<div>spinner....</div>)
     return (
-        // TODO: add css and spinner
+        // TODO: add css and spinner, delete inline style
         <div>
-        <div style={{marginTop:"100px"}}>{`${partyObject.firstName} ${partyObject.lastName} invited you to a Pizza Party`}</div>
-        <div>{date}</div>
-        <div>{hour}</div>
-        <div>in {partyObject.address}</div>
-        { (!isDecline) && <div>
-            <Link to="/edit-guest">
-        <button>Fun! I would love to participate</button></Link>
-        <button onClick={handelDecline}>Sorry, I can't come</button></div>}
-        <div>
-            {isDecline && <div><div>Thanks for the update! <br/> Click <a href={whatsAppLink}>here</a> if you want to response in a whatsApp message</div>
-        <button onClick={handelDecline}>back</button></div>}
-        </div>
+            <div style={{ marginTop: "100px" }}>{`${partyObject.firstName} ${partyObject.lastName} invited you to a Pizza Party`}</div>
+            <div>{date}</div>
+            <div>{hour}</div>
+            <div>in {partyObject.address}</div>
+            {(!isDecline) && <div>
+                <Link to="/edit-guest-details">
+                    <button>Fun! I would love to participate</button>
+                </Link>
+                <button onClick={handelDecline}>Sorry, I can't come</button>
+            </div>}
+            <div>
+                {isDecline && <div><div>Thanks for the update! <br /> Click <a href={whatsAppLink}>here</a> if you want to response in a whatsApp message</div>
+                    <button onClick={handelDecline}>back</button></div>}
+            </div>
         </div>
     )
 }

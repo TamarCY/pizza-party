@@ -18,32 +18,28 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 function generate(pizzasSelected, handleDelete) {
-    // const handleDelete = (id) => {
-    //     console.log(id);
-    // }
-
     return pizzasSelected.map((value) =>
-    <div key={value.id}>
-        <ListItem
-         sx={{m:5}}
-            secondaryAction={
-                <div  onClick={() => (handleDelete (value.id))}>
-                <IconButton edge="end" aria-label="delete" >
-                    <DeleteIcon />
-                </IconButton>
-                </div>
-            }
-        >
-            <ListItemAvatar>
-                <Avatar>
-                    <LocalPizza />
-                </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-                primary={value.toppings}
-                secondary = {`${value.amount} pizza`}
-            />
-        </ListItem>
+        <div key={value.id}>
+            <ListItem
+                sx={{ m: 5 }}
+                secondaryAction={
+                    <div onClick={() => (handleDelete(value.id))}>
+                        <IconButton edge="end" aria-label="delete" >
+                            <DeleteIcon />
+                        </IconButton>
+                    </div>
+                }
+            >
+                <ListItemAvatar>
+                    <Avatar>
+                        <LocalPizza />
+                    </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                    primary={value.toppings}
+                    secondary={`${value.amount} pizza`}
+                />
+            </ListItem>
         </div>
 
     );
@@ -53,8 +49,7 @@ function generate(pizzasSelected, handleDelete) {
 //     backgroundColor: theme.palette.background.paper,
 // }));
 
-export default function GuestPizzaList({handleDelete, pizzasSelected}) {
-
+export default function GuestPizzaList({ handleDelete, pizzasSelected }) {
     return (
         <Box sx={{ flexGrow: 1, maxWidth: 2000 }}>
             <Grid container spacing={2} direction="column"
