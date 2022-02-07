@@ -13,9 +13,8 @@ export default function GuestEditDetails (){
     const setGuestObject = useSetRecoilState(guestState);
     const guestObject = useRecoilValue(guestState);
 
-    const saveDetails = () => {
-
-        console.log(guestObject);
+    const addPartyID = () => {
+        setGuestObject({...guestObject, owner: partyObject._id })
     }
 
     return (
@@ -36,7 +35,7 @@ export default function GuestEditDetails (){
         id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumnber} 
         onChange={(e)=>{setGuestObject({...guestObject, guestsNumber:e.target.value})}}
         />
-        <Link to="/guest-edit-pizza" onClick={saveDetails}>
+        <Link to="/guest-edit-pizza" onClick={addPartyID}>
             Next
         </Link>
         </div>

@@ -65,6 +65,7 @@ const partySchema = new mongoose.Schema({
   ]
 });
 
+
 // Hash the plain text password before saving
 partySchema.pre("save", async function (next) {
   const party = this;

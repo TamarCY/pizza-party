@@ -9,23 +9,25 @@ import { Button } from "@mui/material";
 // import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import {Link} from "react-router-dom"
-import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList"
-
+import { Link } from "react-router-dom";
+import Api from "../../api/Api";
+import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList";
 
 export default function GuestEditPizza() {
   const [toppings, setToppings] = useState("");
   const [amount, setAmount] = useState("");
-  const [pizzasSelected, setPizzasSelected] = useState([])
+  const [pizzasSelected, setPizzasSelected] = useState([]);
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
   const guestObject = useRecoilValue(guestState);
   const setGuestObject = useSetRecoilState(guestState);
 
   const handleDelete = (id) => {
-      const filtered = pizzasSelected.filter((element)=>{return (element.id !== id)})
-      setPizzasSelected(filtered)
-  }
+    const filtered = pizzasSelected.filter((element) => {
+      return element.id !== id;
+    });
+    setPizzasSelected(filtered);
+  };
 
   const handleChange = (event) => {
     setToppings(event.target.value);
@@ -37,20 +39,28 @@ export default function GuestEditPizza() {
   };
 
   const addPizza = () => {
-      const date = new Date()
-      const id = date.getTime();
-      const pizzasSelectedCopy = [...pizzasSelected];
-      pizzasSelectedCopy.push({toppings, amount, id})
-      setPizzasSelected(pizzasSelectedCopy)
-      console.log(pizzasSelected);
-  }
+    const date = new Date();
+    const id = date.getTime();
+    const pizzasSelectedCopy = [...pizzasSelected];
+    pizzasSelectedCopy.push({ toppings, amount, id });
+    setPizzasSelected(pizzasSelectedCopy);
+    console.log(pizzasSelected);
+  };
 
   const addSelectedArrayToGuest = async () => {
     //    setGuestObject({...guestObject, pizzasSelected})
-        // const guestObjectCopy = {...guestObject}
-       const guestObjectCopy = {...guestObject, pizzasSelected}
+    // const guestObjectCopy = {...guestObject}
+    const guestObjectCopy = { ...guestObject, pizzasSelected};
+    console.log(guestObjectCopy);
+    try {
+      const guest = await Api.post("/guest/", guestObjectCopy);
+      console.log("guest response:", guest);
+    } catch (e) {
+      console.error(e.message);
+    }
+
     //    TODO: Axios put guest object copy
-  }
+  };
 
   const renderToppings = () => {
     //   TODO: Add this to the schema
@@ -68,7 +78,7 @@ export default function GuestEditPizza() {
 
   return (
     <div style={{ marginTop: "200px" }}>
-        {/* TODO: DELETE */}
+      {/* TODO: DELETE */}
       <h2>{`${partyObject.firstName} would like to know how much pizza and which toppings would you like`}</h2>
       <FormControl sx={{ m: 3, maxWidth: 500, minWidth: 400 }}>
         <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
@@ -107,10 +117,17 @@ export default function GuestEditPizza() {
         </Select>
       </FormControl>
       <div>
-      <Button variant="contained"  color="warning" onClick={()=>(addPizza())}>Add</Button>
+        <Button variant="contained" color="warning" onClick={() => addPizza()}>
+          Add
+        </Button>
       </div>
-      <GuestPizzaList pizzasSelected={pizzasSelected} handleDelete={handleDelete}/>
-      <Link to="/guest-finished"><div onClick={addSelectedArrayToGuest}>Next</div></Link>
+      <GuestPizzaList
+        pizzasSelected={pizzasSelected}
+        handleDelete={handleDelete}
+      />
+      <Link to="/guest-finished">
+        <div onClick={addSelectedArrayToGuest}>Next</div>
+      </Link>
     </div>
   );
 }
