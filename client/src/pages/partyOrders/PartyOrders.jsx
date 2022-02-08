@@ -33,7 +33,7 @@ export default function PartyOrders() {
                 </tbody>
                 <tfoot>
                     <tr><th></th>
-                        <th>1000 total</th>
+                        <th>{partyObject.totalPizzaNum} total</th>
                     </tr></tfoot>
             </table>
         </div>
