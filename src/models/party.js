@@ -55,6 +55,10 @@ const partySchema = new mongoose.Schema({
     // TODO: add default value as 0 .... toppingsOptions.length
   },
   // TODO: change the toppings option and selected to arrays inside one toppings object
+  
+  sumOfPizzaOrders: {
+    type: Object
+  },
   tokens: [
     {
       token: {

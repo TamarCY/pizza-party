@@ -79,8 +79,9 @@ const logoutParty = async (req, res) => {
 const sumGuestsPizza = async (req, res) => {
   try {
     const ordersArray = await Guest.find({ owner: req.params.id });
-    const allOrdersObject = sumObject(ordersArray);
-    Party.findByIdAndUpdate(req.params.id, {"sumOfOrders": allOrdersObject})
+    const allOrdersObject = sumObjects(ordersArray);
+    const partyObject = await Party.findOneAndUpdate({_id: req.params.id}, {sumOfPizzaOrders: allOrdersObject})
+  res.status(200).send(partyObject);
   } catch (e) {
     res.status(400).send(e.message);
   }
@@ -93,7 +94,6 @@ const sumObjects = (array) => {
     objectArray.push(...guest.pizzasSelected);
   });
   const result = {};
-  console.log("objectArray", objectArray);
   objectArray.forEach((object) => {
     if (!result[object.toppings]) {
       result[object.toppings] = object.amount;
@@ -101,11 +101,11 @@ const sumObjects = (array) => {
       result[object.toppings] += object.amount;
     }
   });
-  console.log("result", result);
   return result;
 
   // [{topping: olives, amount: 2},{topping: olives, amount: 2},]
 };
+
 
 // const logoutAll = async (req, res) => {
 //   try {
