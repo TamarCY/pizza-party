@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./homeParty.css";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
 
@@ -14,6 +14,18 @@ import Api from '../../api/Api'
 
 const HomeParty = () => {
     const partyObject = useRecoilValue(partyState);
+    const setPartyObject = useSetRecoilState(partyState);
+
+
+  const fetchPartyData = async () => {
+  try {
+    const {data} = await Api.get(`party/sum-guest-pizza/${partyObject._id}`)
+    setPartyObject(data)
+    console.log("response:", data.sumOfPizzaOrders)
+  } catch (e) {
+      console.log(e.message);
+  }
+}
 
   return (
     <div className="home-party-container">
@@ -23,8 +35,8 @@ const HomeParty = () => {
           <Link to="/edit-party">
             <Button variant="contained">Edit Your Party</Button>
           </Link>
-          <Link to="/party-requests">
-          <Button variant="contained">Your Guest Requests</Button>
+          <Link to="/party-orders">
+          <Button variant="contained" onClick={fetchPartyData}>Your Guest Requests</Button>
           </Link>
           <Link to={`/guest-invitation/${partyObject._id}`}>
           <Button variant="contained">The invitation sent to your guests</Button>

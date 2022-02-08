@@ -6,11 +6,11 @@ import SignIn from './pages/signin/SignIn'
 import HomeParty from './pages/homeParty/HomeParty';
 import EditParty from './pages/editParty/EditParty'
 import Navbar from './components/navbar/Navbar';
-import GuestRequests from './pages/guestsRequests/GuestRequest';
 import HomeGuest from './pages/homeGuest/HomeGuest';
 import GuestEditPizza from './pages/guesEditPizza/GuestEditPizza';
 import GuestEditDetails from './pages/guestEditDetails/GuestEditDetails';
 import GuestFinished from './pages/guestFinished/GuestFinished';
+import PartyOrders from './pages/partyOrders/PartyOrders';
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <Route path="/sign-up" element={<SignUp setAuthType={setAuthType}/>}/>
       <Route path="/party" element={<HomeParty/>}/>
       <Route path="/edit-party" element={<EditParty/>}/>
-      <Route path="/party-requests" element={<GuestRequests/>}/>
+      <Route path="/party-orders" element={<PartyOrders/>}/>
       <Route path="/guest-invitation/:id" element={<HomeGuest/>}/>
       <Route path="/guest-edit-details" element={<GuestEditDetails/>}/>
       <Route path="/guest-edit-pizza" element={<GuestEditPizza/>}/>
