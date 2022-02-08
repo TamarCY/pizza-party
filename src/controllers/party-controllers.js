@@ -1,5 +1,6 @@
 const { getMaxListeners } = require("../models/party");
 const Party = require("../models/party");
+const Guest = require("../models/guest");
 
 const getParty = async (req, res) => {
   res.send(req.party);
@@ -8,12 +9,12 @@ const getParty = async (req, res) => {
 
 const getPartyById = async (req, res) => {
   try {
-    const party  = await Party.findById({ _id: req.params.id})
-    res.status(200).send(party)
+    const party = await Party.findById({ _id: req.params.id });
+    res.status(200).send(party);
   } catch (e) {
-    res.status(400).send(e)
+    res.status(400).send(e);
   }
-}
+};
 
 const getAllParties = async (req, res) => {
   try {
@@ -65,7 +66,7 @@ const signinParty = async (req, res) => {
 
 const logoutParty = async (req, res) => {
   try {
-      req.party.tokens = req.party.tokens.filter((token) => {
+    req.party.tokens = req.party.tokens.filter((token) => {
       return token.token !== req.token;
     });
     await req.party.save();
@@ -75,7 +76,36 @@ const logoutParty = async (req, res) => {
   }
 };
 
+const sumGuestsPizza = async (req, res) => {
+  try {
+    const ordersArray = await Guest.find({ owner: req.params.id });
+    const allOrdersObject = sumObject(ordersArray);
+    Party.findByIdAndUpdate(req.params.id, {"sumOfOrders": allOrdersObject})
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+};
 
+// TODO: move to utils
+const sumObjects = (array) => {
+  const objectArray = [];
+  array.forEach((guest) => {
+    objectArray.push(...guest.pizzasSelected);
+  });
+  const result = {};
+  console.log("objectArray", objectArray);
+  objectArray.forEach((object) => {
+    if (!result[object.toppings]) {
+      result[object.toppings] = object.amount;
+    } else {
+      result[object.toppings] += object.amount;
+    }
+  });
+  console.log("result", result);
+  return result;
+
+  // [{topping: olives, amount: 2},{topping: olives, amount: 2},]
+};
 
 // const logoutAll = async (req, res) => {
 //   try {
@@ -104,5 +134,6 @@ module.exports = {
   signinParty,
   logoutParty,
   getAllParties,
-  getPartyById
+  getPartyById,
+  sumGuestsPizza
 };

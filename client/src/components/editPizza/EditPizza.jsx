@@ -40,11 +40,11 @@ const EditPizza = () => {
             return (
                 // <FormControlLabel key={item}>
                 // <Grid item xs={2} sm={8} md={8} key={index} sx={{m:2}}>
-                <FormControlLabel 
-                    control = {
+                <FormControlLabel
+                    control={
                         <Checkbox onChange={() => handleChange(index)} checked={partyObject.toppingsSelected.includes(index)} />
                     }
-                    label = {item}
+                    label={item}
                 />
                 // </Grid>
             )
@@ -58,7 +58,7 @@ const EditPizza = () => {
         //     {/* <h2>Choose topping options</h2> */}
         //     <FormLabel>Choose topping options</FormLabel>
         //     <FormGroup>
-                
+
         //                 {renderCheckbox()}
         //                 </FormGroup>
 
@@ -68,29 +68,29 @@ const EditPizza = () => {
         // </Grid>
         // </Box>
 
-            <div style={{ width: '100%' }}>
-        <FormControl>
-            <h2>Choose topping options</h2>
-            {/* <FormLabel>Choose topping options</FormLabel> */}
+        <div style={{ width: '100%' }}>
+            <FormControl>
+                <h2>Choose topping options</h2>
+                {/* <FormLabel>Choose topping options</FormLabel> */}
 
-            <FormGroup>
+                <FormGroup>
 
-            <Box sx={{display: "flex", flexWrap: "wrap",  alignItems: 'center', justifyContent: 'center' }}>
-                
+                    <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: 'center', justifyContent: 'center' }}>
+
                         {renderCheckbox()}
-        </Box>
-                        </FormGroup>
+                    </Box>
+                </FormGroup>
 
-        </FormControl>
-        <div class="ui icon input">
-  <input type="text" placeholder="Add topping" value={newTopping} onChange={(e) => setNewTopping(e.target.value)}/>
-  <i class="inverted circular add link icon " onClick={addNewTopping}></i>
-</div>
-                {/* <input type="text" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
+            </FormControl>
+            <div class="ui icon input">
+                <input type="text" placeholder="Add topping" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
+                <i class="inverted circular add link icon " onClick={addNewTopping}></i>
+            </div>
+            {/* <input type="text" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
                 <button class="ui orange button" onClick={addNewTopping}>add</button> */}
 
-                </div>
-    
+        </div>
+
 
     )
 }
