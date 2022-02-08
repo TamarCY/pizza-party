@@ -12,6 +12,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import {Link} from 'react-router-dom';
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
+import EditDrinks from '../../components/editDrinks/EditDrinks';
 
 
 
@@ -27,6 +28,7 @@ export default function EditParty() {
     const components = [
         <EditTimePlace />,
         <EditPizza />,
+        <EditDrinks />,
         <SendInvitation />]
 
 
