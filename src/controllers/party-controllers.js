@@ -79,15 +79,28 @@ const logoutParty = async (req, res) => {
 const sumGuestsPizza = async (req, res) => {
   try {
     const ordersArray = await Guest.find({ owner: req.params.id });
-    const allOrdersObject = sumObjects(ordersArray);
-    const partyObject = await Party.findOneAndUpdate({_id: req.params.id}, {sumOfPizzaOrders: allOrdersObject})
+    const partyObject = await Party.findById(req.params.id);
+    const sumOfOrders = sumObjects(ordersArray);
+    partyObject.sumOfPizzaOrders = sumOfOrders
+    partyObject.totalPizzaNum = sumPizza(sumOfOrders);
+    partyObject.save()
+    // const partyObject = await Party.findOneAndUpdate({_id: req.params.id}, {sumOfPizzaOrders: allOrdersObject})
   res.status(200).send(partyObject);
   } catch (e) {
     res.status(400).send(e.message);
   }
 };
 
+
+
 // TODO: move to utils
+
+const sumPizza = (abject) => {
+  const valuesArray = Object.values(abject)
+  const result = valuesArray.reduce((prev,curr) => prev + curr)
+  return result
+}
+
 const sumObjects = (array) => {
   const objectArray = [];
   array.forEach((guest) => {

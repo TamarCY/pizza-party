@@ -75,13 +75,13 @@ const partySchema = new mongoose.Schema({
 
 
 
-partySchema.virtual('sumPizza').get(function(){
-  const valuesArray = Object.values(this.sumOfPizzaOrders)
-  console.log("value array", valuesArray);
-  const result = valuesArray.reduce((prev,curr) => prev + curr)
-  console.log("result", result);
-  return result
-})
+// partySchema.virtual('sumPizza').get(function(){
+//   const valuesArray = Object.values(this.sumOfPizzaOrders)
+//   console.log("value array", valuesArray);
+//   const result = valuesArray.reduce((prev,curr) => prev + curr)
+//   console.log("result", result);
+//   return result
+// })
 
 // Hash the plain text password before saving
 partySchema.pre("save", async function (next) {
