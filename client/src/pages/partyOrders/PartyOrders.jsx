@@ -22,7 +22,7 @@ export default function PartyOrders() {
     
 
     return (
-        <div>
+        <div className="ui container">
             <table className="ui tow column table" style={{marginTop: 300}}>
                 <thead>
                     <tr><th>Pizza</th>
