@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
+import './sendInvitation.css'
 
 // TODO: add phone and content number to the party object
 
@@ -26,11 +27,11 @@ const SendInvitation = () => {
             <h2>
                 send whatsApp invitation
             </h2>
-            <div className="ui icon input">
+            <div className="ui transparent input">
                 {/* <div class="ui input focus"> */}
-                <input type="tel" id="phone" name="phone"
+                <input type="tel" id="phone" name="phone" placeholder="Enter phone number"
                     value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-                <a href={whatsApp} target="_blank" onClick={handleWhatsapp}> <i class="whatsapp icon"></i></a>
+                <a className="sendInvitation-link" href={whatsApp} target="_blank" onClick={handleWhatsapp}> <i class="whatsapp icon"></i></a>
             </div>
             {/* <a href={whatsApp} target="_blank" onClick={handleWhatsapp}>send whatsApp invitation</a>
             <button onClick={clear}>clear</button> */}
