@@ -24,7 +24,7 @@ export default function EditParty() {
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
 
-    const steps = ['When and where', 'Choose pizza toppings', 'Send invitations'];
+    const steps = ['When and where', 'Choose pizza toppings', "Choose drinks", 'Send invitations'];
     const components = [
         <EditTimePlace />,
         <EditPizza />,
