@@ -149,10 +149,8 @@ export default function EditParty() {
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
-                        <Typography sx={{ mt: 2, mb: 1 }}>
-                            {/* Step {activeStep + 1}             <Signup/> */}
+                        <Typography sx={{ mt: 6, mb: 1}}>
                             {components[activeStep]}
-
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Button
@@ -169,8 +167,6 @@ export default function EditParty() {
                                     Skip
                                 </Button>
                             )}
-
-
                             <Button onClick={handleNext}>
                                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                             </Button>
