@@ -27,7 +27,6 @@ const EditDessert = () => {
                 <DessertPicker options={dessertList} setInputValue={setDessertOption2} inputValue={dessertOption2} disabled={!isActive} label={"Option 2"} />
                 <DessertPicker options={dessertList} setInputValue={setDessertOption3} inputValue={dessertOption3} disabled={!isActive} label={"Option 3"} />
             </div>
-
         </div>
     )
 }

@@ -14,6 +14,8 @@ import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
 import EditDrinks from '../../components/editDrinks/EditDrinks';
 import EditDessert from '../../components/editDessert/EditDessert';
+import cocktailsState from '../../Recoil/atoms/cocktailsAtom';
+import drinksState from '../../Recoil/atoms/drinksAtom';
 
 
 
@@ -23,6 +25,10 @@ export default function EditParty() {
     const [skipped, setSkipped] = React.useState(new Set());
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
+    const drinksArray = useRecoilValue(drinksState);
+    const setDrinksArray = useSetRecoilState(drinksState);
+    const cocktailsArray = useRecoilValue(cocktailsState);
+    const setCocktailsArray = useSetRecoilState(cocktailsArray);
 
     const steps = ['When and where', 'Pizza', 'Drinks', 'Desert', 'Send invitations'];
     const components = [
@@ -44,6 +50,9 @@ export default function EditParty() {
     };
 
     const handleNext = async () => {
+        if (activeStep === 2) {
+            setPartyObject({...partyObject, selectedDrinks: drinksArray})
+        }
         // if (activeStep === steps.length - 1) {
         try {
             await Api.put("/party/edit", partyObject);
