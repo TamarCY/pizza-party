@@ -30,6 +30,7 @@ const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine",  "Orang
 
     return (
         <div>
+            <h2>Choose drink options</h2>
             <div className="ui toggle checkbox">
                 <input checked={isActive} type="checkbox" name="public" onChange={()=> (setIsActive(!isActive))}/>
                     <label> {`Drinks option ${isActive?"active":"disabled"}`}</label>

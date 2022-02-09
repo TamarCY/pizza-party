@@ -23,6 +23,11 @@ h2, h3 {
 
 }
 
+/* TODO: CHANGE IN MOBILE */
+h2 {
+  margin: 50px;
+}
+
 a {
   text-decoration: none;
 }
@@ -69,6 +74,11 @@ a {
     transform: rotate(360deg);
   }
 }
+
+
+
+/* TODO: fix location of next and back */
+
 
 
 /* TODO: remove navbar padding in mobile
