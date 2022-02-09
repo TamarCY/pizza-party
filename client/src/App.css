@@ -31,7 +31,7 @@ a {
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -40,7 +40,7 @@ a {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -57,6 +57,10 @@ a {
   color: #61dafb;
 }
 
+.MuiAppBar-positionFixed {
+  position: sticky;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -65,3 +69,14 @@ a {
     transform: rotate(360deg);
   }
 }
+
+
+/* TODO: remove navbar padding in mobile
+
+@media screen {
+  
+} */
+
+/* .makeStyles-navbar-1 {
+  padding: 0
+} */

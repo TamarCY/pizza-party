@@ -13,7 +13,7 @@ import {Link} from 'react-router-dom';
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
 import EditDrinks from '../../components/editDrinks/EditDrinks';
-
+import EditDessert from '../../components/editDessert/EditDessert';
 
 
 
@@ -24,11 +24,12 @@ export default function EditParty() {
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
 
-    const steps = ['When and where', 'Choose pizza toppings', "Choose drinks", 'Send invitations'];
+    const steps = ['When and where', 'Pizza', 'Drinks', 'Desert', 'Send invitations'];
     const components = [
         <EditTimePlace />,
         <EditPizza />,
         <EditDrinks />,
+        <EditDessert/>,
         <SendInvitation />]
 
 
@@ -90,8 +91,8 @@ export default function EditParty() {
         // TODO: change the layout to mui or more responsive units
 
         <Box sx={{ width: '100%', marginTop: "150px" }}>
-            <Box sx={{ width: '60%', margin: "0 auto" }}>
-                <Stepper activeStep={activeStep}>
+            <Box sx={{  margin: "0 auto" }}>
+                <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label, index) => {
                         const stepProps = {};
                         const labelProps = {};

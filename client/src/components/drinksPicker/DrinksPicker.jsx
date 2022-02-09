@@ -26,24 +26,24 @@ const cocktails = ["Old Fashioned", "Margarita", "Cosmopolitan", "Negroni", "Mos
 const drinks = ["Orange juice", "Apple juice", "Lemonade", "Sparkling water", "Iced tea", "Beer", "White wine", "Red wine", "Coke", "Coke light", "Cider alcoholic", "Sprite", "Diet Sprite"]
 
 
-function getStyles(name, personName, theme) {
+function getStyles(drink, drinkState, theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+      drinkState.indexOf(drink) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
-export default function DrinksPicker({list, placeholder, handleChange, state}) {
+export default function DrinksPicker({list, placeholder, handleChange, drinkState}) {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+//   const [persondrink, setPersondrink] = React.usedrinkState([]);
 
 //   const handleChange = (event) => {
 //     const {
 //       target: { value },
 //     } = event;
-//     setPersonName(
+//     setPersondrink(
 //       // On autofill we get a stringified value.
 //       typeof value === 'string' ? value.split(',') : value,
 //     );
@@ -52,14 +52,14 @@ export default function DrinksPicker({list, placeholder, handleChange, state}) {
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-chip-label">Chip</InputLabel>
+        <InputLabel id="demo-multiple-chip-label">{placeholder}</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
-          value={personName}
-          onChange={handleChange}
-          input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+          value={drinkState}
+          onChange={(e)=>handleChange(e, )}
+          input={<OutlinedInput id="select-multiple-chip" label={placeholder} />}
           renderValue={(selected) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
               {selected.map((value) => (
@@ -69,13 +69,13 @@ export default function DrinksPicker({list, placeholder, handleChange, state}) {
           )}
           MenuProps={MenuProps}
         >
-          {list.map((name) => (
+          {list.map((drink) => (
             <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, personName, theme)}
+              key={drink}
+              value={drink}
+              style={getStyles(drink, drinkState, theme)}
             >
-              {name}
+              {drink}
             </MenuItem>
           ))}
         </Select>
