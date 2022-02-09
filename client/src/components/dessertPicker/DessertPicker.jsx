@@ -4,15 +4,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 // const options = ['Option 1', 'Option 2'];
 
-export default function DessertPicker({options, inputValue,  setInputValue, disabled}) {
+export default function DessertPicker({options, inputValue,  setInputValue, disabled, label}) {
   const [value, setValue] = React.useState(options[0]);
   // const [inputValue, setInputValue] = React.useState('');
 
   return (
-    <div>
-      <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
-      <div>{`inputValue: '${inputValue}'`}</div>
-      <br />
+    <div >
       <Autocomplete
       disabled = {disabled}
       freeSolo
@@ -27,7 +24,7 @@ export default function DessertPicker({options, inputValue,  setInputValue, disa
         id="controllable-states-demo"
         options={options}
         sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Controllable" />}
+        renderInput={(params) => <TextField {...params} label={label} />}
       />
     </div>
   );

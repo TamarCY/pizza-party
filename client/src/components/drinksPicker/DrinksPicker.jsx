@@ -35,7 +35,7 @@ function getStyles(drink, drinkState, theme) {
   };
 }
 
-export default function DrinksPicker({list, placeholder, handleChange, drinkState}) {
+export default function DrinksPicker({list, placeholder, handleChange, drinkState, disabled}) {
   const theme = useTheme();
 //   const [persondrink, setPersondrink] = React.usedrinkState([]);
 
@@ -54,6 +54,7 @@ export default function DrinksPicker({list, placeholder, handleChange, drinkStat
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-chip-label">{placeholder}</InputLabel>
         <Select
+            disabled = {disabled}
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple

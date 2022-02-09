@@ -6,6 +6,8 @@ import DrinksPicker from "../drinksPicker/DrinksPicker";
 const EditDrinks = () => {
     const [selectedCocktails, setSelectedCocktails] = useState ([])
     const [selectedDrinks, setSelectedDrinks] = useState ([])
+    const [isActive, setIsActive] = useState(true)
+
 
 // const fetchDrinks = async () => {
 //    const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
@@ -28,8 +30,12 @@ const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine",  "Orang
 
     return (
         <div>
-            <DrinksPicker list={cocktailsList} placeholder={"Cocktails"} handleChange={handleCocktailsChange} drinkState={selectedCocktails} />
-            <DrinksPicker list={drinksList} placeholder={"Drinks"} handleChange={handleDrinksChange} drinkState={selectedDrinks} />
+            <div className="ui toggle checkbox">
+                <input checked={isActive} type="checkbox" name="public" onChange={()=> (setIsActive(!isActive))}/>
+                    <label> {`Drinks option ${isActive?"active":"disabled"}`}</label>
+            </div>
+            <DrinksPicker list={cocktailsList} placeholder={"Cocktails"} handleChange={handleCocktailsChange} drinkState={selectedCocktails} disabled={!isActive}/>
+            <DrinksPicker list={drinksList} placeholder={"Drinks"} handleChange={handleDrinksChange} drinkState={selectedDrinks} disabled={!isActive}/>
         </div>
     )
 }
