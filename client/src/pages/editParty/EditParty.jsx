@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -25,16 +26,20 @@ export default function EditParty() {
     const [skipped, setSkipped] = React.useState(new Set());
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
-    const drinksArray = useRecoilValue(drinksState);
-    const setDrinksArray = useSetRecoilState(drinksState);
-    const cocktailsArray = useRecoilValue(cocktailsState);
-    const setCocktailsArray = useSetRecoilState(cocktailsArray);
+    // const drinksArray = useRecoilValue(drinksState);
+    // const setDrinksArray = useSetRecoilState(drinksState);
+    // const cocktailsArray = useRecoilValue(cocktailsState);
+    // const setCocktailsArray = useSetRecoilState(cocktailsArray);
+    const [selectedCocktails, setSelectedCocktails] = useState ([])
+    const [selectedDrinks, setSelectedDrinks] = useState ([])
 
     const steps = ['When and where', 'Pizza', 'Drinks', 'Desert', 'Send invitations'];
     const components = [
         <EditTimePlace />,
         <EditPizza />,
-        <EditDrinks />,
+        <EditDrinks selectedCocktails={selectedCocktails} 
+        setSelectedCocktails={setSelectedCocktails}
+         selectedDrinks={selectedDrinks} setSelectedDrinks={setSelectedDrinks}/>,
         <EditDessert/>,
         <SendInvitation />]
 
@@ -50,8 +55,9 @@ export default function EditParty() {
     };
 
     const handleNext = async () => {
+        console.log(partyObject);
         if (activeStep === 2) {
-            setPartyObject({...partyObject, selectedDrinks: drinksArray})
+            setPartyObject({...partyObject, selectedDrinks})
         }
         // if (activeStep === steps.length - 1) {
         try {

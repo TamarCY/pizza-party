@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import DrinksPicker from "../drinksPicker/DrinksPicker";
 
 
-const EditDrinks = () => {
-    const [selectedCocktails, setSelectedCocktails] = useState ([])
-    const [selectedDrinks, setSelectedDrinks] = useState ([])
+const EditDrinks = ({selectedCocktails,setSelectedCocktails, selectedDrinks,setSelectedDrinks}) => {
+    // const [selectedCocktails, setSelectedCocktails] = useState ([])
+    // const [selectedDrinks, setSelectedDrinks] = useState ([])
     const [isActive, setIsActive] = useState(true)
 
 
