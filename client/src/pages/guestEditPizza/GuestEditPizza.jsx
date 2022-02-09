@@ -65,18 +65,18 @@ export default function GuestEditPizza() {
   };
 
   const addSelectedArrayToGuest = async () => {
-    //    setGuestObject({...guestObject, pizzasSelected})
+       setGuestObject({...guestObject, pizzasSelected})
     // const guestObjectCopy = {...guestObject}
-    const guestObjectCopy = { ...guestObject, pizzasSelected};
-    console.log(guestObjectCopy);
-    try {
-      const guest = await Api.post("/guest/", guestObjectCopy);
-      console.log("guest response:", guest);
-    } catch (e) {
-      console.error(e.message);
-    }
+    // const guestObjectCopy = { ...guestObject, pizzasSelected};
+  //   console.log(guestObjectCopy);
+  //   try {
+  //     const guest = await Api.post("/guest/", guestObjectCopy);
+  //     console.log("guest response:", guest);
+  //   } catch (e) {
+  //     console.error(e.message);
+  //   }
 
-    //    TODO: Axios put guest object copy
+  //   //    TODO: Axios put guest object copy
   };
 
   const renderToppings = () => {
