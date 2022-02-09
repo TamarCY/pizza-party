@@ -44,6 +44,9 @@ const updateParty = async (req, res) => {
     // party.phone = req.body.phone;
     party.toppingOptions = req.body.toppingOptions;
     party.toppingsSelected = req.body.toppingsSelected;
+    party.selectedDesserts = req.body.selectedDesserts;
+    party.selectedDrinks = req.body.selectedDrinks;
+    party.selectedCocktails = req.body.selectedCocktails;
     const response = await party.save();
     res.status(200).send(response);
   } catch (e) {

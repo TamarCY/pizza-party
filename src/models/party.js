@@ -63,6 +63,9 @@ const partySchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  selectedDesserts: [],
+  selectedDrinks:[],
+  selectedCocktails:[],
   tokens: [
     {
       token: {

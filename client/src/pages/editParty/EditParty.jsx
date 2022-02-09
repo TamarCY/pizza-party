@@ -59,17 +59,15 @@ export default function EditParty() {
 
     const handleNext = async () => {
         console.log(partyObject);
-        setPartyObject({...partyObject, selectedDrinks})
-
         if (activeStep === 2) {
-            setPartyObject({...partyObject, selectedDrinks})
+            setPartyObject({...partyObject, selectedDrinks, selectedCocktails})
         }
         if (activeStep === 3) {
-            const selectedDessert = [];
-            if (dessertOption1) {selectedDessert.push(dessertOption1)}
-            if (dessertOption2) {selectedDessert.push(dessertOption2)}
-            if (dessertOption3) {selectedDessert.push(dessertOption3)}
-            setPartyObject({...partyObject, selectedDessert})
+            const selectedDesserts = [];
+            if (dessertOption1) {selectedDesserts.push(dessertOption1)}
+            if (dessertOption2) {selectedDesserts.push(dessertOption2)}
+            if (dessertOption3) {selectedDesserts.push(dessertOption3)}
+            setPartyObject({...partyObject, selectedDesserts})
         }
         // if (activeStep === steps.length - 1) {
         try {
