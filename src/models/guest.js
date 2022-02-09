@@ -23,6 +23,13 @@ const Guest = mongoose.model('Guest', {
                     }
                 }
         ],
+        drinkSelected: {
+            type: String
+        },
+        dessertSelected: {
+            type: String
+        }
+
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         require:true,
