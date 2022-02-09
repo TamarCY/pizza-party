@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
@@ -21,6 +21,23 @@ export default function GuestEditPizza() {
   const setPartyObject = useSetRecoilState(partyState);
   const guestObject = useRecoilValue(guestState);
   const setGuestObject = useSetRecoilState(guestState);
+  const [nextPage, setNextPage] = useState ("")
+
+  // useEffect(()=> {
+  //   const FindNextPage = () => {
+  //     if((partyObject.selectedDrinks.length > 0) || (partyObject.selectedDrinks.length.length > 0)){
+  //         return "/guest-edit-drinks"
+  //     } else {
+  //         if (partyObject.selectedDesserts.length > 0) { 
+  //           return "/guest-edit-desserts"
+  //         }
+  //       }
+  //       return "/guest-finished"
+  // }
+
+  //   const next = FindNextPage();
+  //   setNextPage(next)
+  // })
 
   const handleDelete = (id) => {
     const filtered = pizzasSelected.filter((element) => {
@@ -125,7 +142,7 @@ export default function GuestEditPizza() {
         pizzasSelected={pizzasSelected}
         handleDelete={handleDelete}
       />
-      <Link to="/guest-finished">
+      <Link to="/guest-edit-drinks">
         <div onClick={addSelectedArrayToGuest}>Next</div>
       </Link>
     </div>

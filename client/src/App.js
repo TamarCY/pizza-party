@@ -7,10 +7,12 @@ import HomeParty from './pages/homeParty/HomeParty';
 import EditParty from './pages/editParty/EditParty'
 import Navbar from './components/navbar/Navbar';
 import HomeGuest from './pages/homeGuest/HomeGuest';
-import GuestEditPizza from './pages/guesEditPizza/GuestEditPizza';
 import GuestEditDetails from './pages/guestEditDetails/GuestEditDetails';
 import GuestFinished from './pages/guestFinished/GuestFinished';
 import PartyOrders from './pages/partyOrders/PartyOrders';
+import GuestEditDrinks from './pages/guestEditDrinks/GuestEditDrinks';
+import GuestEditDesserts from './pages/guestEditDesserts/GuestEditDesserts';
+import GuestEditPizza from './pages/guestEditPizza/GuestEditPizza';
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
       <Route path="/guest-invitation/:id" element={<HomeGuest/>}/>
       <Route path="/guest-edit-details" element={<GuestEditDetails/>}/>
       <Route path="/guest-edit-pizza" element={<GuestEditPizza/>}/>
+      <Route path="/guest-edit-drinks" element={<GuestEditDrinks/>}/>
+      <Route path="/guest-edit-desserts" element={<GuestEditDesserts/>}/>
       <Route path="/guest-finished" element={<GuestFinished/>}/>
     </Routes>
     </BrowserRouter>
