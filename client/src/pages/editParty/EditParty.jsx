@@ -32,6 +32,9 @@ export default function EditParty() {
     // const setCocktailsArray = useSetRecoilState(cocktailsArray);
     const [selectedCocktails, setSelectedCocktails] = useState ([])
     const [selectedDrinks, setSelectedDrinks] = useState ([])
+    const [dessertOption1, setDessertOption1] = useState("")
+    const [dessertOption2, setDessertOption2] = useState("")
+    const [dessertOption3, setDessertOption3] = useState("")
 
     const steps = ['When and where', 'Pizza', 'Drinks', 'Desert', 'Send invitations'];
     const components = [
@@ -40,7 +43,7 @@ export default function EditParty() {
         <EditDrinks selectedCocktails={selectedCocktails} 
         setSelectedCocktails={setSelectedCocktails}
          selectedDrinks={selectedDrinks} setSelectedDrinks={setSelectedDrinks}/>,
-        <EditDessert/>,
+        <EditDessert dessertOption1={dessertOption1} dessertOption2={dessertOption2} dessertOption3={dessertOption3} setDessertOption1={setDessertOption1} setDessertOption2={setDessertOption2} setDessertOption3={setDessertOption3}/>,
         <SendInvitation />]
 
 
@@ -56,8 +59,17 @@ export default function EditParty() {
 
     const handleNext = async () => {
         console.log(partyObject);
+        setPartyObject({...partyObject, selectedDrinks})
+
         if (activeStep === 2) {
             setPartyObject({...partyObject, selectedDrinks})
+        }
+        if (activeStep === 3) {
+            const selectedDessert = [];
+            if (dessertOption1) {selectedDessert.push(dessertOption1)}
+            if (dessertOption2) {selectedDessert.push(dessertOption2)}
+            if (dessertOption3) {selectedDessert.push(dessertOption3)}
+            setPartyObject({...partyObject, selectedDessert})
         }
         // if (activeStep === steps.length - 1) {
         try {

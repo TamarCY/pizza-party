@@ -5,7 +5,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 // const options = ['Option 1', 'Option 2'];
 
 export default function DessertPicker({options, inputValue,  setInputValue, disabled, label}) {
-  const [value, setValue] = React.useState(options[0]);
+  const [value, setValue] = React.useState(null);
+
   // const [inputValue, setInputValue] = React.useState('');
 
   return (
