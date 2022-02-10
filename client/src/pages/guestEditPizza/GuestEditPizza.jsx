@@ -13,10 +13,10 @@ import { Link } from "react-router-dom";
 import Api from "../../api/Api";
 import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList";
 
-export default function GuestEditPizza() {
+export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
   const [toppings, setToppings] = useState("");
   const [amount, setAmount] = useState("");
-  const [pizzasSelected, setPizzasSelected] = useState([]);
+  // const [pizzasSelected, setPizzasSelected] = useState([]);
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
   const guestObject = useRecoilValue(guestState);
@@ -59,9 +59,14 @@ export default function GuestEditPizza() {
     const date = new Date();
     const id = date.getTime();
     const pizzasSelectedCopy = [...pizzasSelected];
+    if (toppings && amount) {
     pizzasSelectedCopy.push({ toppings, amount, id });
     setPizzasSelected(pizzasSelectedCopy);
-    console.log(pizzasSelected);
+    setToppings("")
+    setAmount(0)
+    } else {
+      console.log("empty");
+    }
   };
 
   const addSelectedArrayToGuest = async () => {
@@ -142,9 +147,9 @@ export default function GuestEditPizza() {
         pizzasSelected={pizzasSelected}
         handleDelete={handleDelete}
       />
-      <Link to="/guest-edit-drinks">
+      {/* <Link to="/guest-edit-drinks">
         <div onClick={addSelectedArrayToGuest}>Next</div>
-      </Link>
+      </Link> */}
     </div>
   );
 }

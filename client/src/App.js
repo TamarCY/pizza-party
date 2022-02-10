@@ -14,6 +14,7 @@ import GuestEditDrinks from "./pages/guestEditDrinks/GuestEditDrinks";
 import GuestEditDesserts from "./pages/guestEditDesserts/GuestEditDesserts";
 import GuestEditPizza from "./pages/guestEditPizza/GuestEditPizza";
 import AuthRoute from "./Routes/AuthRoute";
+import GuestEdit from "./pages/guestEdit/GuestEdit";
 
 function App() {
   const [authType, setAuthType] = useState("login");
@@ -28,6 +29,7 @@ function App() {
             <Route path="/edit-party" element={<EditParty />} />
             <Route path="/party-orders" element={<PartyOrders />} />
             <Route path="/guest-invitation/:id" element={<HomeGuest />} />
+            <Route path="/guest-edit" element={<GuestEdit />} />
             <Route path="/guest-edit-details" element={<GuestEditDetails />} />
             <Route path="/guest-edit-pizza" element={<GuestEditPizza />} />
             <Route path="/guest-edit-drinks" element={<GuestEditDrinks />} />

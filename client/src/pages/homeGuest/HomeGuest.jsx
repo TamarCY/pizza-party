@@ -31,7 +31,6 @@ const HomeGuest = () => {
                 return time
             }
             setPartyObject(data)
-            console.log(data);
             const newDate = new Date(data.date).toDateString()
             const hour = `${new Date(data.date).getHours()}:${editTime()}`
             setDate(newDate)
@@ -56,7 +55,7 @@ const HomeGuest = () => {
             <div>{hour}</div>
             <div>in {partyObject.address}</div>
             {(!isDecline) && <div>
-                <Link to="/guest-edit-details">
+                <Link to="/guest-edit">
                     <button>Fun! I would love to participate</button>
                 </Link>
                 <button onClick={handelDecline}>Sorry, I can't come</button>

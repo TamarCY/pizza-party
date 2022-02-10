@@ -15,14 +15,14 @@ const GuestEditDrinks = () => {
 
     const drinksList = partyObject.selectedDrinks.concat(partyObject.selectedCocktails)
 
-const handleSaveGuest = async () => {
-    try {
-        const guest = await Api.post("/guest/", guestObject);
-        console.log("guest response:", guest);
-      } catch (e) {
-        console.error(e.message);
-      }
-}
+// const handleSaveGuest = async () => {
+//     try {
+//         const guest = await Api.post("/guest/", guestObject);
+//         console.log("guest response:", guest);
+//       } catch (e) {
+//         console.error(e.message);
+//       }
+// }
 
     const handelDrinkSelect = (e)=>{
         // console.log(e.target.innerText);
@@ -41,8 +41,8 @@ const handleSaveGuest = async () => {
     }
 
     return (
-        <div style={{ marginTop: "200px" }}>
-            <h2>Choose a drink</h2>
+        <div className="guestEditDrink-container">
+            <h2>Choose drink and dessert</h2>
             {/* <DessertPicker options={drinksList} setInputValue={setDessertOption1} inputValue={dessertOption1} disabled={!isActive} label={"Option 1"} /> */}
             <Autocomplete
             // TODO: CHECK ON SELECT
@@ -53,8 +53,6 @@ const handleSaveGuest = async () => {
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Drinks" />}
             />
-            <h2>Choose one desert</h2>
-            
       <RadioGroup
       row
         aria-labelledby="demo-controlled-radio-buttons-group"
@@ -65,9 +63,9 @@ const handleSaveGuest = async () => {
         {renderRadio()}
       </RadioGroup>
     
-      <Link to="/guest-finished" onClick={handleSaveGuest}>
+      {/* <Link to="/guest-finished" onClick={handleSaveGuest}>
             Next
-        </Link>
+        </Link> */}
         </div>
     )
 }

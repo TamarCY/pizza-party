@@ -8,14 +8,10 @@ import { Link } from "react-router-dom";
 
 
 export default function GuestEditDetails (){
-    const partyObject = useRecoilValue(partyState);
-    const setPartyObject = useSetRecoilState(partyState);
     const setGuestObject = useSetRecoilState(guestState);
     const guestObject = useRecoilValue(guestState);
 
-    const addPartyID = () => {
-        setGuestObject({...guestObject, owner: partyObject._id })
-    }
+   
 
     return (
         <div style={{ marginTop: "100px" }}>
@@ -35,9 +31,6 @@ export default function GuestEditDetails (){
         id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumnber} 
         onChange={(e)=>{setGuestObject({...guestObject, guestsNumber:e.target.value})}}
         />
-        <Link to="/guest-edit-pizza" onClick={addPartyID}>
-            Next
-        </Link>
         </div>
     )
 }
