@@ -67,7 +67,7 @@ export default function GuestEdit() {
         console.log("guestObj", guestObject);
         console.log("step", activeStep);
 
-        if (activeStep === 1) {
+        if (activeStep === 0) {
             setGuestObject({ ...guestObject, owner: partyObject._id })
         }
         if (activeStep === 1) {
