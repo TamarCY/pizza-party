@@ -81,18 +81,23 @@ const logoutParty = async (req, res) => {
 
 const sumGuestsOrders = async (req, res) => {
   try {
+    console.log();
     const guestsArray = await Guest.find({ owner: req.params.id });
     const partyObject = await Party.findById(req.params.id);
+    if(guestsArray.length === 0){
+      res.status(200).send(partyObject)
+      return
+    }
     const sumOfPizzaOrders = sumPizzaObjects(guestsArray);
     partyObject.sumOfPizzaOrders = sumOfPizzaOrders;
     partyObject.totalPizzaNum = sumPizza(sumOfPizzaOrders);
     partyObject.sumOfDrinksOrders = sumOrders(guestsArray, "drinkSelected");
     partyObject.sumOfDessertsOrders = sumOrders(guestsArray, "dessertSelected");
-    // TODO: SAVE TO DB -> NEXT LINE
     await partyObject.save()
     // const partyObject = await Party.findOneAndUpdate({_id: req.params.id}, {sumOfPizzaOrders: allOrdersObject})
   res.status(200).send(partyObject);
   } catch (e) {
+    console.log(e);
     res.status(400).send(e.message);
   }
 };
@@ -114,6 +119,7 @@ const sumOrders = (guestsArray, key) => {
 
 const sumPizza = (object) => {
   const valuesArray = Object.values(object)
+  if(valuesArray.length === 0) { return 0}
   const result = valuesArray.reduce((prev,curr) => prev + curr)
   return result
 }

@@ -8,6 +8,8 @@ export default function SumPizza() {
 
 
     const renderPizzaTable = () => {
+        console.log(partyObject);
+    //    if( Object.keys(partyObject.sumOfPizzaOrders).length === 0){ return <div>TEST</div>}
         return Object.keys(partyObject.sumOfPizzaOrders).map((oneKey, i) => {
             return (
                 <tr key={i}>
