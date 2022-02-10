@@ -33,9 +33,7 @@ export default function GuestEdit() {
     const partyObject = useRecoilValue(partyState);
     const setGuestObject = useSetRecoilState(guestState);
     const guestObject = useRecoilValue(guestState);
-    const setPartyObject = useSetRecoilState(partyState);
     const [pizzasSelected, setPizzasSelected] = useState([]);
-
 
     const steps = ['Your details', 'Pizza', 'Drinks and Desert'];
     const components = [
