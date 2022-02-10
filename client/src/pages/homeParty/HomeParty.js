@@ -21,7 +21,7 @@ const HomeParty = () => {
   try {
     const {data} = await Api.get(`party/sum-guest-pizza/${partyObject._id}`)
     setPartyObject(data)
-    console.log("response:", data.sumOfPizzaOrders)
+    console.log("response:", data)
   } catch (e) {
       console.log(e.message);
   }

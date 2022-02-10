@@ -13,6 +13,7 @@ import PartyOrders from './pages/partyOrders/PartyOrders';
 import GuestEditDrinks from './pages/guestEditDrinks/GuestEditDrinks';
 import GuestEditDesserts from './pages/guestEditDesserts/GuestEditDesserts';
 import GuestEditPizza from './pages/guestEditPizza/GuestEditPizza';
+import SumDesserts from './components/sumDesserts/SumDesserts';
 
 
 function App() {
@@ -22,7 +23,8 @@ function App() {
     <div className="App">
     <BrowserRouter>
     <Navbar/>
-    <Routes>   
+    <Routes>  
+
       <Route path="/" element={<SignIn setAuthType={setAuthType}/>}/>
       <Route path="/sign-up" element={<SignUp setAuthType={setAuthType}/>}/>
       <Route path="/party" element={<HomeParty/>}/>
@@ -34,6 +36,7 @@ function App() {
       <Route path="/guest-edit-drinks" element={<GuestEditDrinks/>}/>
       <Route path="/guest-edit-desserts" element={<GuestEditDesserts/>}/>
       <Route path="/guest-finished" element={<GuestFinished/>}/>
+      <Route path="/test" element={<SumDesserts/>}/>
     </Routes>
     </BrowserRouter>
     </div>
