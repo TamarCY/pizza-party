@@ -26,6 +26,7 @@ const HomeParty = () => {
       console.log(e.message);
   }
 }
+ 
 
   return (
     <div className="home-party-container">

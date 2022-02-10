@@ -79,7 +79,7 @@ const logoutParty = async (req, res) => {
   }
 };
 
-const sumGuestsPizza = async (req, res) => {
+const sumGuestsOrders = async (req, res) => {
   try {
     const guestsArray = await Guest.find({ owner: req.params.id });
     const partyObject = await Party.findById(req.params.id);
@@ -165,5 +165,5 @@ module.exports = {
   logoutParty,
   getAllParties,
   getPartyById,
-  sumGuestsPizza
+  sumGuestsOrders
 };
