@@ -28,7 +28,6 @@ const SumDesserts = () => {
     );
 
     useEffect(() => {
-        console.log(partyObject);
         if (partyObject.sumOfDessertsOrders) {
             setDessertsKeys(Object.keys(partyObject.sumOfDessertsOrders))
             setDessertsValues(Object.values(partyObject.sumOfDessertsOrders))
