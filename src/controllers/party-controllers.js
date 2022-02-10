@@ -81,11 +81,11 @@ const logoutParty = async (req, res) => {
 
 const sumGuestsPizza = async (req, res) => {
   try {
-    const ordersArray = await Guest.find({ owner: req.params.id });
+    const guestsArray = await Guest.find({ owner: req.params.id });
     const partyObject = await Party.findById(req.params.id);
-    const sumOfOrders = sumObjects(ordersArray);
-    partyObject.sumOfPizzaOrders = sumOfOrders
-    partyObject.totalPizzaNum = sumPizza(sumOfOrders);
+    const sumOfPizzaOrders = sumPizzaObjects(guestsArray);
+    partyObject.sumOfPizzaOrders = sumOfPizzaOrders
+    partyObject.totalPizzaNum = sumPizza(sumOfPizzaOrders);
     partyObject.save()
     // const partyObject = await Party.findOneAndUpdate({_id: req.params.id}, {sumOfPizzaOrders: allOrdersObject})
   res.status(200).send(partyObject);
@@ -98,13 +98,23 @@ const sumGuestsPizza = async (req, res) => {
 
 // TODO: move to utils
 
-const sumPizza = (abject) => {
-  const valuesArray = Object.values(abject)
+const sumDrinks = (guestsArray) => {
+  const drinksObject = {};
+  guestsArray.forEach((guest)=> {
+    (drinksObject[guest.drinkSelected])?
+      drinksObject[guest.drinkSelected] += 1:
+      drinksObject[[guest.drinkSelected] = 1]
+    }
+  }
+
+
+const sumPizza = (object) => {
+  const valuesArray = Object.values(object)
   const result = valuesArray.reduce((prev,curr) => prev + curr)
   return result
 }
 
-const sumObjects = (array) => {
+const sumPizzaObjects = (array) => {
   const objectArray = [];
   array.forEach((guest) => {
     objectArray.push(...guest.pizzasSelected);
