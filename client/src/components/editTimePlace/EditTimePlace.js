@@ -9,7 +9,7 @@ export default function EditTime() {
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
   return (
-    <div className="editTime">
+    <div className="editTime step-component">
       <h2> Choose date time and location </h2>
       <div className ="editTime-inputs">
       <TimePicker 

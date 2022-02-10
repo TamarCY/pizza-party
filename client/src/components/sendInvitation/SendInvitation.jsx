@@ -23,7 +23,7 @@ const SendInvitation = () => {
 
 
     return (
-        <div>
+        <div className="step-component">
             <h2>
                 send whatsApp invitation
             </h2>

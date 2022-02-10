@@ -17,6 +17,8 @@ import EditDrinks from '../../components/editDrinks/EditDrinks';
 import EditDessert from '../../components/editDessert/EditDessert';
 import cocktailsState from '../../Recoil/atoms/cocktailsAtom';
 import drinksState from '../../Recoil/atoms/drinksAtom';
+import './editParty.css'
+import party from "../../assets/images/dancingPizza.png"
 
 
 
@@ -136,15 +138,22 @@ export default function EditParty() {
                         );
                     })}
                 </Stepper>
-                {activeStep === steps.length ? (
+                {activeStep === steps.length? (
                     <React.Fragment>
-                        <Typography sx={{ mt: 2, mb: 1 }}>
-                            All steps completed - you&apos;re finished
+                        <Typography sx={{ mt: 10, mb: 1 }}>
+                            {/* All steps completed - you&apos;re finished */}
+                            <div className='step-component'>
+                                <h2>Your party is ready!</h2>
+                                <Link to="/party"> <Button >Back to homepage</Button> </Link>
+                                <div>
+                                <img  className="editParty-party-image" src={party} alt="pizza party"/>
+                                </div>
+                            </div>
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Box sx={{ flex: '1 1 auto' }} />
                             {/* <Button onClick={handleReset}>Reset</Button> */}
-                           <Link to="/party"> <Button >Back to homepage</Button> </Link>
+                           {/* <Link to="/party"> <Button >Back to homepage</Button> </Link> */}
                         </Box>
                     </React.Fragment>
                 ) : (
@@ -152,6 +161,7 @@ export default function EditParty() {
                         <Typography sx={{ mt: 6, mb: 1}}>
                             {components[activeStep]}
                         </Typography>
+                            <div className='editParty-buttons-div'>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Button
                                 color="inherit"
@@ -171,6 +181,7 @@ export default function EditParty() {
                                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                             </Button>
                         </Box>
+                            </div>
                     </React.Fragment>
                 )}
             </Box>

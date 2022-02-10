@@ -29,7 +29,7 @@ const cocktailsList = ["Old Fashioned", "Margarita", "Cosmopolitan", "Negroni", 
 const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine",  "Orange juice", "Apple juice", "Lemonade", "Iced tea",  "Cider alcoholic", "Sprite", "Diet Sprite", "Coke", "Coke light",]
 
     return (
-        <div>
+        <div className="step-component">
             <h2>Choose drink options</h2>
             <div className="ui toggle checkbox">
                 <input checked={isActive} type="checkbox" name="public" onChange={()=> (setIsActive(!isActive))}/>

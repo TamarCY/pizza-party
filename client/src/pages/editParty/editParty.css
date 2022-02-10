@@ -1,0 +1,35 @@
+
+
+/* .MuiTypography-root p{
+    height: 800px;
+} */
+
+/* .css-jrn8vz-MuiTypography-root{
+    height: 800px;
+} */
+
+/* .MuiBox-root-css-13o6z6d{
+    height: 800px;
+    margin-top: 300px;
+} */
+
+/* .editTime {
+    height: 600px;
+} */
+
+.step-component {
+    height: 50vh;
+    margin-top: 12vh;
+}
+
+.editParty-buttons-div{
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.editParty-party-image{
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+}

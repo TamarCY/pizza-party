@@ -13,7 +13,7 @@ const EditDessert = ({dessertOption1, dessertOption2, dessertOption3, setDessert
 
 
     return (
-        <div>
+        <div className="step-component">
             <h2>
                 Choose 3 dessert options
             </h2>

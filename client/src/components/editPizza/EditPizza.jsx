@@ -52,7 +52,8 @@ const EditPizza = () => {
     }
     if (!partyObject) { return <div>spinner...</div> }
     return (
-        <div style={{ width: '100%' }}>
+        <div style={{ width: '100%' }} >
+            <div className="step-component">
             <FormControl>
                 <h2>Choose topping options</h2>
                 <FormGroup>
@@ -65,6 +66,7 @@ const EditPizza = () => {
                 <i class="inverted circular add link icon " onClick={addNewTopping}></i>
             </div>
             </FormControl>
+            </div>
         </div>
 
 
