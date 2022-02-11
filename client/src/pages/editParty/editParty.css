@@ -18,7 +18,7 @@
 } */
 
 .step-component {
-    height: 50vh;
+    height: 40vh;
     margin-top: 12vh;
 }
 
@@ -32,4 +32,11 @@
     margin: 10px;
     height: 100px;
     width: 100px;
+}
+
+@media only screen and (max-width: 600px){
+    .step-component {
+        height: 50vh;
+        margin-top: 0;
+    }
 }

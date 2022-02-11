@@ -28,6 +28,7 @@ const SumDrinks = () => {
     const renderDrinkSum = () => {
         let result = []
         for (const drink in partyObject.sumOfDrinksOrders) {
+            // if(drink === undefined){console.log("undefined");}
             result.push(<tr><td>{drink}</td><td>{renderIcons(partyObject.sumOfDrinksOrders[drink])}</td></tr>)
         }
         return (
@@ -40,12 +41,6 @@ const SumDrinks = () => {
         <div className="ui container">
             <table class="ui very basic table">
                 <h5>Drinks</h5>
-                {/* <thead>
-                    <tr>
-                        <th>Drink</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead> */}
                 <tbody>
                     {renderDrinkSum()}
                 </tbody>
