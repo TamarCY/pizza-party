@@ -14,8 +14,8 @@ export default function GuestEditDetails (){
    
 
     return (
-        <div style={{ marginTop: "100px" }}>
-        <h2> Please enter your details </h2>
+        <div>
+        <h2> Enter Your Details </h2>
         <TextField 
         id="outlined-basic" label="Name" variant="outlined" value={guestObject.name} 
         onChange={(e)=>{setGuestObject({...guestObject, name:e.target.value})}}

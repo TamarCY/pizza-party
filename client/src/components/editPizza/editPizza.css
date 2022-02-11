@@ -2,3 +2,6 @@
     max-width: 300px;
     margin: 30px auto;
 }
+.MuiListItem-root MuiListItem-gutters MuiListItem-padding css-14mthid-MuiListItem-root{    background-color: red;
+    margin-left: 0;
+}

@@ -10,14 +10,14 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList";
 
-export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
+export default function GuestEditPizza({ setPizzasSelected, pizzasSelected }) {
   const [toppings, setToppings] = useState("");
   const [amount, setAmount] = useState("");
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
   const guestObject = useRecoilValue(guestState);
   const setGuestObject = useSetRecoilState(guestState);
-  const [nextPage, setNextPage] = useState ("")
+  const [nextPage, setNextPage] = useState("")
 
 
   const handleDelete = (id) => {
@@ -41,17 +41,17 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
     const id = date.getTime();
     const pizzasSelectedCopy = [...pizzasSelected];
     if (toppings && amount) {
-    pizzasSelectedCopy.push({ toppings, amount, id });
-    setPizzasSelected(pizzasSelectedCopy);
-    setToppings("")
-    setAmount(0)
+      pizzasSelectedCopy.push({ toppings, amount, id });
+      setPizzasSelected(pizzasSelectedCopy);
+      setToppings("")
+      setAmount(0)
     } else {
       console.log("empty");
     }
   };
 
   const addSelectedArrayToGuest = async () => {
-       setGuestObject({...guestObject, pizzasSelected})
+    setGuestObject({ ...guestObject, pizzasSelected })
   };
 
   const renderToppings = () => {
@@ -70,8 +70,9 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
 
   return (
     <div className="guestEditPizza step">
-      <h2>{`${partyObject.firstName} would like to know how much pizza and which toppings would you like`}</h2>
-      <FormControl sx={{ m: 3, maxWidth: 500, minWidth: 200 }}>
+      <h2>Choose Pizza</h2>
+        <div className="guestEditPizza">
+      <FormControl sx={{mr:3, maxWidth: 500, minWidth: 100 }}>
         <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
@@ -84,7 +85,7 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
           {renderToppings()}
         </Select>
       </FormControl>
-      <FormControl sx={{ m:3, minWidth: 100 }}>
+      <FormControl sx={{  mr:3, minWidth: 100 }}>
         <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
@@ -92,7 +93,7 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
           label="Amount"
           value={amount}
           onChange={handleAmountChange}
-          // inputProps={{ 'aria-label': 'Without label' }}
+        // inputProps={{ 'aria-label': 'Without label' }}
         >
           <MenuItem value=""></MenuItem>
           <MenuItem value={0.5}>0.5</MenuItem>
@@ -107,11 +108,11 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
           <MenuItem value={5}>5</MenuItem>
         </Select>
       </FormControl>
-        <Button sx={{m:4}} variant="contained" color="warning" onClick={() => addPizza()}>
-          Add
-        </Button>
-      
-      
+      <button class="circular ui icon button" onClick={() => addPizza()}>
+        <i class="icon plus"></i>
+      </button>
+
+
       <div>
       </div>
       <GuestPizzaList
@@ -121,6 +122,7 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
       {/* <Link to="/guest-edit-drinks">
         <div onClick={addSelectedArrayToGuest}>Next</div>
       </Link> */}
-    </div>
+      </div>
+      </div>
   );
 }

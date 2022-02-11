@@ -35,11 +35,12 @@ export default function GuestEdit() {
     const guestObject = useRecoilValue(guestState);
     const [pizzasSelected, setPizzasSelected] = useState([]);
 
-    const steps = ['Your details', 'Pizza', 'Drinks and Desert'];
+    const steps = ['Your details', 'Pizza', 'Drinks','Desert'];
     const components = [
         <GuestEditDetails />,
         <GuestEditPizza setPizzasSelected={setPizzasSelected} pizzasSelected={pizzasSelected} />,
-        <GuestEditDrinks />]
+        <GuestEditDrinks />,
+    <GuestEditDesserts/>]
    
     const handleSaveGuest = async () => {
         try {
@@ -108,10 +109,12 @@ export default function GuestEdit() {
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
-                        <Typography sx={{ mt: 6, mb: 1 }}>
+                        <Typography sx={{ mt: 6, mb: 1, display: 'flex', justifyContent: 'center'}}>
+                        <div className='step-component'>
                             {components[activeStep]}
+                            </div>
                         </Typography>
-                        <div className='editParty-buttons-div'>
+                        <div className="editParty-buttons-div">
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Button
                                     color="inherit"
@@ -126,7 +129,7 @@ export default function GuestEdit() {
                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                 </Button>
                             </Box>
-                        </div>
+                            </div>
                     </React.Fragment>
                 )}
             </Box>

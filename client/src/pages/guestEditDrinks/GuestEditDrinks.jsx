@@ -41,8 +41,8 @@ const GuestEditDrinks = () => {
     }
 
     return (
-        <div className="guestEditDrink-container">
-            <h2>Choose drink and dessert</h2>
+        <>
+            <h2>Choose Your Drink</h2>
             {/* <DessertPicker options={drinksList} setInputValue={setDessertOption1} inputValue={dessertOption1} disabled={!isActive} label={"Option 1"} /> */}
             <Autocomplete
             // TODO: CHECK ON SELECT
@@ -50,10 +50,9 @@ const GuestEditDrinks = () => {
                 disablePortal
                 id="combo-box-demo"
                 options={drinksList}
-                sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Drinks" />}
             />
-      <RadioGroup
+      {/* <RadioGroup
       row
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"
@@ -61,12 +60,12 @@ const GuestEditDrinks = () => {
         onChange={handleDessertSelect}
       >
         {renderRadio()}
-      </RadioGroup>
+      </RadioGroup> */}
     
       {/* <Link to="/guest-finished" onClick={handleSaveGuest}>
             Next
         </Link> */}
-        </div>
+</>
     )
 }
 

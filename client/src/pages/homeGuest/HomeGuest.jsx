@@ -51,7 +51,7 @@ const HomeGuest = () => {
     if (!date) return (<div>spinner....</div>)
     return (
         // TODO: add css and spinner, delete inline style
-        <div style={{ marginTop: "100px" }} className="homeGuest-container">
+        <div  className="homeGuest-container">
             <div className="homeGuest-main">
                 {/* <img className="homeGuest-img" src={pizza} alt="pizza" /> */}
                 {(!isDecline) && <div>

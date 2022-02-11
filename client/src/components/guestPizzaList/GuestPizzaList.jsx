@@ -21,7 +21,6 @@ function generate(pizzasSelected, handleDelete) {
     return pizzasSelected.map((value) =>
         <div key={value.id}>
             <ListItem
-                sx={{ m: 5 }}
                 secondaryAction={
                     <div onClick={() => (handleDelete(value.id))}>
                         <IconButton edge="end" aria-label="delete" >
@@ -52,13 +51,10 @@ function generate(pizzasSelected, handleDelete) {
 export default function GuestPizzaList({ handleDelete, pizzasSelected }) {
     return (
         <Box sx={{ flexGrow: 1, maxWidth: 2000 }}>
-            <Grid container spacing={2} direction="column"
+            <Grid container spacing={10} direction="column"
                 alignItems="center"
                 justifyContent="center">
                 <Grid item xs={12}>
-                    <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                        {/* Ordered Pizza */}
-                    </Typography>
                     <List >
                         {generate(pizzasSelected, handleDelete)}
                     </List>
