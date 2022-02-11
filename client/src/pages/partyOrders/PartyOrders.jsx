@@ -11,7 +11,7 @@ import "./partyOrders.css"
 export default function PartyOrders() {
     const partyObject = useRecoilValue(partyState)
     if ((!partyObject.sumOfPizzaOrders) || Object.keys(partyObject.sumOfPizzaOrders).length === 0) {
-        return <div style={{marginTop:"200px"}}>No Data</div>
+        return <div style={{marginTop:"200px"}}></div>
         // TODO: change to nicer massage
     }
     

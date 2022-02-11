@@ -50,7 +50,7 @@ const EditPizza = () => {
             )
         })
     }
-    if (!partyObject) { return <div>spinner...</div> }
+    if (!partyObject) { return <div>...</div> }
     return (
         <div style={{ width: '100%' }} >
             <div className="step-component">
