@@ -34,13 +34,13 @@ const HomeParty = () => {
         <Stack spacing={4} direction="column">
           <div className="home-party-logo"></div>
           <Link to="/edit-party">
-            <Button variant="contained">Edit Your Party</Button>
+            <Button variant="outlined">Edit Your Party</Button>
           </Link>
           <Link to="/party-orders">
-          <Button variant="contained" onClick={fetchPartyData}>Your Guest Requests</Button>
+          <Button  variant="outlined" onClick={fetchPartyData}>Your Guest Requests</Button>
           </Link>
           <Link to={`/guest-invitation/${partyObject._id}`}>
-          <Button variant="contained">The invitation sent to your guests</Button>
+              Click for the party invitations
           </Link>
         </Stack>
       </div>

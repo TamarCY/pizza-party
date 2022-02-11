@@ -12,9 +12,7 @@
   font-family: 'Nunito', sans-serif;
 }
 
-/* body {
-  background-color: #FFEEAD;
-} */
+
 
 
 
@@ -25,11 +23,19 @@ h2, h3 {
 
 /* TODO: CHANGE IN MOBILE */
 h2 {
-  margin: 50px;
+  /* margin: 40px; */
+  color: #D9534F
 }
 
 a {
   text-decoration: none;
+  color: #219F94
+
+}
+
+a:hover {
+  color:  #219F94
+
 }
 
 .App {
@@ -59,7 +65,7 @@ a {
 }
 
 .App-link {
-  color: #61dafb;
+  color: #D9534F;
 }
 
 .MuiAppBar-positionFixed {

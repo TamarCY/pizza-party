@@ -16,8 +16,8 @@ import GuestEditPizza from "./pages/guestEditPizza/GuestEditPizza";
 import AuthRoute from "./Routes/AuthRoute";
 import GuestEdit from "./pages/guestEdit/GuestEdit";
 import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/private-theming";
-import theme from "./Styles/muiTheme";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from "./Styles/muiTheme"
 
 function App() {
   const [authType, setAuthType] = useState("login");

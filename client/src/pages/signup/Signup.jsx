@@ -17,10 +17,22 @@ import { useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
 import tokenState from '../../Recoil/atoms/loggedInAtom';
+import pizza from "../../assets/images/pizza.png"
+// import "../signin.css"
 
 
 
-const theme = createTheme();
+const signTheme = createTheme(
+  {
+    palette: {
+      primary: {
+          main: "#FFAD60"
+  
+      }
+
+  }
+}
+);
 
 export default function SignUp() {
   const partyObject = useRecoilValue(partyState);
@@ -68,7 +80,7 @@ export default function SignUp() {
 //   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={signTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -85,7 +97,9 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography> */}
-           <LocalPizzaIcon sx={{ m: 5, color:"warning.main", fontSize:100}}/>
+           {/* <LocalPizzaIcon sx={{ m: 5, color:"warning.main", fontSize:100}}/> */}
+           <img className="signin-img" src={pizza} alt={pizza}/>
+
                     <Typography component="h1" variant="h3">
                          Pizza Party
                     </Typography>
