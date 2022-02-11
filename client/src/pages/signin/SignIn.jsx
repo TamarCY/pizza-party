@@ -64,9 +64,6 @@ export default function SignIn({ setAuthType }) {
                         alignItems: 'center',
                     }}
                 >
-                    {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar> */}
                     <LocalPizzaIcon sx={{ m: 5, color: "warning.main", fontSize: 100 }} />
                     <Typography component="h1" variant="h3">
                         Pizza Party
@@ -96,6 +93,7 @@ export default function SignIn({ setAuthType }) {
                             autoComplete="current-password"
                             error = {loginFailed}
                             helperText = {inputErrorText}
+                            onChange = {()=>{setLoginFailed(false); setInputErrorText("");}}
                         />
                         <Button
                             type="submit"

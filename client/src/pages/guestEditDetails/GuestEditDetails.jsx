@@ -16,19 +16,19 @@ export default function GuestEditDetails (){
     return (
         <div>
         <h2> Enter Your Details </h2>
-        <TextField 
+        <TextField sx={{m:1}}
         id="outlined-basic" label="Name" variant="outlined" value={guestObject.name} 
         onChange={(e)=>{setGuestObject({...guestObject, name:e.target.value})}}
         autoComplete="name"
         />
-        <TextField 
+        <TextField sx={{m:1}}
         id="outlined-basic" label="Phone number" variant="outlined" value={guestObject.phone} 
         onChange={(e)=>{setGuestObject({...guestObject, phone:e.target.value})}}
         autoComplete="phone"
         />
-          <TextField 
+          <TextField sx={{m:1}} 
           type="number"
-        id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumnber} 
+        id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumber} 
         onChange={(e)=>{setGuestObject({...guestObject, guestsNumber:e.target.value})}}
         />
         </div>

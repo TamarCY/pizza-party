@@ -77,16 +77,9 @@ a {
 
 
 
-/* TODO: fix location of next and back */
 
-
-
-/* TODO: remove navbar padding in mobile
-
-@media screen {
-  
-} */
-
-/* .makeStyles-navbar-1 {
+@media only screen and (max-width: 600px){
+  .makeStyles-navbar-1 {
   padding: 0
-} */
+  }
+}

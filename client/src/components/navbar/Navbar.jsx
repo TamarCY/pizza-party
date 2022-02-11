@@ -7,6 +7,7 @@ import Api from "../../api/Api";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import tokenState from "../../Recoil/atoms/tokenAtom";
+import "./navbar.css"
 
 const useStyles = makeStyles(() => ({
     navbar: {
@@ -78,6 +79,7 @@ export default function Navbar() {
         }
         loadParty()
     }        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const handleClick = async (e) => {
