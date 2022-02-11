@@ -6,7 +6,7 @@ import slice from "../../assets/images/slice.png"
 import Api from "../../api/Api";
 import {useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
-import tokenState from "../../Recoil/atoms/tokenAtom";
+import loggedInState from "../../Recoil/atoms/loggedInAtom";
 import "./navbar.css"
 
 const useStyles = makeStyles(() => ({
@@ -47,8 +47,8 @@ export default function Navbar() {
     const { navbar, menuButton, toolbar, logo } = useStyles();
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
-    const setToken = useSetRecoilState(tokenState);
-    let token = useRecoilValue(tokenState);
+    const setLoggedIn = useSetRecoilState(loggedInState);
+    let loggedIn = useRecoilValue(loggedInState);
 
     // if(!token) {
     //  token = localStorage.getItem("token")
@@ -56,10 +56,8 @@ export default function Navbar() {
     
 
     useEffect(()=>{
-        const localStorageToken = localStorage.getItem("token")
-        console.log(partyObject);
-        // TODO: Why not !partyObject OR partyObject == {} ????
-        if (partyObject !== {}) {
+        const localStorageToken = localStorage.getItem("token");
+        if (!partyObject._id) {
         const loadParty = async () => {
             try{
                const {data: party} =  await Api.get("party/me", {
@@ -68,8 +66,7 @@ export default function Navbar() {
                         Authorization: `Bearer ${localStorageToken}`,
                     }
                   })
-                  setToken(token)
-            // TODO: Change to  set recoil state isLoggedIn = true
+                  setLoggedIn(true)
                   setPartyObject(party)
             } catch (e) {
                 console.log(e.message);
@@ -83,7 +80,7 @@ export default function Navbar() {
     const handleClick = async (e) => {
         if (e.target.innerText === "LOGOUT"){
             try {
-                setToken("")
+                setLoggedIn(false)
                 localStorage.removeItem("token")
                await Api.post("/party/logout", partyObject)  
             } catch (error){
@@ -106,7 +103,7 @@ export default function Navbar() {
 
 
 const getMenuButtons = () => {
-    if(!token) {return <div></div>}
+    if(!loggedIn) {return <div></div>}
     return headersData.map(({ label, href }) => {
       return (
         <Button

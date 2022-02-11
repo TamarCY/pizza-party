@@ -14,7 +14,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
-import tokenState from '../../Recoil/atoms/tokenAtom';
+import loggedInState from '../../Recoil/atoms/loggedInAtom';
 import { useState } from 'react';
 
 
@@ -23,7 +23,7 @@ const theme = createTheme();
 
 export default function SignIn({ setAuthType }) {
     const setPartyObject = useSetRecoilState(partyState);
-    const setToken = useSetRecoilState(tokenState)
+    const setLoggedIn = useSetRecoilState(loggedInState)
     const [loginFailed, setLoginFailed] = useState(false)
     const [inputErrorText, setInputErrorText] = useState("")
 
@@ -40,10 +40,8 @@ export default function SignIn({ setAuthType }) {
         try {
             const { data: { token, party } } = await Api.post("/party/signin", signinObject);
             setPartyObject(party)
-            setToken(token)
-            // TODO: Change to  set recoil state isLoggedIn = true
+            setLoggedIn(true)
             localStorage.setItem("token", token);
-            localStorage.setItem("party", token);
             navigate("/party")
         } catch (e) {
             setLoginFailed(true);

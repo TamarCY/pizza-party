@@ -15,15 +15,19 @@ import GuestEditDesserts from "./pages/guestEditDesserts/GuestEditDesserts";
 import GuestEditPizza from "./pages/guestEditPizza/GuestEditPizza";
 import AuthRoute from "./Routes/AuthRoute";
 import GuestEdit from "./pages/guestEdit/GuestEdit";
-import RecoilRoot from "recoil"
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/private-theming";
+import theme from "./Styles/muiTheme";
 
 function App() {
   const [authType, setAuthType] = useState("login");
 
   return (
     <div className="App">
-      <RecoilRoot>
+      {/* <RecoilRoot> */}
       <BrowserRouter>
+      <CssBaseline enableColorScheme />
+      <ThemeProvider theme={theme}>
         <Navbar />
         <Routes>
           <Route element={<AuthRoute />}>
@@ -42,8 +46,9 @@ function App() {
           <Route path="/sign-up" element={<SignUp setAuthType={setAuthType} />} />
           <Route path="/*" element={< Navigate to="/"/>}/>
         </Routes>
+      </ThemeProvider>
       </BrowserRouter>
-    </RecoilRoot>
+    {/* </RecoilRoot> */}
     </div>
   );
 }

@@ -16,7 +16,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState} from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
-import tokenState from '../../Recoil/atoms/tokenAtom';
+import tokenState from '../../Recoil/atoms/loggedInAtom';
 
 
 
