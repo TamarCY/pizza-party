@@ -3,6 +3,9 @@ import { createTheme } from "@mui/material/styles";
 
 
 const THEME = createTheme({
+    typography: {
+        fontFamily: 'Nunito'
+    },
   palette: {
     primary: {
         // main: "#219F94"
@@ -14,5 +17,7 @@ const THEME = createTheme({
     },
   },
 });
+
+
 
 export default THEME;

@@ -78,7 +78,7 @@ export default function SignIn({ setAuthType }) {
                     <Typography component="h1" variant="h3">
                         Pizza Party
                     </Typography>
-                    <Typography component="h2" variant="h7" sx={{ m: 5 }}>
+                    <Typography component="h2" variant="h7" sx={{m:1}}>
                         Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
