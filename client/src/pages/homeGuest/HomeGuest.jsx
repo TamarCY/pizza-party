@@ -4,6 +4,8 @@ import { useParams, Link } from "react-router-dom"
 import Api from "../../api/Api";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
+import pizza from "../../assets/images/pizza.png"
+import "./homeGuest.css"
 
 const HomeGuest = () => {
     const params = useParams();
@@ -49,23 +51,40 @@ const HomeGuest = () => {
     if (!date) return (<div>spinner....</div>)
     return (
         // TODO: add css and spinner, delete inline style
-        <div>
-            <div style={{ marginTop: "100px" }}>{`${partyObject.firstName} ${partyObject.lastName} invited you to a Pizza Party`}</div>
-            <div>{date}</div>
-            <div>{hour}</div>
-            <div>in {partyObject.address}</div>
-            {(!isDecline) && <div>
-                <Link to="/guest-edit">
-                    <button>Fun! I would love to participate</button>
-                </Link>
-                <button onClick={handelDecline}>Sorry, I can't come</button>
-            </div>}
-            <div>
-                {isDecline && <div><div>Thanks for the update! <br /> Click <a href={whatsAppLink}>here</a> if you want to response in a whatsApp message</div>
-                    <button onClick={handelDecline}>back</button></div>}
+        <div style={{ marginTop: "100px" }} className="homeGuest-container">
+            <div className="homeGuest-main">
+                {/* <img className="homeGuest-img" src={pizza} alt="pizza" /> */}
+                {(!isDecline) && <div>
+                    <h2 >{`${partyObject.firstName} ${partyObject.lastName} invited you to a Pizza Party!`}</h2>
+                    <h3>{date}</h3>
+                    <h3>{hour}</h3>
+                    <h3>in {partyObject.address}</h3>
+                    <img className="homeGuest-img" src={pizza} alt="pizza" />
+                    <div className="homeGuest-button">
+                        <Link to="/guest-edit">
+                            <button className="button-48" ><span class="text">Great! I am in!</span></button>
+                        </Link>
+                        <button className="button-48" onClick={handelDecline}><span class="text">Sorry, I can't come</span></button>
+                    </div>
+                </div>}
+
+                <div>
+                    {isDecline &&
+                        <div>
+                            <img className="homeGuest-img" src={pizza} alt="pizza" />
+                            <h2>Thanks for the update! </h2>
+                            <h3>Click <a href={whatsAppLink} target="_blank" >here</a> if you want to response in a whatsApp message</h3>
+                            <button className="button-48" onClick={handelDecline}><span class="text">back</span></button>
+                        </div>}
+                </div>
             </div>
         </div>
+
+        
     )
+
+    // <button className="button-48" role="button" ><span class="text">Great! I am in!</span></button>
+
 }
 
 export default HomeGuest

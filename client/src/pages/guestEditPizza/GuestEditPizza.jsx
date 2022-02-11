@@ -1,43 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
 import guestState from "../../Recoil/atoms/guestAtom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import { Button } from "@mui/material";
-// import FormHelperText from "@mui/material/FormHelperText";
+import { Button, FormLabel } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Link } from "react-router-dom";
-import Api from "../../api/Api";
 import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList";
 
 export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
   const [toppings, setToppings] = useState("");
   const [amount, setAmount] = useState("");
-  // const [pizzasSelected, setPizzasSelected] = useState([]);
   const partyObject = useRecoilValue(partyState);
   const setPartyObject = useSetRecoilState(partyState);
   const guestObject = useRecoilValue(guestState);
   const setGuestObject = useSetRecoilState(guestState);
   const [nextPage, setNextPage] = useState ("")
 
-  // useEffect(()=> {
-  //   const FindNextPage = () => {
-  //     if((partyObject.selectedDrinks.length > 0) || (partyObject.selectedDrinks.length.length > 0)){
-  //         return "/guest-edit-drinks"
-  //     } else {
-  //         if (partyObject.selectedDesserts.length > 0) { 
-  //           return "/guest-edit-desserts"
-  //         }
-  //       }
-  //       return "/guest-finished"
-  // }
-
-  //   const next = FindNextPage();
-  //   setNextPage(next)
-  // })
 
   const handleDelete = (id) => {
     const filtered = pizzasSelected.filter((element) => {
@@ -71,17 +52,6 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
 
   const addSelectedArrayToGuest = async () => {
        setGuestObject({...guestObject, pizzasSelected})
-    // const guestObjectCopy = {...guestObject}
-    // const guestObjectCopy = { ...guestObject, pizzasSelected};
-  //   console.log(guestObjectCopy);
-  //   try {
-  //     const guest = await Api.post("/guest/", guestObjectCopy);
-  //     console.log("guest response:", guest);
-  //   } catch (e) {
-  //     console.error(e.message);
-  //   }
-
-  //   //    TODO: Axios put guest object copy
   };
 
   const renderToppings = () => {
@@ -99,10 +69,9 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
   };
 
   return (
-    <div style={{ marginTop: "200px" }}>
-      {/* TODO: DELETE */}
+    <div className="guestEditPizza step">
       <h2>{`${partyObject.firstName} would like to know how much pizza and which toppings would you like`}</h2>
-      <FormControl sx={{ m: 3, maxWidth: 500, minWidth: 400 }}>
+      <FormControl sx={{ m: 3, maxWidth: 500, minWidth: 200 }}>
         <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
@@ -115,7 +84,7 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
           {renderToppings()}
         </Select>
       </FormControl>
-      <FormControl sx={{ m: 3, minWidth: 100 }}>
+      <FormControl sx={{ m:3, minWidth: 100 }}>
         <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
@@ -138,10 +107,12 @@ export default function GuestEditPizza({setPizzasSelected, pizzasSelected}) {
           <MenuItem value={5}>5</MenuItem>
         </Select>
       </FormControl>
-      <div>
-        <Button variant="contained" color="warning" onClick={() => addPizza()}>
+        <Button sx={{m:4}} variant="contained" color="warning" onClick={() => addPizza()}>
           Add
         </Button>
+      
+      
+      <div>
       </div>
       <GuestPizzaList
         pizzasSelected={pizzasSelected}

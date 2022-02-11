@@ -24,12 +24,12 @@ import GuestEditDetails from '../guestEditDetails/GuestEditDetails';
 import GuestEditPizza from '../guestEditPizza/GuestEditPizza';
 import GuestEditDrinks from '../guestEditDrinks/GuestEditDrinks';
 import GuestEditDesserts from '../guestEditDesserts/GuestEditDesserts';
+import GuestFinished from '../guestFinished/GuestFinished';
 
 
 export default function GuestEdit() {
     // const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppingOptions:["a","b","c"], toppingsSelected:[0]})
     const [activeStep, setActiveStep] = React.useState(0);
-    const [skipped, setSkipped] = React.useState(new Set());
     const partyObject = useRecoilValue(partyState);
     const setGuestObject = useSetRecoilState(guestState);
     const guestObject = useRecoilValue(guestState);
@@ -39,19 +39,8 @@ export default function GuestEdit() {
     const components = [
         <GuestEditDetails />,
         <GuestEditPizza setPizzasSelected={setPizzasSelected} pizzasSelected={pizzasSelected} />,
-        <GuestEditDrinks />,
-        <GuestEditDesserts />,
-        <SendInvitation />]
-
-    const isStepOptional = (step) => {
-        // return step === 1;
-        return false
-    };
-
-    const isStepSkipped = (step) => {
-        return skipped.has(step);
-    };
-
+        <GuestEditDrinks />]
+   
     const handleSaveGuest = async () => {
         try {
             const guest = await Api.post("/guest/", guestObject);
@@ -81,9 +70,6 @@ export default function GuestEdit() {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
 
     return (
         // TODO: change the layout to mui or more responsive units
@@ -94,14 +80,6 @@ export default function GuestEdit() {
                     {steps.map((label, index) => {
                         const stepProps = {};
                         const labelProps = {};
-                        if (isStepOptional(index)) {
-                            labelProps.optional = (
-                                <Typography variant="caption">Optional</Typography>
-                            );
-                        }
-                        if (isStepSkipped(index)) {
-                            stepProps.completed = false;
-                        }
                         return (
                             <Step key={label} {...stepProps}>
                                 <StepLabel {...labelProps}>{label}</StepLabel>
@@ -114,11 +92,12 @@ export default function GuestEdit() {
                         <Typography sx={{ mt: 10, mb: 1 }}>
                             {/* All steps completed - you&apos;re finished */}
                             <div className='step-component'>
-                                <h2>Your party is ready!</h2>
+                                {/* <h2>Your party is ready!</h2>
                                 <Link to="/party"> <Button >Back to homepage</Button> </Link>
                                 <div>
                                     <img className="editParty-party-image" src={party} alt="pizza party" />
-                                </div>
+                                </div> */}
+                                <GuestFinished/>
                             </div>
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>

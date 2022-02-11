@@ -1,0 +1,13 @@
+.guestFinished-img {
+    border-radius: 10%;
+   margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    .guestFinished-img {
+        width: 50%;
+        border-radius: 3%;
+        margin-bottom: 100px;
+
+    }
+}
