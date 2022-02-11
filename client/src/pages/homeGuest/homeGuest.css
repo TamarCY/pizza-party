@@ -71,3 +71,14 @@
     height: 100px;
     width: 100px;
 }
+
+@media only screen and (max-width: 600px){
+    .homeGuest-img {
+        margin: 10px;
+        height: 100px;
+        width: 100px;
+    }
+    .button-48 {
+        margin: 5px;
+    }
+}

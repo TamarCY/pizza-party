@@ -117,7 +117,7 @@ export default function EditParty() {
     return (
         // TODO: change the layout to mui or more responsive units
 
-        <Box sx={{ width: '100%', marginTop: "150px" }}>
+        <Box sx={{ width: '100%', mt:12}}>
             <Box sx={{  margin: "0 auto" }}>
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label, index) => {
