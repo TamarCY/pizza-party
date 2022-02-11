@@ -14,10 +14,10 @@ export default function DessertPicker({options, inputValue,  setInputValue, disa
       <Autocomplete
       disabled = {disabled}
       freeSolo
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        // value={value}
+        // onChange={(event, newValue) => {
+        //   setValue(newValue);
+        // }}
         inputValue={inputValue}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);

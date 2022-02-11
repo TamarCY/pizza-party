@@ -43,6 +43,7 @@ export default function SignIn({ setAuthType }) {
             setToken(token)
             // TODO: Change to  set recoil state isLoggedIn = true
             localStorage.setItem("token", token);
+            localStorage.setItem("party", token);
             navigate("/party")
         } catch (e) {
             setLoginFailed(true);

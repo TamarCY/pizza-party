@@ -43,8 +43,6 @@ const headersData = [
 ]
 
 
-
-
 export default function Navbar() {
     const { navbar, menuButton, toolbar, logo } = useStyles();
     const partyObject = useRecoilValue(partyState);
@@ -86,7 +84,6 @@ export default function Navbar() {
         if (e.target.innerText === "LOGOUT"){
             try {
                 setToken("")
-                // TODO: delete token from localStorage
                 localStorage.removeItem("token")
                await Api.post("/party/logout", partyObject)  
             } catch (error){
@@ -94,7 +91,7 @@ export default function Navbar() {
             }
         }
         if (e.target.innerText === "HOME") {
-            console.log(token);
+            
         }   
     }
 

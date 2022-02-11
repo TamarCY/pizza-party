@@ -32,10 +32,11 @@ const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine",  "Orang
     return (
         <div className="step-component">
             <h2>Choose drink options</h2>
-            <div className="ui toggle checkbox">
+            {/* TODO: add active button and if disabled dont let the guset see drinks options */}
+            {/* <div className="ui toggle checkbox">
                 <input checked={isActive} type="checkbox" name="public" onChange={()=> (setIsActive(!isActive))}/>
                     <label> {`Drinks option ${isActive?"active":"disabled"}`}</label>
-            </div>
+            </div> */}
             <DrinksPicker list={cocktailsList} placeholder={"Cocktails"} handleChange={handleCocktailsChange} drinkState={selectedCocktails} disabled={!isActive}/>
             <DrinksPicker list={drinksList} placeholder={"Drinks"} handleChange={handleDrinksChange} drinkState={selectedDrinks} disabled={!isActive}/>
         </div>

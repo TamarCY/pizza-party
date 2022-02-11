@@ -18,10 +18,11 @@ const EditDessert = ({dessertOption1, dessertOption2, dessertOption3, setDessert
                 Choose 3 dessert options
             </h2>
             <h3>You can choose from the list or add your own</h3>
-            <div className="ui toggle checkbox">
+            {/* TODO: add active button and if disabled dont let the guset see drinks options */}
+            {/* <div className="ui toggle checkbox">
                 <input checked={isActive} type="checkbox" name="public" onChange={() => (setIsActive(!isActive))} />
                 <label>{`Dessert option ${isActive ? "active" : "disabled"}`}</label>
-            </div>
+            </div> */}
             <div className="editDessert-select">
                 <DessertPicker options={dessertList} setInputValue={setDessertOption1} inputValue={dessertOption1} disabled={!isActive} label={"Option 1"} />
                 <DessertPicker options={dessertList} setInputValue={setDessertOption2} inputValue={dessertOption2} disabled={!isActive} label={"Option 2"} />

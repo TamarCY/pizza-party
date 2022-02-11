@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import SignUp from "./pages/signup/Signup";
 import SignIn from "./pages/signin/SignIn";
@@ -15,12 +15,14 @@ import GuestEditDesserts from "./pages/guestEditDesserts/GuestEditDesserts";
 import GuestEditPizza from "./pages/guestEditPizza/GuestEditPizza";
 import AuthRoute from "./Routes/AuthRoute";
 import GuestEdit from "./pages/guestEdit/GuestEdit";
+import RecoilRoot from "recoil"
 
 function App() {
   const [authType, setAuthType] = useState("login");
 
   return (
     <div className="App">
+      <RecoilRoot>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -38,8 +40,10 @@ function App() {
           </Route>
           <Route path="/" element={<SignIn setAuthType={setAuthType} />} />
           <Route path="/sign-up" element={<SignUp setAuthType={setAuthType} />} />
+          <Route path="/*" element={< Navigate to="/"/>}/>
         </Routes>
       </BrowserRouter>
+    </RecoilRoot>
     </div>
   );
 }
