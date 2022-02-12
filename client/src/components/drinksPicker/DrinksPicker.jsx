@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -20,17 +19,8 @@ const MenuProps = {
 };
 
 
-function getStyles(drink, drinkState, theme) {
-  return {
-    fontWeight:
-      drinkState.indexOf(drink) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
-
 export default function DrinksPicker({ list, placeholder, handleChange, drinkState, disabled }) {
-  const theme = useTheme();
+  if(!drinkState){return <div className='loader'></div>}
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -56,7 +46,6 @@ export default function DrinksPicker({ list, placeholder, handleChange, drinkSta
             <MenuItem
               key={drink}
               value={drink}
-              style={getStyles(drink, drinkState, theme)}
             >
               {drink}
             </MenuItem>

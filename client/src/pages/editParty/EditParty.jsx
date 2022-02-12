@@ -43,7 +43,6 @@ export default function EditParty() {
         <SendInvitation />]
 
     const handleNext = async () => {
-        console.log(partyObject);
         if (activeStep === 2) {
             setPartyObject({ ...partyObject, selectedDrinks, selectedCocktails })
         }
@@ -98,6 +97,7 @@ export default function EditParty() {
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
+                        {/* TODO: if !partyObject.id render <div className='loader'></div> */}
                         <Typography sx={{ mt: 6, mb: 1 }}>
                             {components[activeStep]}
                         </Typography>

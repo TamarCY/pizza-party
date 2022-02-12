@@ -18,8 +18,6 @@ const EditDrinks = ({ selectedCocktails, setSelectedCocktails, selectedDrinks, s
     }
 
     const handleCocktailsChange = (e) => {
-        console.log("party", partyObject.selectedCocktails);
-        console.log("selected", selectedCocktails);
         const { target: { value } } = e;
         setSelectedCocktails(value)
     }
