@@ -75,8 +75,8 @@ export default function GuestEdit() {
     return (
         // TODO: change the layout to mui or more responsive units
 
-        <Box sx={{ width: '100%', mt:12 }}>
-            <Box sx={{ margin: "0 auto" }}>
+        <Box sx={{ mt:5}}>
+            <Box sx={{  width: '90%', margin: "0 auto" }}>
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label, index) => {
                         const stepProps = {};

@@ -18,8 +18,8 @@
 } */
 
 .step-component {
-    height: 40vh;
-    margin-top: 10vh;
+    height: 10vh;
+    /* margin-top: 10vh; */
 }
 
 .editParty-buttons-div{

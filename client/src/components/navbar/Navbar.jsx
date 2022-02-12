@@ -12,8 +12,8 @@ import "./navbar.css"
 const useStyles = makeStyles(() => ({
     navbar: {
         backgroundColor: "#96CEB4",
-        paddingRight: "79px",
-        paddingLeft: "118px",
+        paddingLeft: "2rem",
+        paddingRight: "5rem",
     },
     menuButton: {
         fontFamily: "Open Sans, sans-serif",
@@ -50,11 +50,7 @@ export default function Navbar() {
     const setLoggedIn = useSetRecoilState(loggedInState);
     let loggedIn = useRecoilValue(loggedInState);
 
-    // if(!token) {
-    //  token = localStorage.getItem("token")
-    // }
     
-
     useEffect(()=>{
         const localStorageToken = localStorage.getItem("token");
         if (!partyObject._id) {
@@ -88,7 +84,6 @@ export default function Navbar() {
             }
         }
         if (e.target.innerText === "HOME") {
-            
         }   
     }
 
@@ -101,7 +96,6 @@ export default function Navbar() {
         )
 };
 
-
 const getMenuButtons = () => {
     if(!loggedIn) {return <div></div>}
     return headersData.map(({ label, href }) => {
@@ -113,7 +107,6 @@ const getMenuButtons = () => {
             to: href,
             component: RouterLink,
             className: menuButton
-
           }}
           onClick={(e)=>(handleClick(e))}
         >
@@ -132,7 +125,7 @@ const headerLogo = (
 
 return (
     <header>
-        <AppBar className={navbar}>{displayDesktop()}</AppBar>
+        <AppBar position={"sticky"} className={navbar}>{displayDesktop()}</AppBar>
     </header>
 );
 }
