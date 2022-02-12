@@ -18,8 +18,15 @@
 } */
 
 .step-component {
-    height: 10vh;
-    /* margin-top: 10vh; */
+    height: 55vh;
+    margin-top: 10vh;
+}
+
+.step-component h2 {
+    margin-bottom: 2.3rem;
+}
+.step-component h3 {
+    margin-top: 0.5rem;
 }
 
 .editParty-buttons-div{
@@ -27,6 +34,8 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
+
 
 .editParty-party-image{
     margin: 10px;

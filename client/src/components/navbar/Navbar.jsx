@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     navbar: {
         backgroundColor: "#96CEB4",
         paddingLeft: "2rem",
-        paddingRight: "5rem",
+        paddingRight: "3.4rem",
     },
     menuButton: {
         fontFamily: "Open Sans, sans-serif",
