@@ -9,8 +9,8 @@ import Typography from '@mui/material/Typography';
 import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
 import EditPizza from '../../components/editPizza/EditPizza';
 import SendInvitation from '../../components/sendInvitation/SendInvitation';
-import { useRecoilValue, useSetRecoilState } from "recoil";
 import {Link} from 'react-router-dom';
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api';
 import EditDrinks from '../../components/editDrinks/EditDrinks';
@@ -23,20 +23,15 @@ import party from "../../assets/images/dancingPizza.png"
 
 
 export default function EditParty() {
-    // const [partyObject, setPartyObject] = React.useState({date: new Date(), address:"", toppingOptions:["a","b","c"], toppingsSelected:[0]})
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
-    // const drinksArray = useRecoilValue(drinksState);
-    // const setDrinksArray = useSetRecoilState(drinksState);
-    // const cocktailsArray = useRecoilValue(cocktailsState);
-    // const setCocktailsArray = useSetRecoilState(cocktailsArray);
-    const [selectedCocktails, setSelectedCocktails] = useState ([])
-    const [selectedDrinks, setSelectedDrinks] = useState ([])
-    const [dessertOption1, setDessertOption1] = useState("")
-    const [dessertOption2, setDessertOption2] = useState("")
-    const [dessertOption3, setDessertOption3] = useState("")
+    const [selectedCocktails, setSelectedCocktails] = useState (partyObject.selectedCocktails)
+    const [selectedDrinks, setSelectedDrinks] = useState (partyObject.selectedDrinks)
+    const [dessertOption1, setDessertOption1] = useState(partyObject.selectedDesserts?partyObject.selectedDesserts[0]:"")
+    const [dessertOption2, setDessertOption2] = useState(partyObject.selectedDesserts?partyObject.selectedDesserts[1]:"")
+    const [dessertOption3, setDessertOption3] = useState(partyObject.selectedDesserts?partyObject.selectedDesserts[2]:"")
 
     const steps = ['When and where', 'Pizza', 'Drinks', 'Desert', 'Send invitations'];
     const components = [
@@ -50,15 +45,6 @@ export default function EditParty() {
 
 
 
-    const isStepOptional = (step) => {
-        // return step === 1;
-        return false
-    };
-
-    const isStepSkipped = (step) => {
-        return skipped.has(step);
-    };
-
     const handleNext = async () => {
         console.log(partyObject);
         if (activeStep === 2) {
@@ -71,49 +57,19 @@ export default function EditParty() {
             if (dessertOption3) {selectedDesserts.push(dessertOption3)}
             setPartyObject({...partyObject, selectedDesserts})
         }
-        // if (activeStep === steps.length - 1) {
         try {
             await Api.put("/party/edit", partyObject);
         } catch (e) {
             console.error(e.message);
         }
-
-        // TODO: MOVE THE API CALL TO API FILE => savePartyToDataBase(partyObject)
-        // }
-        let newSkipped = skipped;
-        if (isStepSkipped(activeStep)) {
-            newSkipped = new Set(newSkipped.values());
-            newSkipped.delete(activeStep);
-        }
-
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped(newSkipped);
-
     };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleSkip = () => {
-        if (!isStepOptional(activeStep)) {
-            // You probably want to guard against something like this,
-            // it should never occur unless someone's actively trying to break something.
-            throw new Error("You can't skip a step that isn't optional.");
-        }
-
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped((prevSkipped) => {
-            const newSkipped = new Set(prevSkipped.values());
-            newSkipped.add(activeStep);
-            return newSkipped;
-        });
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-
+   
     return (
         <Box sx={{ mt:5}}>
             <Box sx={{  width: '90%', margin: "0 auto" }}>
@@ -121,14 +77,6 @@ export default function EditParty() {
                     {steps.map((label, index) => {
                         const stepProps = {};
                         const labelProps = {};
-                        if (isStepOptional(index)) {
-                            labelProps.optional = (
-                                <Typography variant="caption">Optional</Typography>
-                            );
-                        }
-                        if (isStepSkipped(index)) {
-                            stepProps.completed = false;
-                        }
                         return (
                             <Step key={label} {...stepProps}>
                                 <StepLabel {...labelProps}>{label}</StepLabel>
@@ -139,7 +87,6 @@ export default function EditParty() {
                 {activeStep === steps.length? (
                     <React.Fragment>
                         <Typography sx={{ mt: 10, mb: 1 }}>
-                            {/* All steps completed - you&apos;re finished */}
                             <div className='step-component'>
                                 <h2>Your party is ready!</h2>
                                 <Link to="/party"> <Button >Back to homepage</Button> </Link>
@@ -150,8 +97,6 @@ export default function EditParty() {
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Box sx={{ flex: '1 1 auto' }} />
-                            {/* <Button onClick={handleReset}>Reset</Button> */}
-                           {/* <Link to="/party"> <Button >Back to homepage</Button> </Link> */}
                         </Box>
                     </React.Fragment>
                 ) : (
@@ -170,11 +115,6 @@ export default function EditParty() {
                                 Back
                             </Button>
                             <Box sx={{ flex: '1 1 auto' }} />
-                            {isStepOptional(activeStep) && (
-                                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                                    Skip
-                                </Button>
-                            )}
                             <Button onClick={handleNext}>
                                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                             </Button>

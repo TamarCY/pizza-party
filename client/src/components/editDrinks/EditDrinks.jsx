@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 // import axios from "axios";
 import DrinksPicker from "../drinksPicker/DrinksPicker";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import partyState from '../../Recoil/atoms/partyAtom';
 
 
 
@@ -8,6 +10,8 @@ const EditDrinks = ({selectedCocktails,setSelectedCocktails, selectedDrinks,setS
     // const [selectedCocktails, setSelectedCocktails] = useState ([])
     // const [selectedDrinks, setSelectedDrinks] = useState ([])
     const [isActive, setIsActive] = useState(true)
+    const partyObject = useRecoilValue(partyState);
+
 
 
 // const fetchDrinks = async () => {
@@ -21,6 +25,8 @@ const handleDrinksChange = (e) => {
 }
 
 const handleCocktailsChange = (e) => {
+    console.log("party", partyObject.selectedCocktails);
+    console.log("selected", selectedCocktails);
     const {target: {value}} = e;
     setSelectedCocktails(value)
 }
