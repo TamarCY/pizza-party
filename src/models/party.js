@@ -3,7 +3,8 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const toppingsOptions = ["pineapple", "olives", "onion"];
+const toppingsOptions = ["pineapple", "olives", "onions", "pepperoni",
+ "four cheese", "mushrooms", "jalapenos", "tomatoes", "broccoli", "artichokes", "anchovies", "eggplant"];
 
 const partySchema = new mongoose.Schema({
   firstName: {

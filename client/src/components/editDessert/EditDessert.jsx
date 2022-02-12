@@ -5,11 +5,9 @@ import "./editDessert.css"
 
 
 const EditDessert = ({dessertOption1, dessertOption2, dessertOption3, setDessertOption1, setDessertOption2, setDessertOption3}) => {
-    // const [dessertOption1, setDessertOption1] = useState("")
-    // const [dessertOption2, setDessertOption2] = useState("")
-    // const [dessertOption3, setDessertOption3] = useState("")
     const [isActive, setIsActive] = useState(true)
-    const dessertList = ["Fruit salad", "Apple pie", "Lemon tart", "Ice cream", "Tiramisu", "Chocolate cake"]
+    const dessertList = ["Fruit salad", "Apple pie", "Lemon tart", "Ice cream", "Tiramisu", "Chocolate cake", "Lemon cheesecake","Victoria sponge","Carrot cake",
+    "Banana cake", "Strawberry mousse", "Chocolate mousse" ]
 
 
     return (

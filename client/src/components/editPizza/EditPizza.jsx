@@ -38,15 +38,12 @@ const EditPizza = () => {
         if (!partyObject.toppingOptions) { return <div>spinner...</div> }
         return partyObject.toppingOptions.map((item, index) => {
             return (
-                // <FormControlLabel key={item}>
-                // <Grid item xs={2} sm={8} md={8} key={index} sx={{m:2}}>
                 <FormControlLabel
                     control={
                         <Checkbox onChange={() => handleChange(index)} checked={partyObject.toppingsSelected.includes(index)} />
                     }
                     label={item}
                 />
-                // </Grid>
             )
         })
     }
