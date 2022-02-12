@@ -27,7 +27,9 @@ export default function GuestEditDetails (){
         autoComplete="phone"
         />
           <TextField sx={{m:1}} 
-          type="number"
+              InputProps={{ inputProps: { min: 0, max: 10 } }}
+
+          type="number" 
         id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumber} 
         onChange={(e)=>{setGuestObject({...guestObject, guestsNumber:e.target.value})}}
         />
