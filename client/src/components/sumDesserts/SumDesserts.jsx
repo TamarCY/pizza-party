@@ -34,7 +34,7 @@ const SumDesserts = () => {
 
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [partyObject])
 
     const options = {
         responsive: true,

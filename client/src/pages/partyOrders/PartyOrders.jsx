@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
-import Api from "../../api/Api";
 import SumPizza from "../../components/sumPizza/SumPizza";
 import SumDesserts from "../../components/sumDesserts/SumDesserts";
 import SumDrinks from "../../components/sumDrinks/SumDrinks";
@@ -12,9 +11,7 @@ export default function PartyOrders() {
     const partyObject = useRecoilValue(partyState)
     if ((!partyObject.sumOfPizzaOrders) || Object.keys(partyObject.sumOfPizzaOrders).length === 0) {
         return <div className="loader"></div>
-        // TODO: change to nicer massage
     }
-    
     // TODO: ADD SUM OF DRINKS AND SUM OF DESSERTS
     return (
         <div class="parent" >

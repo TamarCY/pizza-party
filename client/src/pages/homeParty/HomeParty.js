@@ -8,14 +8,9 @@ import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
 
 
-
-// TODO: in the use useEffect renser the componnet only if there is a token
-
-
 const HomeParty = () => {
     const partyObject = useRecoilValue(partyState);
     const setPartyObject = useSetRecoilState(partyState);
-
 
   const fetchPartyData = async () => {
   try {
