@@ -6,20 +6,11 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import EditTimePlace from '../../components/editTimePlace/EditTimePlace';
-import EditPizza from '../../components/editPizza/EditPizza';
-import SendInvitation from '../../components/sendInvitation/SendInvitation';
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { Link } from 'react-router-dom';
 import partyState from '../../Recoil/atoms/partyAtom';
 import guestState from '../../Recoil/atoms/guestAtom';
 import Api from '../../api/Api';
-import EditDrinks from '../../components/editDrinks/EditDrinks';
-import EditDessert from '../../components/editDessert/EditDessert';
-import cocktailsState from '../../Recoil/atoms/cocktailsAtom';
-import drinksState from '../../Recoil/atoms/drinksAtom';
 import './guestEdit.css'
-import party from "../../assets/images/dancingPizza.png"
 import GuestEditDetails from '../guestEditDetails/GuestEditDetails';
 import GuestEditPizza from '../guestEditPizza/GuestEditPizza';
 import GuestEditDrinks from '../guestEditDrinks/GuestEditDrinks';
@@ -35,17 +26,18 @@ export default function GuestEdit() {
     const guestObject = useRecoilValue(guestState);
     const [pizzasSelected, setPizzasSelected] = useState([]);
 
-    const steps = ['Your details', 'Pizza', 'Drinks','Desert'];
+    const steps = ['Your details', 'Pizza', 'Drinks', 'Desert'];
     const components = [
         <GuestEditDetails />,
         <GuestEditPizza setPizzasSelected={setPizzasSelected} pizzasSelected={pizzasSelected} />,
         <GuestEditDrinks />,
-    <GuestEditDesserts/>]
-   
+        <GuestEditDesserts />]
+
     const handleSaveGuest = async () => {
         try {
             const guest = await Api.post("/guest/", guestObject);
-            console.log("guest response:", guest);
+            console.log("saved in guest edit finish", guest);
+            await setGuestObject({})
         } catch (e) {
             console.error(e.message);
         }
@@ -73,10 +65,8 @@ export default function GuestEdit() {
 
 
     return (
-        // TODO: change the layout to mui or more responsive units
-
-        <Box sx={{ mt:5}}>
-            <Box sx={{  width: '90%', margin: "0 auto" }}>
+        <Box sx={{ mt: 5 }}>
+            <Box sx={{ width: '90%', margin: "0 auto" }}>
                 <Stepper activeStep={activeStep} alternativeLabel>
                     {steps.map((label, index) => {
                         const stepProps = {};
@@ -91,27 +81,19 @@ export default function GuestEdit() {
                 {activeStep === steps.length ? (
                     <React.Fragment>
                         <Typography sx={{ mt: 10, mb: 1 }}>
-                            {/* All steps completed - you&apos;re finished */}
                             <div className='step-component'>
-                                {/* <h2>Your party is ready!</h2>
-                                <Link to="/party"> <Button >Back to homepage</Button> </Link>
-                                <div>
-                                    <img className="editParty-party-image" src={party} alt="pizza party" />
-                                </div> */}
-                                <GuestFinished/>
+                                <GuestFinished />
                             </div>
                         </Typography>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Box sx={{ flex: '1 1 auto' }} />
-                            {/* <Button onClick={handleReset}>Reset</Button> */}
-                            {/* <Link to="/party"> <Button >Back to homepage</Button> </Link> */}
                         </Box>
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
-                        <Typography sx={{ mt: 6, mb: 1, display: 'flex', justifyContent: 'center'}}>
-                        <div className='step-component'>
-                            {components[activeStep]}
+                        <Typography sx={{ mt: 6, mb: 1, display: 'flex', justifyContent: 'center' }}>
+                            <div className='step-component'>
+                                {components[activeStep]}
                             </div>
                         </Typography>
                         <div className="editParty-buttons-div">
@@ -129,7 +111,7 @@ export default function GuestEdit() {
                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                 </Button>
                             </Box>
-                            </div>
+                        </div>
                     </React.Fragment>
                 )}
             </Box>
