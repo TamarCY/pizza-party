@@ -1,4 +1,19 @@
-    .parent {
+    
+ .parent {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 40px;
+    }
+    
+    .div1 { grid-area: 2 / 4 / 3 / 6; }
+    .div4{ grid-area: 6 / 4 / 9 / 6; }
+    .div3{ grid-area: 3 / 5 / 6 / 7; }
+    .div2{ grid-area: 3 / 3 / 6 / 5; }
+        
+    
+    /* .parent {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(10, 1fr);
@@ -9,7 +24,7 @@
         .div1 { grid-area: 2 / 3 / 3 / 7;}
         .div2 { grid-area: 3 / 2 / 6 / 5; margin: 0 50px}
         .div3 { grid-area: 3 / 5 / 6 / 8; margin: 0 50px}
-        .div4 { grid-area: 6 / 3 / 11 / 7; margin: 50px 0;}
+        .div4 { grid-area: 6 / 3 / 11 / 7; margin: 50px 0;} */
         
         @media only screen and (max-width: 600px) {
                 .div1 {
@@ -47,3 +62,6 @@
                   
                 }
           }
+
+
+          
