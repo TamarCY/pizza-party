@@ -3,7 +3,7 @@ const Party = require("../models/party");
 const Guest = require("../models/guest");
 
 const getParty = async (req, res) => {
-  res.status(400).send(req.party);
+  res.send(req.party);
 };
 
 const getPartyById = async (req, res) => {

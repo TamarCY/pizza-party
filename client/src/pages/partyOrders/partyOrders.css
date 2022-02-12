@@ -1,67 +1,54 @@
-    
- .parent {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-    grid-column-gap: 40px;
+.parent {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+}
+
+.div1 {
+  grid-area: 2 / 4 / 3 / 6;
+}
+.div4 {
+  grid-area: 6 / 4 / 9 / 6;
+}
+.div3 {
+  grid-area: 3 / 5 / 6 / 7;
+}
+.div2 {
+  grid-area: 3 / 3 / 6 / 5;
+}
+
+@media only screen and (max-width: 600px) {
+  .div1 {
+    grid-area: div1;
+    margin-top: 20px;
+  }
+  .div2 {
+    grid-area: div2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .div3 {
+    grid-area: div3;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .div4 {
+    grid-area: div4;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .parent {
     grid-row-gap: 40px;
-    }
-    
-    .div1 { grid-area: 2 / 4 / 3 / 6; }
-    .div4{ grid-area: 6 / 4 / 9 / 6; }
-    .div3{ grid-area: 3 / 5 / 6 / 7; }
-    .div2{ grid-area: 3 / 3 / 6 / 5; }
-        
-    
-    /* .parent {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: repeat(10, 1fr);
-        grid-column-gap: 100px;
-        grid-row-gap: 50px;
-        }
- 
-        .div1 { grid-area: 2 / 3 / 3 / 7;}
-        .div2 { grid-area: 3 / 2 / 6 / 5; margin: 0 50px}
-        .div3 { grid-area: 3 / 5 / 6 / 8; margin: 0 50px}
-        .div4 { grid-area: 6 / 3 / 11 / 7; margin: 50px 0;} */
-        
-        @media only screen and (max-width: 600px) {
-                .div1 {
-                    grid-area: div1;
-                    margin-top: 20px;
-                   
-                }
-                .div2 {
-                    grid-area: div2;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    
-                }
-                .div3 {
-                    grid-area: div3;
-                    margin-left:0;
-                    margin-right:0;
-                }
-                .div4 {
-                    grid-area: div4;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                }
-            
-                .parent {
-                    grid-row-gap: 40px;
-                    display: grid;
-                    grid-template-columns: 100%;
-                    grid-template-rows: auto;
-                    grid-template-areas: 
-                      "div1"
-                      "div4"
-                      "div2"
-                      "div3";
-                  
-                }
-          }
-
-
-          
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "div1"
+      "div4"
+      "div2"
+      "div3";
+  }
+}

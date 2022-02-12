@@ -65,7 +65,7 @@ export default function Navbar() {
                   setLoggedIn(true)
                   setPartyObject(party)
             } catch (e) {
-                console.log(e.message);
+                console.log(e);
             }
         }
         loadParty()
