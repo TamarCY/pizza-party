@@ -25,7 +25,7 @@ const EditDrinks = ({ selectedCocktails, setSelectedCocktails, selectedDrinks, s
 
     return (
         <div className="step-component">
-            <h2>Choose drink options</h2>
+            <h2>Pick drink options</h2>
             {/* TODO: add active button and if disabled dont let the guset see drinks options */}
             {/* <div className="ui toggle checkbox">
                 <input checked={isActive} type="checkbox" name="public" onChange={()=> (setIsActive(!isActive))}/>

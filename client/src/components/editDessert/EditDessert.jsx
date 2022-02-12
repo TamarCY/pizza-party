@@ -13,7 +13,7 @@ const EditDessert = ({ dessertOption1, dessertOption2, dessertOption3, setDesser
     return (
         <div className="step-component">
             <h2>
-                Choose 3 dessert options
+                Pick 3 dessert options
             </h2>
             <h3>You can choose from the list or add your own</h3>
             {/* TODO: add active button and if disabled dont let the guest see drinks options */}

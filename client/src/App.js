@@ -54,7 +54,7 @@ function App() {
               path="/sign-up"
               element={<SignUp setAuthType={setAuthType} />}
             />
-            <Route path="/*" element={<Navigate to="/" />} />
+            {/* <Route path="/*" element={<Navigate to="/" />} /> */}
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

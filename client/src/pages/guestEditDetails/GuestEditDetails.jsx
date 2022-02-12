@@ -27,7 +27,7 @@ export default function GuestEditDetails() {
       <TextField sx={{ m: 1 }}
         InputProps={{ inputProps: { min: 1 } }}
         type="number"
-        id="outlined-basic" label="Guests number" variant="outlined" value={guestObject.guestsNumber}
+        id="outlined-basic" label="Number of guests" variant="outlined" value={guestObject.guestsNumber}
         onChange={(e) => { setGuestObject({ ...guestObject, guestsNumber: e.target.value }) }}
       />
     </div>

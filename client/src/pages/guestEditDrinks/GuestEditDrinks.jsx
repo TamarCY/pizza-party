@@ -17,13 +17,13 @@ const GuestEditDrinks = () => {
 
     return (
         <>
-            <h2>Choose Your Drink</h2>
+            <h2>Pick Your Drink</h2>
             <Autocomplete
                 onChange={handelDrinkSelect}
                 disablePortal
                 id="combo-box-demo"
                 options={drinksList}
-                renderInput={(params) => <TextField {...params} label="Drinks" />}
+                renderInput={(params) => <TextField {...params} label="Drink" />}
             />
         </>
     )

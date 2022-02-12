@@ -60,7 +60,7 @@ export default function GuestEditPizza({ setPizzasSelected, pizzasSelected }) {
 
   return (
     <div className="guestEditPizza step">
-      <h2>Choose Pizza</h2>
+      <h2>Pick Your Desired Pizza(s)</h2>
       <div className="guestEditPizza">
         <FormControl sx={{ mr: 3, maxWidth: 500, minWidth: 100 }}>
           <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
@@ -76,11 +76,11 @@ export default function GuestEditPizza({ setPizzasSelected, pizzasSelected }) {
           </Select>
         </FormControl>
         <FormControl sx={{ mr: 3, minWidth: 100 }}>
-          <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
+          <InputLabel id="demo-simple-select-helper-label">Size</InputLabel>
           <Select
             labelId="demo-simple-select-helper-label"
             id="demo-simple-select-helper"
-            label="Amount"
+            label="Size"
             value={amount}
             onChange={handleAmountChange}
           >

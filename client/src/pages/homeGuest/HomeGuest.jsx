@@ -70,7 +70,7 @@ const HomeGuest = () => {
                         <div>
                             <img className="homeGuest-img" src={pizza} alt="pizza" />
                             <h2>Thanks for the update! </h2>
-                            <h3>Click <a href={whatsAppLink} target="_blank" >here</a> if you want to response in a whatsApp message</h3>
+                            <h3>Click <a href={whatsAppLink} target="_blank" >here</a> to respond via WhatsApp</h3>
                             <button className="button-48" onClick={handelDecline}><span class="text">back</span></button>
                         </div>}
                 </div>

@@ -23,7 +23,7 @@ const SendInvitation = () => {
     return (
         <div className="step-component">
             <h2>
-                send whatsApp invitation
+                Send invitation via WhatsApp
             </h2>
             <div className="ui transparent input">
                 <input type="tel" id="phone" name="phone" placeholder="Enter phone number"

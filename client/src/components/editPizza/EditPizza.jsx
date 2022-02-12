@@ -52,7 +52,7 @@ const EditPizza = () => {
         <div style={{ width: '100%' }} >
             <div className="step-component">
                 <FormControl>
-                    <h2>Choose topping options</h2>
+                    <h2>Pick topping options</h2>
                     <FormGroup>
                         <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: 'center', justifyContent: 'center' }}>
                             {renderCheckbox()}

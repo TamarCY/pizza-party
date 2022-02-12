@@ -20,7 +20,7 @@ export default function TimePicker() {
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <DateTimePicker
         renderInput={(props) => <TextField {...props} />}
-        label="Enter time"
+        label="Time"
         value={partyObject.date}
         onChange={(newValue) => handleDateChange(newValue)}
       />

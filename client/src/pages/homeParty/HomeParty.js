@@ -37,7 +37,7 @@ const HomeParty = () => {
             </Button>
           </Link>
           <Link to={`/guest-invitation/${partyObject._id}`}>
-            Click for the party invitations
+            Click for party invitations
           </Link>
         </Stack>
       </div>

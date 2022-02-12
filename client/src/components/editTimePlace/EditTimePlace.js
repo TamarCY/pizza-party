@@ -10,13 +10,13 @@ export default function EditTime() {
   const setPartyObject = useSetRecoilState(partyState);
   return (
     <div className="editTime step-component">
-      <h2> Choose date time and location </h2>
+      <h2> Pick time and location </h2>
       <div className="editTime-inputs">
         <TimePicker />
         <TextField
           sx={{ mt: 5 }}
           id="outlined-basic"
-          label="Enter address"
+          label="Location"
           variant="outlined"
           value={partyObject.address}
           onChange={(e) => {
