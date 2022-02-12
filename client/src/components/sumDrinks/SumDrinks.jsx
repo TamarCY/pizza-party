@@ -1,15 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
 import { useRecoilValue } from "recoil";
 import WineBarRoundedIcon from '@mui/icons-material/WineBarRounded';
 import partyState from '../../Recoil/atoms/partyAtom';
@@ -28,7 +17,6 @@ const SumDrinks = () => {
     const renderDrinkSum = () => {
         let result = []
         for (const drink in partyObject.sumOfDrinksOrders) {
-            // if(drink === undefined){console.log("undefined");}
             result.push(<tr><td>{drink}</td><td>{renderIcons(partyObject.sumOfDrinksOrders[drink])}</td></tr>)
         }
         return (

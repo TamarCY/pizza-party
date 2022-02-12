@@ -1,4 +1,4 @@
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Box, Grid } from "@mui/material";
+import { Checkbox, FormControl, FormControlLabel, FormGroup, Box } from "@mui/material";
 import React, { useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
@@ -35,7 +35,7 @@ const EditPizza = () => {
     }
 
     const renderCheckbox = () => {
-        if (!partyObject.toppingOptions) { return <div>spinner...</div> }
+        if (!partyObject.toppingOptions) { return <div className="loader"></div> }
         return partyObject.toppingOptions.map((item, index) => {
             return (
                 <FormControlLabel
@@ -47,26 +47,24 @@ const EditPizza = () => {
             )
         })
     }
-    if (!partyObject) { return <div>...</div> }
+    if (!partyObject) { return <div className="loader"></div> }
     return (
         <div style={{ width: '100%' }} >
             <div className="step-component">
-            <FormControl>
-                <h2>Choose topping options</h2>
-                <FormGroup>
-                    <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: 'center', justifyContent: 'center' }}>
-                        {renderCheckbox()}
-                    </Box>
-                </FormGroup>
-            <div className="editPizza-input ui icon input">
-                <input type="text" placeholder="Add topping" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
-                <i class="inverted circular add link icon " onClick={addNewTopping}></i>
-            </div>
-            </FormControl>
+                <FormControl>
+                    <h2>Choose topping options</h2>
+                    <FormGroup>
+                        <Box sx={{ display: "flex", flexWrap: "wrap", alignItems: 'center', justifyContent: 'center' }}>
+                            {renderCheckbox()}
+                        </Box>
+                    </FormGroup>
+                    <div className="editPizza-input ui icon input">
+                        <input type="text" placeholder="Add topping" value={newTopping} onChange={(e) => setNewTopping(e.target.value)} />
+                        <i class="inverted circular add link icon " onClick={addNewTopping}></i>
+                    </div>
+                </FormControl>
             </div>
         </div>
-
-
     )
 }
 

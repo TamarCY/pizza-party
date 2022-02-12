@@ -4,10 +4,10 @@ import { useState } from "react";
 import "./editDessert.css"
 
 
-const EditDessert = ({dessertOption1, dessertOption2, dessertOption3, setDessertOption1, setDessertOption2, setDessertOption3}) => {
+const EditDessert = ({ dessertOption1, dessertOption2, dessertOption3, setDessertOption1, setDessertOption2, setDessertOption3 }) => {
     const [isActive, setIsActive] = useState(true)
-    const dessertList = ["Fruit salad", "Apple pie", "Lemon tart", "Ice cream", "Tiramisu", "Chocolate cake", "Lemon cheesecake","Victoria sponge","Carrot cake",
-    "Banana cake", "Strawberry mousse", "Chocolate mousse" ]
+    const dessertList = ["Fruit salad", "Apple pie", "Lemon tart", "Ice cream", "Tiramisu", "Chocolate cake", "Lemon cheesecake", "Victoria sponge", "Carrot cake",
+        "Banana cake", "Strawberry mousse", "Chocolate mousse"]
 
 
     return (
@@ -16,7 +16,7 @@ const EditDessert = ({dessertOption1, dessertOption2, dessertOption3, setDessert
                 Choose 3 dessert options
             </h2>
             <h3>You can choose from the list or add your own</h3>
-            {/* TODO: add active button and if disabled dont let the guset see drinks options */}
+            {/* TODO: add active button and if disabled dont let the guest see drinks options */}
             {/* <div className="ui toggle checkbox">
                 <input checked={isActive} type="checkbox" name="public" onChange={() => (setIsActive(!isActive))} />
                 <label>{`Dessert option ${isActive ? "active" : "disabled"}`}</label>

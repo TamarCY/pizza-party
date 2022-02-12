@@ -1,11 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import partyState from "../../Recoil/atoms/partyAtom";
-import guestState from "../../Recoil/atoms/guestAtom";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import { Button, FormLabel } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import GuestPizzaList from "../../components/guestPizzaList/GuestPizzaList";
@@ -14,10 +12,7 @@ export default function GuestEditPizza({ setPizzasSelected, pizzasSelected }) {
   const [toppings, setToppings] = useState("");
   const [amount, setAmount] = useState("");
   const partyObject = useRecoilValue(partyState);
-  const setPartyObject = useSetRecoilState(partyState);
-  const guestObject = useRecoilValue(guestState);
-  const setGuestObject = useSetRecoilState(guestState);
-  const [nextPage, setNextPage] = useState("")
+
 
 
   const handleDelete = (id) => {
@@ -50,12 +45,7 @@ export default function GuestEditPizza({ setPizzasSelected, pizzasSelected }) {
     }
   };
 
-  const addSelectedArrayToGuest = async () => {
-    setGuestObject({ ...guestObject, pizzasSelected })
-  };
-
   const renderToppings = () => {
-    //   TODO: Add this to the schema
     const selectedNamesArray = partyObject.toppingsSelected.map((item) => {
       return partyObject.toppingOptions[item];
     });
@@ -71,58 +61,52 @@ export default function GuestEditPizza({ setPizzasSelected, pizzasSelected }) {
   return (
     <div className="guestEditPizza step">
       <h2>Choose Pizza</h2>
-        <div className="guestEditPizza">
-      <FormControl sx={{mr:3, maxWidth: 500, minWidth: 100 }}>
-        <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          value={toppings}
-          label="Toppings"
-          onChange={handleChange}
-        >
-          <MenuItem value=""></MenuItem>
-          {renderToppings()}
-        </Select>
-      </FormControl>
-      <FormControl sx={{  mr:3, minWidth: 100 }}>
-        <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          label="Amount"
-          value={amount}
-          onChange={handleAmountChange}
-        // inputProps={{ 'aria-label': 'Without label' }}
-        >
-          <MenuItem value=""></MenuItem>
-          <MenuItem value={0.5}>0.5</MenuItem>
-          <MenuItem value={1}>1</MenuItem>
-          <MenuItem value={1.5}>1.5</MenuItem>
-          <MenuItem value={2}>2</MenuItem>
-          <MenuItem value={2.5}>2.5</MenuItem>
-          <MenuItem value={3}>3</MenuItem>
-          <MenuItem value={3.5}>3.5</MenuItem>
-          <MenuItem value={4}>4</MenuItem>
-          <MenuItem value={4.5}>4.5</MenuItem>
-          <MenuItem value={5}>5</MenuItem>
-        </Select>
-      </FormControl>
-      <button class="circular ui icon button" onClick={() => addPizza()}>
-        <i class="icon plus"></i>
-      </button>
-
-
-      <div>
+      <div className="guestEditPizza">
+        <FormControl sx={{ mr: 3, maxWidth: 500, minWidth: 100 }}>
+          <InputLabel id="demo-simple-select-helper-label">Topping</InputLabel>
+          <Select
+            labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            value={toppings}
+            label="Toppings"
+            onChange={handleChange}
+          >
+            <MenuItem value=""></MenuItem>
+            {renderToppings()}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ mr: 3, minWidth: 100 }}>
+          <InputLabel id="demo-simple-select-helper-label">Pizza</InputLabel>
+          <Select
+            labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            label="Amount"
+            value={amount}
+            onChange={handleAmountChange}
+          >
+            <MenuItem value=""></MenuItem>
+            <MenuItem value={0.5}>0.5</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={1.5}>1.5</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={2.5}>2.5</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={3.5}>3.5</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={4.5}>4.5</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+          </Select>
+        </FormControl>
+        <button class="circular ui icon button" onClick={() => addPizza()}>
+          <i class="icon plus"></i>
+        </button>
+        <div>
+        </div>
+        <GuestPizzaList
+          pizzasSelected={pizzasSelected}
+          handleDelete={handleDelete}
+        />
       </div>
-      <GuestPizzaList
-        pizzasSelected={pizzasSelected}
-        handleDelete={handleDelete}
-      />
-      {/* <Link to="/guest-edit-drinks">
-        <div onClick={addSelectedArrayToGuest}>Next</div>
-      </Link> */}
-      </div>
-      </div>
+    </div>
   );
 }

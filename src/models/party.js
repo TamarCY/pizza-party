@@ -3,8 +3,20 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const toppingsOptions = ["pineapple", "olives", "onions", "pepperoni",
- "four cheese", "mushrooms", "jalapenos", "tomatoes", "broccoli", "artichokes", "anchovies", "eggplant"];
+const toppingsOptions = [
+  "pineapple",
+  "olives",
+  "onions",
+  "pepperoni",
+  "four cheese",
+  "mushrooms",
+  "jalapenos",
+  "tomatoes",
+  "broccoli",
+  "artichokes",
+  "anchovies",
+  "eggplant"
+];
 
 const partySchema = new mongoose.Schema({
   firstName: {
@@ -36,7 +48,7 @@ const partySchema = new mongoose.Schema({
       }
     }
   },
-  phone:{
+  phone: {
     type: Number
   },
   // TODO: add phone velidation
@@ -55,14 +67,13 @@ const partySchema = new mongoose.Schema({
     type: [Number]
     // TODO: add default value as 0 .... toppingsOptions.length
   },
-  // TODO: change the toppings option and selected to arrays inside one toppings object
   sumOfDessertsOrders: {
     type: Object
   },
   sumOfDrinksOrders: {
     type: Object
   },
-  
+
   sumOfPizzaOrders: {
     type: Object
   },
@@ -71,8 +82,8 @@ const partySchema = new mongoose.Schema({
     default: 0
   },
   selectedDesserts: [],
-  selectedDrinks:[],
-  selectedCocktails:[],
+  selectedDrinks: [],
+  selectedCocktails: [],
   tokens: [
     {
       token: {
@@ -82,8 +93,6 @@ const partySchema = new mongoose.Schema({
     }
   ]
 });
-
-
 
 // partySchema.virtual('sumPizza').get(function(){
 //   const valuesArray = Object.values(this.sumOfPizzaOrders)
@@ -102,8 +111,7 @@ partySchema.pre("save", async function (next) {
   next();
 });
 
-// partySchema.methods.sumTotalPizza = function 
-
+// partySchema.methods.sumTotalPizza = function
 partySchema.methods.generateAuthToken = async function () {
   const party = this;
   const token = jwt.sign({ _id: party._id.toString() }, "ilovepizzasomuch");
@@ -121,10 +129,6 @@ partySchema.methods.toJSON = function () {
 
   return partyObject;
 };
-
-
-
-
 
 partySchema.statics.findByCredentials = async (email, password) => {
   const party = await Party.findOne({ email });

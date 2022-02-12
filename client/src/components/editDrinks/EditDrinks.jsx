@@ -1,39 +1,29 @@
 import React, { useState } from "react";
-// import axios from "axios";
 import DrinksPicker from "../drinksPicker/DrinksPicker";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 
 
 
-const EditDrinks = ({selectedCocktails,setSelectedCocktails, selectedDrinks,setSelectedDrinks}) => {
-    // const [selectedCocktails, setSelectedCocktails] = useState ([])
-    // const [selectedDrinks, setSelectedDrinks] = useState ([])
+const EditDrinks = ({ selectedCocktails, setSelectedCocktails, selectedDrinks, setSelectedDrinks }) => {
     const [isActive, setIsActive] = useState(true)
     const partyObject = useRecoilValue(partyState);
 
+    const cocktailsList = ["Old Fashioned", "Margarita", "Cosmopolitan", "Negroni", "Moscow Mule", "Martini", "Mojito", "Whiskey Sour", "Manhattan", "Spritz", "Gimlet", "Vesper", "Mimosa", "Daiquiri"]
+    const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine", "Orange juice", "Apple juice", "Lemonade", "Iced tea", "Cider alcoholic", "Sprite", "Diet Sprite", "Coke", "Coke light",]
 
+    const handleDrinksChange = (e) => {
+        const { target: { value } } = e;
+        setSelectedDrinks(value)
+    }
 
-// const fetchDrinks = async () => {
-//    const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
-//     console.log(response.data);
-// }
+    const handleCocktailsChange = (e) => {
+        console.log("party", partyObject.selectedCocktails);
+        console.log("selected", selectedCocktails);
+        const { target: { value } } = e;
+        setSelectedCocktails(value)
+    }
 
-const handleDrinksChange = (e) => {
-    const {target: {value}} = e;
-    setSelectedDrinks(value)
-}
-
-const handleCocktailsChange = (e) => {
-    console.log("party", partyObject.selectedCocktails);
-    console.log("selected", selectedCocktails);
-    const {target: {value}} = e;
-    setSelectedCocktails(value)
-}
-
-const cocktailsList = ["Old Fashioned", "Margarita", "Cosmopolitan", "Negroni", "Moscow Mule", "Martini", "Mojito", "Whiskey Sour", "Manhattan", "Spritz", "Gimlet", "Vesper", "Mimosa", "Daiquiri"]
-
-const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine",  "Orange juice", "Apple juice", "Lemonade", "Iced tea",  "Cider alcoholic", "Sprite", "Diet Sprite", "Coke", "Coke light",]
 
     return (
         <div className="step-component">
@@ -43,8 +33,8 @@ const drinksList = ["Sparkling water", "Beer", "White wine", "Red wine",  "Orang
                 <input checked={isActive} type="checkbox" name="public" onChange={()=> (setIsActive(!isActive))}/>
                     <label> {`Drinks option ${isActive?"active":"disabled"}`}</label>
             </div> */}
-            <DrinksPicker list={cocktailsList} placeholder={"Cocktails"} handleChange={handleCocktailsChange} drinkState={selectedCocktails} disabled={!isActive}/>
-            <DrinksPicker list={drinksList} placeholder={"Drinks"} handleChange={handleDrinksChange} drinkState={selectedDrinks} disabled={!isActive}/>
+            <DrinksPicker list={cocktailsList} placeholder={"Cocktails"} handleChange={handleCocktailsChange} drinkState={selectedCocktails} disabled={!isActive} />
+            <DrinksPicker list={drinksList} placeholder={"Drinks"} handleChange={handleDrinksChange} drinkState={selectedDrinks} disabled={!isActive} />
         </div>
     )
 }

@@ -1,83 +1,55 @@
 import * as React from 'react';
-import { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate, Link } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState} from "recoil";
+import { useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 import Api from '../../api/Api'
-import tokenState from '../../Recoil/atoms/loggedInAtom';
+import loggedInState from '../../Recoil/atoms/loggedInAtom';
 import pizza from "../../assets/images/pizza.png"
-// import "../signin.css"
-
 
 
 const signTheme = createTheme(
   {
     palette: {
       primary: {
-          main: "#FFAD60"
-  
-      }
+        main: "#FFAD60"
 
+      }
+    }
   }
-}
 );
 
 export default function SignUp() {
-  const partyObject = useRecoilValue(partyState);
-  const setToken = useSetRecoilState(tokenState)
+  const setLoggedIn = useSetRecoilState(loggedInState)
   const setPartyObject = useSetRecoilState(partyState);
   const navigate = useNavigate();
-
-
-
   const handleSubmit = async (event) => {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
     const partyObject = {
-        firstName: event.target[0].value,
-        lastName: event.target[2].value,
-        phone: event.target[4].value,
-        email: event.target[6].value,
-        password: event.target[8].value,
+      firstName: event.target[0].value,
+      lastName: event.target[2].value,
+      phone: event.target[4].value,
+      email: event.target[6].value,
+      password: event.target[8].value,
     }
     try {
-        const { data: { token, party } } = await Api.post("/party/signup", partyObject);
-        setToken(token);
-        // TODO: Change to  set recoil state isLoggedIn = true
-        setPartyObject(party);
-        localStorage.setItem("token", token);
-        console.log(`welcome ${party.firstName}`);
-        navigate("/party");
-
+      const { data: { token, party } } = await Api.post("/party/signup", partyObject);
+      setLoggedIn(true);
+      setPartyObject(party);
+      localStorage.setItem("token", token);
+      navigate("/party");
     } catch (e) {
-        console.error(e.message)
+      console.error(e.message)
     }
-}
-
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     // eslint-disable-next-line no-console
-//     setFirstName(data.get('firstName'))
-//     console.log(event);
-//     console.log({
-//       email: data.get('email'),
-//       password: data.get('password'),
-//     });
-//   };
+  }
 
   return (
     <ThemeProvider theme={signTheme}>
@@ -91,21 +63,13 @@ export default function SignUp() {
             alignItems: 'center',
           }}
         >
-          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography> */}
-           {/* <LocalPizzaIcon sx={{ m: 5, color:"warning.main", fontSize:100}}/> */}
-           <img className="signin-img" src={pizza} alt={pizza}/>
-
-                    <Typography component="h1" variant="h3">
-                         Pizza Party
-                    </Typography>
-                    <Typography component="h2" variant="h7" sx={{m:1}}>
-                        Sign Up
-                    </Typography>
+          <img className="signin-img" src={pizza} alt={pizza} />
+          <Typography component="h1" variant="h3">
+            Pizza Party
+          </Typography>
+          <Typography component="h2" variant="h7" sx={{ m: 1 }}>
+            Sign Up
+          </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -178,7 +142,6 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
   );

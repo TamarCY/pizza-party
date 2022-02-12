@@ -1,12 +1,9 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -20,14 +17,13 @@ import pizza from "../../assets/images/pizza.png"
 import "./signin.css"
 
 
-
 const signTheme = createTheme(
     {
         palette: {
-          primary: {
-              main: "#FFAD60"
-          }
-      }
+            primary: {
+                main: "#FFAD60"
+            }
+        }
     }
 );
 
@@ -59,7 +55,7 @@ export default function SignIn({ setAuthType }) {
             console.error(e.message);
         }
     };
-    
+
 
     return (
         <ThemeProvider theme={signTheme}>
@@ -73,12 +69,11 @@ export default function SignIn({ setAuthType }) {
                         alignItems: 'center',
                     }}
                 >
-                    <img className="signin-img" src={pizza} alt={pizza}/>
-                    {/* <LocalPizzaIcon sx={{ m: 5, color: "warning.main", fontSize: 100 }} /> */}
+                    <img className="signin-img" src={pizza} alt={pizza} />
                     <Typography component="h1" variant="h3">
                         Pizza Party
                     </Typography>
-                    <Typography component="h2" variant="h7" sx={{m:1}}>
+                    <Typography component="h2" variant="h7" sx={{ m: 1 }}>
                         Sign in
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -101,9 +96,9 @@ export default function SignIn({ setAuthType }) {
                             type="password"
                             id="password"
                             autoComplete="current-password"
-                            error = {loginFailed}
-                            helperText = {inputErrorText}
-                            onChange = {()=>{setLoginFailed(false); setInputErrorText("");}}
+                            error={loginFailed}
+                            helperText={inputErrorText}
+                            onChange={() => { setLoginFailed(false); setInputErrorText(""); }}
                         />
                         <Button
                             type="submit"

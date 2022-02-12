@@ -1,21 +1,14 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import LocalPizza from '@mui/icons-material/LocalPizza';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
-// const pizzaArray = [{ topping: "olives", amount: 3, id: 134 }, { topping: "corn", amount: 1, id: 183 }]
-
 
 function generate(pizzasSelected, handleDelete) {
     return pizzasSelected.map((value) =>
@@ -43,10 +36,6 @@ function generate(pizzasSelected, handleDelete) {
 
     );
 }
-
-// const Demo = styled('div')(({ theme }) => ({
-//     backgroundColor: theme.palette.background.paper,
-// }));
 
 export default function GuestPizzaList({ handleDelete, pizzasSelected }) {
     return (

@@ -2,10 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const partyRouter = require("./routes/party-routes");
 const guestRouter = require("./routes/guest-routes");
-// const guestRouter = require("./routes/guest-routes")
 
 const app = express();
 
@@ -22,19 +21,13 @@ mongoose
   .then(() => console.log("Database connected"))
   .catch((err) => console.error(err));
 
-
 app.use("/party", partyRouter);
-// app.use("/guest", guestRouter)
 app.use("/guest", guestRouter);
 
-
 app.use("*", (req, res) => {
-	res.sendFile(path.resolve(`${publicPath}/index.html`))
+  res.sendFile(path.resolve(`${publicPath}/index.html`));
 });
 
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`Server is up and running on ${PORT}`));
-
-
- 

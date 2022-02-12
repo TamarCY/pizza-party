@@ -20,12 +20,6 @@ const MenuProps = {
 };
 
 
-
-const cocktails = ["Old Fashioned", "Margarita", "Cosmopolitan", "Negroni", "Moscow Mule", "Martini", "Mojito", "Whiskey Sour", "Manhattan", "Spritz", "Gimlet", "Vesper", "Mimosa", "Daiquiri"]
-
-const drinks = ["Orange juice", "Apple juice", "Lemonade", "Sparkling water", "Iced tea", "Beer", "White wine", "Red wine", "Coke", "Coke light", "Cider alcoholic", "Sprite", "Diet Sprite"]
-
-
 function getStyles(drink, drinkState, theme) {
   return {
     fontWeight:
@@ -35,31 +29,19 @@ function getStyles(drink, drinkState, theme) {
   };
 }
 
-export default function DrinksPicker({list, placeholder, handleChange, drinkState, disabled}) {
+export default function DrinksPicker({ list, placeholder, handleChange, drinkState, disabled }) {
   const theme = useTheme();
-//   const [persondrink, setPersondrink] = React.usedrinkState([]);
-
-//   const handleChange = (event) => {
-//     const {
-//       target: { value },
-//     } = event;
-//     setPersondrink(
-//       // On autofill we get a stringified value.
-//       typeof value === 'string' ? value.split(',') : value,
-//     );
-//   };
-
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-chip-label">{placeholder}</InputLabel>
         <Select
-            disabled = {disabled}
+          disabled={disabled}
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
           multiple
           value={drinkState}
-          onChange={(e)=>handleChange(e, )}
+          onChange={(e) => handleChange(e,)}
           input={<OutlinedInput id="select-multiple-chip" label={placeholder} />}
           renderValue={(selected) => (
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>

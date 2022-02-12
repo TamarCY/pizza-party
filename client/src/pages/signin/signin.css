@@ -1,15 +1,13 @@
-.signin-img{
-    height: 80px;
-    width: 80px;
-    margin: 3rem;
+.signin-img {
+  height: 80px;
+  width: 80px;
+  margin: 3rem;
 }
 
-
-
-@media only screen and (max-width: 600px){
-    .signin-img{
-        height: 10px;
-        width: 10px;
-        visibility: hidden;
-    }
+@media only screen and (max-width: 600px) {
+  .signin-img {
+    height: 10px;
+    width: 10px;
+    visibility: hidden;
+  }
 }

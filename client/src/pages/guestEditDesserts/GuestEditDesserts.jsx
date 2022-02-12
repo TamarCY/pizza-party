@@ -6,7 +6,6 @@ import guestState from "../../Recoil/atoms/guestAtom";
 
 const GuestEditDesserts = () => {
   const partyObject = useRecoilValue(partyState);
-  const setPartyObject = useSetRecoilState(partyState);
   const guestObject = useRecoilValue(guestState);
   const setGuestObject = useSetRecoilState(guestState);
 
@@ -36,7 +35,7 @@ const GuestEditDesserts = () => {
         name="controlled-radio-buttons-group"
         value={guestObject.dessertSelected}
         onChange={handleDessertSelect}
-        
+
       >
         {renderRadio()}
       </RadioGroup>

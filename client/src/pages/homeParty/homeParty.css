@@ -1,23 +1,23 @@
-.home-party-container { 
-    width: 100vw;
-    height: 75vh;
-    display: flex;  
-    align-items: center;
-    justify-content: center;
+.home-party-container {
+  width: 100vw;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-party-box {
-    justify-content: space-around;
-    display: flex;
-    flex-direction: column;
+  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
 }
 
 .home-party-logo {
-    background: url("../../assets/images/hands.png") no-repeat center/cover;
-    width: 20rem;
-    height: 20rem;
+  background: url("../../assets/images/hands.png") no-repeat center/cover;
+  width: 20rem;
+  height: 20rem;
 }
 
-.home-party-box button{
-    width: 100%
+.home-party-box button {
+  width: 100%;
 }

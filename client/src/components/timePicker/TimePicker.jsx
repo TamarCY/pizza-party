@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateTimePicker from '@mui/lab/DateTimePicker';
-import {useRecoilValue, useSetRecoilState} from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 
 
@@ -13,7 +12,7 @@ export default function TimePicker() {
   const setPartyObject = useSetRecoilState(partyState);
 
   const handleDateChange = (newValue) => {
-    setPartyObject({...partyObject, date: newValue});
+    setPartyObject({ ...partyObject, date: newValue });
     console.log(partyObject.date)
   }
 
@@ -23,7 +22,7 @@ export default function TimePicker() {
         renderInput={(props) => <TextField {...props} />}
         label="Enter time"
         value={partyObject.date}
-        onChange={(newValue)=> handleDateChange(newValue)}
+        onChange={(newValue) => handleDateChange(newValue)}
       />
     </LocalizationProvider>
   );

@@ -65,7 +65,7 @@ const SumDesserts = () => {
 
     return (
         <div className="ui container">
-        <Bar options={options} data={data} />
+            <Bar options={options} data={data} />
         </div>
     )
 }

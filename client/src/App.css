@@ -1,14 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* font-family: 'Arimo', sans-serif;
-  font-family: 'Mukta', sans-serif;
-  font-family: 'Noto Sans', sans-serif; */
-  /* font-family: 'Patrick Hand', cursive; */
-  /* font-family: 'PT Sans', sans-serif;
-  font-family: 'Raleway', sans-serif;
-  font-family: 'Roboto', sans-serif; */
-  /* font-family: 'Supermercado One', cursive; */
   font-family: 'Nunito', sans-serif;
 }
 
@@ -21,9 +13,7 @@ h2, h3 {
 
 }
 
-/* TODO: CHANGE IN MOBILE */
 h2 {
-  /* margin: 40px; */
   color: #D9534F
 }
 
@@ -42,16 +32,6 @@ a:hover {
   text-align: center;
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
 .App-header {
   background-color: #282c34;
@@ -80,8 +60,6 @@ a:hover {
     transform: rotate(360deg);
   }
 }
-
-
 
 
 @media only screen and (max-width: 600px){

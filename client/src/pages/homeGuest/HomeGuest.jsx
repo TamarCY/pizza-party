@@ -22,7 +22,6 @@ const HomeGuest = () => {
     const whatsAppLink = `https://api.whatsapp.com/send?phone=+972${partyObject.phone}&text=Sorry,%20I%20Can't%20come%20to%20the%20party`
 
     useEffect(() => {
-        // TODO: Change api call only if its a guest FileSystemEntry, if not get the data from the state
         const fetchData = async () => {
             const { data } = await Api.get(`party/invitation/${params.id}`);
             const editTime = () => {
@@ -50,9 +49,8 @@ const HomeGuest = () => {
 
     if (!date) return (<div className="loader"></div>)
     return (
-        <div  className="homeGuest-container">
+        <div className="homeGuest-container">
             <div className="homeGuest-main">
-                {/* <img className="homeGuest-img" src={pizza} alt="pizza" /> */}
                 {(!isDecline) && <div>
                     <h2 >{`${partyObject.firstName} ${partyObject.lastName} invited you to a Pizza Party!`}</h2>
                     <h3>{date}</h3>
@@ -78,12 +76,7 @@ const HomeGuest = () => {
                 </div>
             </div>
         </div>
-
-        
     )
-
-    // <button className="button-48" role="button" ><span class="text">Great! I am in!</span></button>
-
 }
 
 export default HomeGuest

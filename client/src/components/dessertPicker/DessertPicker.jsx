@@ -2,22 +2,13 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-// const options = ['Option 1', 'Option 2'];
 
-export default function DessertPicker({options, inputValue,  setInputValue, disabled, label}) {
-  const [value, setValue] = React.useState(null);
-
-  // const [inputValue, setInputValue] = React.useState('');
-
+export default function DessertPicker({ options, inputValue, setInputValue, disabled, label }) {
   return (
     <div >
       <Autocomplete
-      disabled = {disabled}
-      freeSolo
-        // value={value}
-        // onChange={(event, newValue) => {
-        //   setValue(newValue);
-        // }}
+        disabled={disabled}
+        freeSolo
         inputValue={inputValue}
         onInputChange={(event, newInputValue) => {
           setInputValue(newInputValue);

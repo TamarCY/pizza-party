@@ -1,11 +1,10 @@
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import partyState from '../../Recoil/atoms/partyAtom';
 
 
 export default function SumPizza() {
     const partyObject = useRecoilValue(partyState);
-
 
     const renderPizzaTable = () => {
         return Object.keys(partyObject.sumOfPizzaOrders).map((oneKey, i) => {
