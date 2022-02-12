@@ -67,10 +67,22 @@ const signinParty = async (req, res) => {
 
 const logoutParty = async (req, res) => {
   try {
-    req.party.tokens = req.party.tokens.filter((token) => {
-      return token.token !== req.token;
+    const party = await Party.findById(req.body.id)
+    party.tokens = party.tokens.filter((token) => {
+      return token.token !== req.body.token;
     });
-    await req.party.save();
+    await party.save();
+    res.status(200).send("logged out");
+  } catch (e) {
+    res.status(500).send(e);
+  }
+};
+
+const logoutPartyAll = async (req, res) => {
+  try {
+    const party = await Party.findById(req.body.id)
+    party.tokens = []
+    await party.save();
     res.status(200).send("logged out");
   } catch (e) {
     res.status(500).send(e);
@@ -79,7 +91,6 @@ const logoutParty = async (req, res) => {
 
 const sumGuestsOrders = async (req, res) => {
   try {
-    console.log();
     const guestsArray = await Guest.find({ owner: req.params.id });
     const partyObject = await Party.findById(req.params.id);
     if(guestsArray.length === 0){
@@ -90,20 +101,16 @@ const sumGuestsOrders = async (req, res) => {
     partyObject.sumOfPizzaOrders = sumOfPizzaOrders;
     partyObject.totalPizzaNum = sumPizza(sumOfPizzaOrders);
     partyObject.sumOfDrinksOrders = sumOrders(guestsArray, "drinkSelected");
-    console.log(partyObject.sumOfDrinksOrders);
     partyObject.sumOfDessertsOrders = sumOrders(guestsArray, "dessertSelected");
-    console.log(partyObject.sumOfDessertsOrders);
     await partyObject.save()
   res.status(200).send(partyObject);
   } catch (e) {
-    console.log(e);
     res.status(400).send(e.message);
   }
 };
 
 const sumOrders = (guestsArray, key) => {
   const sumObject = {};
-  console.log("guestArr", guestsArray);
   guestsArray.forEach((guest)=> {
    if(sumObject[guest[key]]){
     sumObject[guest[key]] += 1
@@ -112,7 +119,6 @@ const sumOrders = (guestsArray, key) => {
     sumObject[guest[key]] = 1}
   }
 } )
-console.log(key, sumObject);
 return sumObject
 }
 
@@ -140,16 +146,8 @@ const sumPizzaObjects = (array) => {
 };
 
 
-// const logoutAll = async (req, res) => {
-//   try {
-//     console.log(req.user);
-//     req.user.tokens = [];
-//     await req.user.save()
-//     res.status(200).send("logged out all")
-//   } catch (e) {
-//     res.status(500).send()
-//   }
-// }
+
+
 
 
 

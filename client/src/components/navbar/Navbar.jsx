@@ -77,8 +77,9 @@ export default function Navbar() {
         if (e.target.innerText === "LOGOUT"){
             try {
                 setLoggedIn(false)
+                const token = localStorage.getItem("token")
                 localStorage.removeItem("token")
-               await Api.post("/party/logout", partyObject)  
+               await Api.post("/party/logout", {token, id: partyObject._id})  
             } catch (error){
                 console.log(error.message)
             }
