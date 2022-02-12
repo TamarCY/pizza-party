@@ -21,13 +21,12 @@ const HomeParty = () => {
   try {
     const {data} = await Api.get(`party/sum-guest-pizza/${partyObject._id}`)
     setPartyObject(data)
-    console.log("response:", data)
   } catch (e) {
       console.log(e.message);
   }
 }
  
-
+if (!partyObject._id) return (<div className="loader"></div>)
   return (
     <div className="home-party-container">
       <div className="home-party-box">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import "./spinner.css"
 import SignUp from "./pages/signup/Signup";
 import SignIn from "./pages/signin/SignIn";
 import HomeParty from "./pages/homeParty/HomeParty";

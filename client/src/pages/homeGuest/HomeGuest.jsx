@@ -48,9 +48,8 @@ const HomeGuest = () => {
         , []
     )
 
-    if (!date) return (<div>spinner....</div>)
+    if (!date) return (<div className="loader"></div>)
     return (
-        // TODO: add css and spinner, delete inline style
         <div  className="homeGuest-container">
             <div className="homeGuest-main">
                 {/* <img className="homeGuest-img" src={pizza} alt="pizza" /> */}
