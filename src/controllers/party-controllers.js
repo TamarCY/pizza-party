@@ -3,9 +3,8 @@ const Party = require("../models/party");
 const Guest = require("../models/guest");
 
 const getParty = async (req, res) => {
-  res.send(req.party);
+  res.status(400).send(req.party);
 };
-// TODO: ADD STATUS
 
 const getPartyById = async (req, res) => {
   try {
@@ -41,7 +40,6 @@ const updateParty = async (req, res) => {
     const party = await Party.findOne({ email: req.body.email });
     party.address = req.body.address;
     party.date = req.body.date;
-    // party.phone = req.body.phone;
     party.toppingOptions = req.body.toppingOptions;
     party.toppingsSelected = req.body.toppingsSelected;
     party.selectedDesserts = req.body.selectedDesserts;
@@ -92,9 +90,10 @@ const sumGuestsOrders = async (req, res) => {
     partyObject.sumOfPizzaOrders = sumOfPizzaOrders;
     partyObject.totalPizzaNum = sumPizza(sumOfPizzaOrders);
     partyObject.sumOfDrinksOrders = sumOrders(guestsArray, "drinkSelected");
+    console.log(partyObject.sumOfDrinksOrders);
     partyObject.sumOfDessertsOrders = sumOrders(guestsArray, "dessertSelected");
+    console.log(partyObject.sumOfDessertsOrders);
     await partyObject.save()
-    // const partyObject = await Party.findOneAndUpdate({_id: req.params.id}, {sumOfPizzaOrders: allOrdersObject})
   res.status(200).send(partyObject);
   } catch (e) {
     console.log(e);
@@ -102,20 +101,20 @@ const sumGuestsOrders = async (req, res) => {
   }
 };
 
-
-
-// TODO: move to utils?
-
 const sumOrders = (guestsArray, key) => {
   const sumObject = {};
+  console.log("guestArr", guestsArray);
   guestsArray.forEach((guest)=> {
-    (sumObject[guest[key]])?
-    sumObject[guest[key]] += 1:
-    sumObject[guest[key]] = 1
-  })
-  return sumObject
+   if(sumObject[guest[key]]){
+    sumObject[guest[key]] += 1
+  } else {
+    if (guest[key]){
+    sumObject[guest[key]] = 1}
+  }
+} )
+console.log(key, sumObject);
+return sumObject
 }
-
 
 const sumPizza = (object) => {
   const valuesArray = Object.values(object)
@@ -138,8 +137,6 @@ const sumPizzaObjects = (array) => {
     }
   });
   return result;
-
-  // [{topping: olives, amount: 2},{topping: olives, amount: 2},]
 };
 
 
