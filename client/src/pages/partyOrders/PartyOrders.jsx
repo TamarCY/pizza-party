@@ -13,11 +13,13 @@ export default function PartyOrders() {
         return <div className="loader"></div>
     }
     return (
+        <>
+        <h2>Your guests orders</h2>
         <div class="parent" >
-            <div class="div1"><h2>Your guests orders</h2></div>
-            <div class="div2"><SumDrinks /></div>
-            <div class="div4"><SumPizza /></div>
-            <div class="div3"><SumDesserts /> </div>
+            <div class="div1"><SumDrinks /></div>
+            <div class="div2"><SumDesserts /> </div>
+            <div class="div3"><SumPizza /></div>
         </div>
+        </>
     )
 }
